@@ -23,6 +23,7 @@ setuptools_info = {
 	'zip_safe': True,
 	'url': 'https://github.com/VlachosGroup/vunits',
 	'packages': setuptools.find_packages(),
+	'package_data': {'':['*.xlsx']},
 	'install_requires': ['numpy>=1.15.1'],
 	'classifiers': [
 		"Programming Language :: Python :: 3",
