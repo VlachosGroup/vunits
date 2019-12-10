@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-pmutt.test_constants
-Tests for pmutt.constants file
+vunits.test_constants
+Tests for vunits.constants file
 Created on Fri Jul 7 12:31:00 2018
 """
 import os

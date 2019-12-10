@@ -21,15 +21,16 @@ Dependencies
 
 -  Python3
 -  `Numpy`_: Used for vector and matrix operations
+-  `Pandas`_: Used to import data from Excel files
+-  `xlrd`_: Used by Pandas to import Excel files
 
 Getting Started
 ---------------
 
 1. Install using pip (`see documentation for more thorough instructions`_)::
 
-    pip install pmutt
+    pip install vunits
 
-2. Look at `examples using the code`_
 
 License
 -------
@@ -63,27 +64,28 @@ This material is based upon work supported by the Department of Energy's Office
 of Energy Efficient and Renewable Energy's Advanced Manufacturing Office under 
 Award Number DE-EE0007888-9.5.
 
-.. |bug_label| image:: https://raw.githubusercontent.com/VlachosGroup/pMuTT/master/docs/source/images/labels/bug_small.png
+.. |bug_label| image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/images/labels/bug_small.png
    :height: 20
-   :target: https://github.com/VlachosGroup/pMuTT/issues?utf8=%E2%9C%93&q=label%3Abug
+   :target: https://github.com/VlachosGroup/vunits/issues?utf8=%E2%9C%93&q=label%3Abug
 
-.. |enhancement_label| image:: https://raw.githubusercontent.com/VlachosGroup/pMuTT/master/docs/source/images/labels/enhancement_small.png
+.. |enhancement_label| image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/images/labels/enhancement_small.png
    :height: 20
-   :target: https://github.com/VlachosGroup/pMuTT/issues?utf8=%E2%9C%93&q=label%3Aenhancement
+   :target: https://github.com/VlachosGroup/vunits/issues?utf8=%E2%9C%93&q=label%3Aenhancement
 
-.. |help_wanted_label| image:: https://raw.githubusercontent.com/VlachosGroup/pMuTT/master/docs/source/images/labels/help_wanted_small.png
+.. |help_wanted_label| image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/images/labels/help_wanted_small.png
    :height: 20
-   :target: https://github.com/VlachosGroup/pMuTT/issues?utf8=%E2%9C%93&q=label%3A%22help%20wanted%22
+   :target: https://github.com/VlachosGroup/vunits/issues?utf8=%E2%9C%93&q=label%3A%22help%20wanted%22
 
-.. |question_label| image:: https://raw.githubusercontent.com/VlachosGroup/pMuTT/master/docs/source/images/labels/question_small.png
+.. |question_label| image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/images/labels/question_small.png
    :height: 20
-   :target: https://github.com/VlachosGroup/pMuTT/issues?utf8=%E2%9C%93&q=label%3Aquestion
+   :target: https://github.com/VlachosGroup/vunits/issues?utf8=%E2%9C%93&q=label%3Aquestion
 
-.. _`documentation page`: https://vlachosgroup.github.io/pMuTT/
+.. _`documentation page`: https://vlachosgroup.github.io/vunits/
 .. _Numpy: http://www.numpy.org/
-.. _tests directory: https://github.com/VlachosGroup/pMuTT/tree/master/pmutt/tests
-.. _LICENSE.md: https://github.com/VlachosGroup/pMuTT/blob/master/LICENSE.md
-.. _`see documentation for more thorough instructions`: https://vlachosgroup.github.io/pMuTT/install.html
-.. _`examples using the code`: https://vlachosgroup.github.io/pMuTT/examples.html
-.. _`Issues page`: https://github.com/VlachosGroup/pMuTT/issues
-.. _`pull request`: https://github.com/VlachosGroup/pMuTT/pulls
+.. _Pandas: https://pandas.pydata.org/
+.. _xlrd: https://xlrd.readthedocs.io/en/latest/
+.. _tests directory: https://github.com/VlachosGroup/vunits/tree/master/vunits/tests
+.. _LICENSE.md: https://github.com/VlachosGroup/vunits/blob/master/LICENSE.md
+.. _`see documentation for more thorough instructions`: https://vlachosgroup.github.io/vunits/install.html
+.. _`Issues page`: https://github.com/VlachosGroup/vunits/issues
+.. _`pull request`: https://github.com/VlachosGroup/vunits/pulls

@@ -11,12 +11,21 @@ Welcome to VUnits's documentation!
    :caption: Getting Started
 
    includeme
+   install
+   release_notes
 
 .. toctree::
    :maxdepth: 2
    :caption: API Reference
 
    constants
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Useful Links
+
+   View Source Code (GitHub) <https://github.com/VlachosGroup/vunits>
+   Report an Issue <https://github.com/VlachosGroup/vunits/issues>
 
 
 Indices and tables

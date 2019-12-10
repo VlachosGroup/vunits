@@ -1,7 +1,7 @@
 #
 # setup.py
 #
-# Installation script to get setuptools to install pmutt into
+# Installation script to get setuptools to install vunits into
 # a Python environment.
 #
 
@@ -24,7 +24,9 @@ setuptools_info = {
 	'url': 'https://github.com/VlachosGroup/vunits',
 	'packages': setuptools.find_packages(),
 	'package_data': {'':['*.xlsx']},
-	'install_requires': ['numpy>=1.15.1'],
+	'install_requires': ['numpy>=1.15.1',
+                         'pandas>=0.24.2',
+                         'xlrd>=1.2.0'],
 	'classifiers': [
 		"Programming Language :: Python :: 3",
 		"License :: OSI Approved :: MIT License",
