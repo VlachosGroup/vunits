@@ -205,6 +205,12 @@ Amount
 Temperature
 -----------
 
+The values here represent incremental quantities
+(i.e. 1 K\ :sup:`-1`\ = 1 \ :sup:`o`\ C\ :sup:`-1`\ = 1.8 R\ :sup:`-1`\ = 1.8 
+\ :sup:`o`\ F\ :sup:`-1`\ ). If the :class:`~vunits.quantity.Quantity` object's
+dimensions are only ``temperature``, unit conversions are done accounting for
+different reference points.
+
 +------+--------------------------+--------------------------------+--------------------------------------+------------------------------+
 | Unit | SI Base Units Equivalent | Short Prefix Allowed (e.g. km) | Long Prefix Allowed (e.g. kilometer) | Plural Allowed (e.g. meters) |
 +======+==========================+================================+======================================+==============================+
