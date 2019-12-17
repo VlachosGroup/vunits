@@ -225,11 +225,14 @@ class Quantity:
     def __str__(self):
         str_out = str(self.mag)
         for unit, power in self.units.items():
+            int_power = int(round(power))
             # Skip if no contribution from quantity
             if power == 0:
                 continue
             if np.isclose(power, 1.):
                 str_out += ' {}'.format(unit)
+            elif np.isclose(power, int_power):
+                str_out += ' {}^{}'.format(unit, int_power)
             else:
                 str_out += ' {}^{}'.format(unit, power)
         return str_out
@@ -591,8 +594,8 @@ class Quantity:
                    **kwargs)
 
 class UnitQuantity(Quantity):
-    """Helper class for defining specific units. Inherits from
-    :class:`~vunits.quantity`"""
+    """Helper class for defining specific units for unit parsing. Inherits from
+    :class:`~vunits.quantity.Quantity`"""
     def __init__(self, mag=1., m=0., kg=0., s=0., A=0., K=0., mol=0.,
                  cd=0., add_short_prefix=True, add_long_prefix=True,
                  add_plural=True):

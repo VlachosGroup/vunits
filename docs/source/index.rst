@@ -21,6 +21,7 @@ Welcome to VUnits's documentation!
    constants
    convert
    quantity
+   unit_tables
    db
 
 .. toctree::

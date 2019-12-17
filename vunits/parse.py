@@ -10,9 +10,9 @@ def _parse_unit(mag=1., units=''):
         mag : float, optional
             Magnitude of :class:`~vunits.quantity.Quantity`
         units : str, optional
-            Units to parse. Different units must be sparated by a ' ' or
-            '/'. Supports powers as numbers after units. e.g. 'cm/s2',
-            'cm s-2', or 'cm s^-2'. Default is ''
+            Units to parse. Different units must be sparated by a space (' ') or
+            forward slash ('/'). Supports powers as numbers after units.
+            e.g. 'cm/s2', 'cm s-2', or 'cm s^-2'. Default is ''.
     Returns
     -------
         quantity : :class:`~vunits.quantity.Quantity`
@@ -42,7 +42,7 @@ def _parse_unit(mag=1., units=''):
         units_list3 = []
         units_pow3 = []
         # Pattern detects powers given to units. e.g. J^2, m10, s-2
-        power_pattern = re.compile(r'\^*-*[0-9]+')
+        power_pattern = re.compile(r'\^*-*[0-9]*\.*[0-9]+')
         for i, units2 in enumerate(units_list2):
             match = power_pattern.search(units2)
             if match is None:
