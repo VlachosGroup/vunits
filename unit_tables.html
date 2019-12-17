@@ -1,0 +1,1193 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Units &mdash; VUnits 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Database" href="db.html" />
+    <link rel="prev" title="Quantity" href="quantity.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> VUnits
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="includeme.html">Virtual Kinetic Laboratory Units (VUnits)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="constants.html">Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Units</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#time">Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#frequency">Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#length">Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#volume">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acceleration">Acceleration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mass">Mass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#force">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#energy">Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#power">Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pressure">Pressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#amount">Amount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#temperature">Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#electric-current">Electric Current</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#light-intensity">Light Intensity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#charge">Charge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#potential-difference">Potential Difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#capacitance">Capacitance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#electrical-inductance">Electrical Inductance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#electrical-resistance">Electrical Resistance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#magnetic-flux-density">Magnetic Flux Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#magnetic-flux">Magnetic Flux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/VlachosGroup/vunits">View Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/VlachosGroup/vunits/issues">Report an Issue</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VUnits</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Units</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/unit_tables.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="units">
+<span id="unit-tables"></span><h1>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h1>
+<p>The following units are supported by VUnits when parsing strings. For custom
+units, add a <a class="reference internal" href="quantity.html#vunits.quantity.UnitQuantity" title="vunits.quantity.UnitQuantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitQuantity</span></code></a> object to
+<a class="reference internal" href="db.html#vunits.db.unit_db" title="vunits.db.unit_db"><code class="xref py py-data docutils literal notranslate"><span class="pre">unit_db</span></code></a>.</p>
+<div class="section" id="time">
+<h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>s</td>
+<td>1.0 s</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>sec</td>
+<td>1.0 s</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>second</td>
+<td>1.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>min</td>
+<td>60.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>minute</td>
+<td>60.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>hr</td>
+<td>3600.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>hour</td>
+<td>3600.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>day</td>
+<td>86400.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>yr</td>
+<td>31557600.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>year</td>
+<td>31557600.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="frequency">
+<h2>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Hz</td>
+<td>1.0 s^-1</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>hertz</td>
+<td>1.0 s^-1</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="length">
+<h2>Length<a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>m</td>
+<td>1.0 m</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>meter</td>
+<td>1.0 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>in</td>
+<td>0.025399986284007407 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>inch</td>
+<td>0.025399986284007407 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>ft</td>
+<td>0.3047999902464003 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>foot</td>
+<td>0.3047999902464003 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>feet</td>
+<td>0.3047999902464003 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>mile</td>
+<td>1609.344 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>Ang</td>
+<td>1e-10 m</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="volume">
+<h2>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>L</td>
+<td>0.001 m^3</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>liter</td>
+<td>0.001 m^3</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="acceleration">
+<h2>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>g0</td>
+<td>9.80665 m s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mass">
+<h2>Mass<a class="headerlink" href="#mass" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>g</td>
+<td>0.001 kg</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>gram</td>
+<td>0.001 kg</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>u</td>
+<td>1.660577881102624e-27 kg</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>amu</td>
+<td>1.660577881102624e-27 kg</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>Da</td>
+<td>1.660577881102624e-27 kg</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>dalton</td>
+<td>1.660577881102624e-27 kg</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>lb</td>
+<td>0.45359290943563974 kg</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>pound</td>
+<td>0.45359290943563974 kg</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="force">
+<h2>Force<a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>N</td>
+<td>1.0 m kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>newton</td>
+<td>1.0 m kg s^-2</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>dyn</td>
+<td>1e-05 m kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>dyne</td>
+<td>1e-05 m kg s^-2</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>lbf</td>
+<td>4.448222 m kg s^-2</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="energy">
+<h2>Energy<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="22%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>J</td>
+<td>1.0 m^2 kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>cal</td>
+<td>4.184 m^2 kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>eV</td>
+<td>1.6021766208e-19 m^2 kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>Latm</td>
+<td>101.325 m^2 kg s^-2</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>Eh</td>
+<td>4.3597482e-16 m^2 kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>Ha</td>
+<td>4.3597482e-16 m^2 kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>BTU</td>
+<td>1055.0 m^2 kg s^-2</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="power">
+<h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>W</td>
+<td>1.0 m^2 kg s^-3</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>watt</td>
+<td>1.0 m^2 kg s^-3</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pressure">
+<h2>Pressure<a class="headerlink" href="#pressure" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pa</td>
+<td>1.0 m^-1 kg s^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>pascal</td>
+<td>1.0 m^-1 kg s^-2</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>atm</td>
+<td>101325.0 m^-1 kg s^-2</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>bar</td>
+<td>100000.0 m^-1 kg s^-2</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>mmHg</td>
+<td>133.322 m^-1 kg s^-2</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>torr</td>
+<td>133.322 m^-1 kg s^-2</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>Torr</td>
+<td>133.322 m^-1 kg s^-2</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>psi</td>
+<td>6894.76 m^-1 kg s^-2</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amount">
+<h2>Amount<a class="headerlink" href="#amount" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="20%" />
+<col width="23%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mol</td>
+<td>1.0 mol</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>mole</td>
+<td>1.0 mol</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>molecule</td>
+<td>1.6605390395999472e-24 mol</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>molec</td>
+<td>1.6605390395999472e-24 mol</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>particle</td>
+<td>1.6605390395999472e-24 mol</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="temperature">
+<h2>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>K</td>
+<td>1.0 K</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>oC</td>
+<td>1.0 K</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>R</td>
+<td>1.8 K</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>oF</td>
+<td>1.8 K</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="electric-current">
+<h2>Electric Current<a class="headerlink" href="#electric-current" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>1.0 A</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>ampere</td>
+<td>1.0 A</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="light-intensity">
+<h2>Light Intensity<a class="headerlink" href="#light-intensity" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cd</td>
+<td>1.0 cd</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>candela</td>
+<td>1.0 cd</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="charge">
+<h2>Charge<a class="headerlink" href="#charge" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="19%" />
+<col width="24%" />
+<col width="28%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>C</td>
+<td>1.0 s A</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>coulomb</td>
+<td>1.0 s A</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="potential-difference">
+<h2>Potential Difference<a class="headerlink" href="#potential-difference" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>V</td>
+<td>1.0 m^2 kg s^-3 A^-1</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>volt</td>
+<td>1.0 m^2 kg s^-3 A^-1</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="capacitance">
+<h2>Capacitance<a class="headerlink" href="#capacitance" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>F</td>
+<td>1.0 m^-2 kg^-1 s^4 A^2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>farad</td>
+<td>1.0 m^-2 kg^-1 s^4 A^2</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="electrical-inductance">
+<h2>Electrical Inductance<a class="headerlink" href="#electrical-inductance" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>H</td>
+<td>1.0 m^2 kg s^-2 A^-2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>henry</td>
+<td>1.0 m^2 kg s^-2 A^-2</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="electrical-resistance">
+<h2>Electrical Resistance<a class="headerlink" href="#electrical-resistance" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ohm</td>
+<td>1.0 m^2 kg s^-3 A^-2</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="magnetic-flux-density">
+<h2>Magnetic Flux Density<a class="headerlink" href="#magnetic-flux-density" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T</td>
+<td>1.0 kg s^-2 A^-1</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>tesla</td>
+<td>1.0 kg s^-2 A^-1</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="magnetic-flux">
+<h2>Magnetic Flux<a class="headerlink" href="#magnetic-flux" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="20%" />
+<col width="24%" />
+<col width="29%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">SI Base Units Equivalent</th>
+<th class="head">Short Prefix Allowed (e.g. km)</th>
+<th class="head">Long Prefix Allowed (e.g. kilometer)</th>
+<th class="head">Plural Allowed (e.g. meters)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Wb</td>
+<td>1.0 m^2 kg s^-2 A^-1</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>weber</td>
+<td>1.0 m^2 kg s^-2 A^-1</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="db.html" class="btn btn-neutral float-right" title="Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quantity.html" class="btn btn-neutral" title="Quantity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Vlachos Research Group
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
