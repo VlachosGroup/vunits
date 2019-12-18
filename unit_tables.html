@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Units &mdash; VUnits 0.0.0 documentation</title>
+  <title>Supported Units &mdash; VUnits 0.0.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Database" href="db.html" />
-    <link rel="prev" title="Quantity" href="quantity.html" /> 
+    <link rel="prev" title="Quantity Class" href="quantity.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,9 +87,9 @@
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Convert</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Units</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Unit Conversions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity Class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Units</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#time">Time</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#frequency">Frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#length">Length</a></li>
@@ -113,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#magnetic-flux">Magnetic Flux</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#supported-prefixes">Supported Prefixes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Useful Links</span></p>
@@ -164,7 +165,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Units</li>
+      <li>Supported Units</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,13 +184,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="units">
-<span id="unit-tables"></span><h1>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h1>
-<p>The following units are supported by VUnits when parsing strings. For custom
-units, add a <a class="reference internal" href="quantity.html#vunits.quantity.UnitQuantity" title="vunits.quantity.UnitQuantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitQuantity</span></code></a> object to
+  <div class="section" id="supported-units">
+<span id="unit-tables"></span><h1>Supported Units<a class="headerlink" href="#supported-units" title="Permalink to this headline">¶</a></h1>
+<p>The following units are supported by VUnits when parsing strings. Prefix of the
+units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
+<a class="reference internal" href="#prefix-table"><span class="std std-ref">prefixes section</span></a> below for supported values.</p>
+<p>For custom units, add a <a class="reference internal" href="quantity.html#vunits.quantity.UnitQuantity" title="vunits.quantity.UnitQuantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitQuantity</span></code></a> object to
 <a class="reference internal" href="db.html#vunits.db.unit_db" title="vunits.db.unit_db"><code class="xref py py-data docutils literal notranslate"><span class="pre">unit_db</span></code></a>.</p>
 <div class="section" id="time">
-<h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<span id="time-table"></span><h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="6%" />
@@ -237,31 +240,37 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr class="row-odd"><td>hr</td>
+<tr class="row-odd"><td>h</td>
 <td>3600.0 s</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr class="row-even"><td>hour</td>
+<tr class="row-even"><td>hr</td>
 <td>3600.0 s</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr class="row-odd"><td>day</td>
+<tr class="row-odd"><td>hour</td>
+<td>3600.0 s</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>day</td>
 <td>86400.0 s</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr class="row-even"><td>yr</td>
+<tr class="row-odd"><td>yr</td>
 <td>31557600.0 s</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr class="row-odd"><td>year</td>
+<tr class="row-even"><td>year</td>
 <td>31557600.0 s</td>
 <td>N</td>
 <td>Y</td>
@@ -271,7 +280,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="frequency">
-<h2>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h2>
+<span id="frequency-table"></span><h2>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -305,7 +314,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="length">
-<h2>Length<a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h2>
+<span id="length-table"></span><h2>Length<a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -357,13 +366,13 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 <td>0.3047999902464003 m</td>
 <td>N</td>
 <td>Y</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr class="row-even"><td>feet</td>
 <td>0.3047999902464003 m</td>
 <td>N</td>
 <td>Y</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr class="row-odd"><td>mile</td>
 <td>1609.344 m</td>
@@ -381,7 +390,9 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="volume">
-<h2>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
+<span id="volume-table"></span><h2>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
+<p>Note that all <a class="reference internal" href="#length-table"><span class="std std-ref">length</span></a> units can be combined to form new units for volume.
+For example, ‘m3’, ‘cm3’, ‘cm inch ft’ are all valid volume units.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -415,7 +426,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="acceleration">
-<h2>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h2>
+<span id="acceleration-table"></span><h2>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -443,7 +454,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="mass">
-<h2>Mass<a class="headerlink" href="#mass" title="Permalink to this headline">¶</a></h2>
+<span id="mass-table"></span><h2>Mass<a class="headerlink" href="#mass" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="6%" />
@@ -513,7 +524,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="force">
-<h2>Force<a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h2>
+<span id="force-table"></span><h2>Force<a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="6%" />
@@ -565,7 +576,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="energy">
-<h2>Energy<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h2>
+<span id="energy-table"></span><h2>Energy<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="4%" />
@@ -629,7 +640,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="power">
-<h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
+<span id="power-table"></span><h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -663,7 +674,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="pressure">
-<h2>Pressure<a class="headerlink" href="#pressure" title="Permalink to this headline">¶</a></h2>
+<span id="pressure-table"></span><h2>Pressure<a class="headerlink" href="#pressure" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="6%" />
@@ -733,7 +744,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="amount">
-<h2>Amount<a class="headerlink" href="#amount" title="Permalink to this headline">¶</a></h2>
+<span id="amount-table"></span><h2>Amount<a class="headerlink" href="#amount" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
@@ -785,7 +796,12 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="temperature">
-<h2>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h2>
+<span id="temp-table"></span><h2>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h2>
+<p>The values here represent incremental quantities
+(i.e. 1 K_table:sup_table:<cite>-1</cite>= 1 _table:sup_table:<cite>o</cite>C_table:sup_table:<cite>-1</cite>= 1.8 R_table:sup_table:<cite>-1</cite>= 1.8
+_table:sup_table:<cite>o</cite>F_table:sup_table:<cite>-1</cite>). If the _table:class_table:<cite>~vunits.quantity.Quantity</cite> object’s
+dimensions are only <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, unit conversions are done accounting for
+different reference points.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -831,7 +847,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="electric-current">
-<h2>Electric Current<a class="headerlink" href="#electric-current" title="Permalink to this headline">¶</a></h2>
+<span id="current-table"></span><h2>Electric Current<a class="headerlink" href="#electric-current" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="6%" />
@@ -865,7 +881,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="light-intensity">
-<h2>Light Intensity<a class="headerlink" href="#light-intensity" title="Permalink to this headline">¶</a></h2>
+<span id="intensity-table"></span><h2>Light Intensity<a class="headerlink" href="#light-intensity" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
@@ -899,7 +915,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="charge">
-<h2>Charge<a class="headerlink" href="#charge" title="Permalink to this headline">¶</a></h2>
+<span id="charge-table"></span><h2>Charge<a class="headerlink" href="#charge" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
@@ -933,7 +949,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="potential-difference">
-<h2>Potential Difference<a class="headerlink" href="#potential-difference" title="Permalink to this headline">¶</a></h2>
+<span id="potential-diff-table"></span><h2>Potential Difference<a class="headerlink" href="#potential-difference" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -967,7 +983,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="capacitance">
-<h2>Capacitance<a class="headerlink" href="#capacitance" title="Permalink to this headline">¶</a></h2>
+<span id="capacitance-table"></span><h2>Capacitance<a class="headerlink" href="#capacitance" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -1001,7 +1017,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="electrical-inductance">
-<h2>Electrical Inductance<a class="headerlink" href="#electrical-inductance" title="Permalink to this headline">¶</a></h2>
+<span id="inductance-table"></span><h2>Electrical Inductance<a class="headerlink" href="#electrical-inductance" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -1035,7 +1051,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="electrical-resistance">
-<h2>Electrical Resistance<a class="headerlink" href="#electrical-resistance" title="Permalink to this headline">¶</a></h2>
+<span id="resistance-table"></span><h2>Electrical Resistance<a class="headerlink" href="#electrical-resistance" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -1063,7 +1079,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="magnetic-flux-density">
-<h2>Magnetic Flux Density<a class="headerlink" href="#magnetic-flux-density" title="Permalink to this headline">¶</a></h2>
+<span id="mag-flux-den-table"></span><h2>Magnetic Flux Density<a class="headerlink" href="#magnetic-flux-density" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -1097,7 +1113,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 <div class="section" id="magnetic-flux">
-<h2>Magnetic Flux<a class="headerlink" href="#magnetic-flux" title="Permalink to this headline">¶</a></h2>
+<span id="mag-flux-table"></span><h2>Magnetic Flux<a class="headerlink" href="#magnetic-flux" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
@@ -1131,6 +1147,105 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
 </table>
 </div>
 </div>
+<div class="section" id="supported-prefixes">
+<span id="prefix-table"></span><h1>Supported Prefixes<a class="headerlink" href="#supported-prefixes" title="Permalink to this headline">¶</a></h1>
+<p>VUnits supports the following prefixes when parsing units.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="37%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Long Prefix</th>
+<th class="head">Short Prefix</th>
+<th class="head">Magnitude</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>yotta</td>
+<td>Y</td>
+<td>1.00E+24</td>
+</tr>
+<tr class="row-odd"><td>zetta</td>
+<td>Z</td>
+<td>1.00E+21</td>
+</tr>
+<tr class="row-even"><td>exa</td>
+<td>E</td>
+<td>1.00E+18</td>
+</tr>
+<tr class="row-odd"><td>peta</td>
+<td>P</td>
+<td>1.00E+15</td>
+</tr>
+<tr class="row-even"><td>tera</td>
+<td>T</td>
+<td>1.00E+12</td>
+</tr>
+<tr class="row-odd"><td>giga</td>
+<td>G</td>
+<td>1.00E+09</td>
+</tr>
+<tr class="row-even"><td>mega</td>
+<td>M</td>
+<td>1.00E+06</td>
+</tr>
+<tr class="row-odd"><td>kilo</td>
+<td>k</td>
+<td>1.00E+03</td>
+</tr>
+<tr class="row-even"><td>hecto</td>
+<td>h</td>
+<td>1.00E+02</td>
+</tr>
+<tr class="row-odd"><td>deca</td>
+<td>da</td>
+<td>1.00E+01</td>
+</tr>
+<tr class="row-even"><td>deci</td>
+<td>d</td>
+<td>1.00E-01</td>
+</tr>
+<tr class="row-odd"><td>centi</td>
+<td>c</td>
+<td>1.00E-02</td>
+</tr>
+<tr class="row-even"><td>milli</td>
+<td>m</td>
+<td>1.00E-03</td>
+</tr>
+<tr class="row-odd"><td>micro</td>
+<td>mu</td>
+<td>1.00E-06</td>
+</tr>
+<tr class="row-even"><td>nano</td>
+<td>n</td>
+<td>1.00E-09</td>
+</tr>
+<tr class="row-odd"><td>pico</td>
+<td>p</td>
+<td>1.00E-12</td>
+</tr>
+<tr class="row-even"><td>femto</td>
+<td>f</td>
+<td>1.00E-15</td>
+</tr>
+<tr class="row-odd"><td>atto</td>
+<td>a</td>
+<td>1.00E-18</td>
+</tr>
+<tr class="row-even"><td>zepto</td>
+<td>z</td>
+<td>1.00E-21</td>
+</tr>
+<tr class="row-odd"><td>yocto</td>
+<td>y</td>
+<td>1.00E-24</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
            </div>
@@ -1143,7 +1258,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
         <a href="db.html" class="btn btn-neutral float-right" title="Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quantity.html" class="btn btn-neutral" title="Quantity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="quantity.html" class="btn btn-neutral" title="Quantity Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1177,6 +1292,7 @@ units, add a <a class="reference internal" href="quantity.html#vunits.quantity.U
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

@@ -1,7 +1,7 @@
 .. _quantity:
 
-Quantity
-********
+Quantity Class
+**************
 
 Initializing
 ------------
@@ -22,11 +22,12 @@ objects is by using ``from_units``. ::
 
    >>> vol_flow_rate = Quantity.from_units(10., 'm3/s')
 
-See the unit database (units_) for supported units.
-Prefixes (such as 'k' for kilo or 'm' for milli) are also supported. Units
-should be separated by spaces (' ') or forward slashes ('/'). Powers can be
-specified by appending a number with or without a tilda ('^'). Below, we show
-statements using ``from_units`` that create the same object as above.::
+See the :ref:`unit database <unit_tables>` for supported units.
+:ref:`Prefixes <prefix_table>` (such as 'k' for kilo or 'm' for milli) are
+also supported. Units should be separated by spaces (' ') or forward slashes
+('/'). Powers can be specified by appending a number with or without a
+tilda ('^'). Below, we show statements using ``from_units`` that create the
+same object as above.::
 
    >>> vol_flow_rate = Quantity.from_units(10., 'm^3 s-1')
    >>> vol_flow_rate = Quantity.from_units(10000., 'cm^3/ms')

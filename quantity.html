@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quantity &mdash; VUnits 0.0.0 documentation</title>
+  <title>Quantity Class &mdash; VUnits 0.0.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Units" href="unit_tables.html" />
-    <link rel="prev" title="Convert" href="convert.html" /> 
+    <link rel="next" title="Supported Units" href="unit_tables.html" />
+    <link rel="prev" title="Unit Conversions" href="convert.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,8 +87,8 @@
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="constants.html">Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Convert</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantity</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Unit Conversions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantity Class</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#initializing">Initializing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#unit-conversions">Unit Conversions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#operations">Operations</a><ul>
@@ -101,7 +101,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#docstring">Docstring</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="unit_tables.html">Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_tables.html">Supported Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_tables.html#supported-prefixes">Supported Prefixes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Useful Links</span></p>
@@ -153,7 +154,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Quantity</li>
+      <li>Quantity Class</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,8 +173,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quantity">
-<span id="id1"></span><h1>Quantity<a class="headerlink" href="#quantity" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="quantity-class">
+<span id="quantity"></span><h1>Quantity Class<a class="headerlink" href="#quantity-class" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="initializing">
 <h2>Initializing<a class="headerlink" href="#initializing" title="Permalink to this headline">¶</a></h2>
 <p>A <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object can represent most physical
@@ -191,11 +192,12 @@ objects is by using <code class="docutils literal notranslate"><span class="pre"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="s1">&#39;m3/s&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See the unit database (<a href="#id3"><span class="problematic" id="id4">units_</span></a>) for supported units.
-Prefixes (such as ‘k’ for kilo or ‘m’ for milli) are also supported. Units
-should be separated by spaces (‘ ‘) or forward slashes (‘/’). Powers can be
-specified by appending a number with or without a tilda (‘^’). Below, we show
-statements using <code class="docutils literal notranslate"><span class="pre">from_units</span></code> that create the same object as above.:</p>
+<p>See the <a class="reference internal" href="unit_tables.html#unit-tables"><span class="std std-ref">unit database</span></a> for supported units.
+<a class="reference internal" href="unit_tables.html#prefix-table"><span class="std std-ref">Prefixes</span></a> (such as ‘k’ for kilo or ‘m’ for milli) are
+also supported. Units should be separated by spaces (‘ ‘) or forward slashes
+(‘/’). Powers can be specified by appending a number with or without a
+tilda (‘^’). Below, we show statements using <code class="docutils literal notranslate"><span class="pre">from_units</span></code> that create the
+same object as above.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="s1">&#39;m^3 s-1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">10000.</span><span class="p">,</span> <span class="s1">&#39;cm^3/ms&#39;</span><span class="p">)</span>
 </pre></div>
@@ -379,7 +381,7 @@ operators will compare the magnitude.:</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.mag">
 <code class="descname">mag</code><a class="headerlink" href="#vunits.quantity.Quantity.mag" title="Permalink to this definition">¶</a></dt>
-<dd><p>Magnitude of <code class="docutils literal notranslate"><span class="pre">Quantity</span></code>. Default is 1.</p>
+<dd><p>Magnitude of <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Default is 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -516,7 +518,7 @@ operators will compare the magnitude.:</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.amount">
 <code class="descname">amount</code><a class="headerlink" href="#vunits.quantity.Quantity.amount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Amount dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Amount dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -530,7 +532,7 @@ operators will compare the magnitude.:</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.current">
 <code class="descname">current</code><a class="headerlink" href="#vunits.quantity.Quantity.current" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Current dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -544,7 +546,7 @@ operators will compare the magnitude.:</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.dim">
 <code class="descname">dim</code><a class="headerlink" href="#vunits.quantity.Quantity.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dimensions of <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Dimensions of <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -588,7 +590,7 @@ units.</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.intensity">
 <code class="descname">intensity</code><a class="headerlink" href="#vunits.quantity.Quantity.intensity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Intensity dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Intensity dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -602,7 +604,7 @@ units.</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.length">
 <code class="descname">length</code><a class="headerlink" href="#vunits.quantity.Quantity.length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Length dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Length dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -616,7 +618,7 @@ units.</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.mass">
 <code class="descname">mass</code><a class="headerlink" href="#vunits.quantity.Quantity.mass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mass dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Mass dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -630,7 +632,7 @@ units.</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.temperature">
 <code class="descname">temperature</code><a class="headerlink" href="#vunits.quantity.Quantity.temperature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Temperature dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Temperature dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -644,7 +646,7 @@ units.</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.time">
 <code class="descname">time</code><a class="headerlink" href="#vunits.quantity.Quantity.time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Time dimension or <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Time dimension or <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -658,7 +660,7 @@ units.</p>
 <dl class="attribute">
 <dt id="vunits.quantity.Quantity.units">
 <code class="descname">units</code><a class="headerlink" href="#vunits.quantity.Quantity.units" title="Permalink to this definition">¶</a></dt>
-<dd><p>Units of <code class="docutils literal notranslate"><span class="pre">Quantity</span></code></p>
+<dd><p>Units of <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -692,10 +694,10 @@ units.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="unit_tables.html" class="btn btn-neutral float-right" title="Units" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unit_tables.html" class="btn btn-neutral float-right" title="Supported Units" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="convert.html" class="btn btn-neutral" title="Convert" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="convert.html" class="btn btn-neutral" title="Unit Conversions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -729,6 +731,7 @@ units.</p>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

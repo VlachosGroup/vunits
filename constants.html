@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Convert" href="convert.html" />
+    <link rel="next" title="Unit Conversions" href="convert.html" />
     <link rel="prev" title="Release Notes" href="release_notes.html" /> 
 
   
@@ -87,9 +87,10 @@
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Convert</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unit_tables.html">Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Unit Conversions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_tables.html">Supported Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_tables.html#supported-prefixes">Supported Prefixes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Useful Links</span></p>
@@ -167,9 +168,10 @@
 <dl class="data">
 <dt id="vunits.constants.F">
 <code class="descclassname">vunits.constants.</code><code class="descname">F</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.F" title="Permalink to this definition">¶</a></dt>
-<dd><p>Faraday’s constant
-(96485.33293056407 C/mol). Units supported have dimensions of
-<code class="docutils literal notranslate"><span class="pre">charge</span></code>/<code class="docutils literal notranslate"><span class="pre">amount</span></code> or equivalent quantities.</p>
+<dd><p>Faraday’s constant.</p>
+<p><strong>SI Value</strong>: 96485.33293056407 C/mol</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#charge-table"><span class="std std-ref">charge</span></a>/<a class="reference internal" href="unit_tables.html#amount-table"><span class="std std-ref">amount</span></a> or
+equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -183,9 +185,10 @@
 <dl class="data">
 <dt id="vunits.constants.G">
 <code class="descclassname">vunits.constants.</code><code class="descname">G</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.G" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gravitational constant
-(6.67430e-11 m3 kg<sup>-1</sup>s<sup>-2</sup>). Units supported have dimensions
-of <code class="docutils literal notranslate"><span class="pre">volume</span></code>/<code class="docutils literal notranslate"><span class="pre">mass</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code> or equivalent quantities.</p>
+<dd><p>Gravitational constant.</p>
+<p><strong>SI Value</strong>: 6.67430e-11 m3 kg<sup>-1</sup>s<sup>-2</sup>.</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#volume-table"><span class="std std-ref">volume</span></a>/<a class="reference internal" href="unit_tables.html#mass-table"><span class="std std-ref">mass</span></a>/
+<a class="reference internal" href="unit_tables.html#time-table"><span class="std std-ref">time</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -199,9 +202,10 @@ of <code class="docutils literal notranslate"><span class="pre">volume</span></c
 <dl class="data">
 <dt id="vunits.constants.N0">
 <code class="descclassname">vunits.constants.</code><code class="descname">N0</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.N0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Avogadro number
-(6.02214086e23 molecules/mol). This constant is dimensionless. Use this value
-instead of Avogadro’s constant to preserve units.</p>
+<dd><p>Avogadro number. Use this value instead
+of Avogadro’s constant (<code class="docutils literal notranslate"><span class="pre">Na</span></code>) to preserve units.</p>
+<p><strong>SI Value</strong>: 6.02214086e23 molecules/mol</p>
+<p><strong>Dimensions</strong>: None</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -215,9 +219,9 @@ instead of Avogadro’s constant to preserve units.</p>
 <dl class="data">
 <dt id="vunits.constants.Na">
 <code class="descclassname">vunits.constants.</code><code class="descname">Na</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.Na" title="Permalink to this definition">¶</a></dt>
-<dd><p>Avogadro constant
-(6.02214086e23 molecules/mol). Units supported have dimensions of
-<code class="docutils literal notranslate"><span class="pre">amount</span></code><sup>-1</sup>.</p>
+<dd><p>Avogadro constant.</p>
+<p><strong>SI Value</strong>: 6.02214086e23 1/mol</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#amount-table"><span class="std std-ref">amount</span></a><sup>-1</sup>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -231,8 +235,9 @@ instead of Avogadro’s constant to preserve units.</p>
 <dl class="data">
 <dt id="vunits.constants.P0">
 <code class="descclassname">vunits.constants.</code><code class="descname">P0</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.P0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Standard pressure (1 bar). Units
-supported have dimensions of <code class="docutils literal notranslate"><span class="pre">pressure</span></code> or equivalent quantities.</p>
+<dd><p>Standard pressure.</p>
+<p><strong>SI Value</strong>: 1 bar</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#pressure-table"><span class="std std-ref">pressure</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -246,9 +251,10 @@ supported have dimensions of <code class="docutils literal notranslate"><span cl
 <dl class="data">
 <dt id="vunits.constants.R">
 <code class="descclassname">vunits.constants.</code><code class="descname">R</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.R" title="Permalink to this definition">¶</a></dt>
-<dd><p>Molar (univeral or ideal) gas constant
-(8.3144598 J/mol/K). Units supported have dimensions of
-<code class="docutils literal notranslate"><span class="pre">energy</span></code>/<code class="docutils literal notranslate"><span class="pre">amount</span></code>/<code class="docutils literal notranslate"><span class="pre">temperature</span></code> or equivalent quantities.</p>
+<dd><p>Molar (univeral or ideal) gas constant.</p>
+<p><strong>SI Value</strong>: 8.3144598 J/mol/K</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#energy-table"><span class="std std-ref">energy</span></a>/<a class="reference internal" href="unit_tables.html#amount-table"><span class="std std-ref">amount</span></a>/
+<a class="reference internal" href="unit_tables.html#temp-table"><span class="std std-ref">temperature</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -262,9 +268,9 @@ supported have dimensions of <code class="docutils literal notranslate"><span cl
 <dl class="data">
 <dt id="vunits.constants.R_inf">
 <code class="descclassname">vunits.constants.</code><code class="descname">R_inf</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.R_inf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rydberg constant
-(2.1799233153862138e-18 J). Units supported have dimensions
-of <code class="docutils literal notranslate"><span class="pre">energy</span></code> or equivalent quantities.</p>
+<dd><p>Rydberg constant.</p>
+<p><strong>SI Value</strong>: 2.1799233153862138e-18 J</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#energy-table"><span class="std std-ref">energy</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -278,8 +284,9 @@ of <code class="docutils literal notranslate"><span class="pre">energy</span></c
 <dl class="data">
 <dt id="vunits.constants.T0">
 <code class="descclassname">vunits.constants.</code><code class="descname">T0</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.T0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Standard temperature (298.15 K). Units
-supported have dimensions of <code class="docutils literal notranslate"><span class="pre">temperature</span></code> or equivalent quantities.</p>
+<dd><p>Standard temperature.</p>
+<p><strong>SI Value</strong>: 298.15 K</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#temp-table"><span class="std std-ref">temperature</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -293,9 +300,10 @@ supported have dimensions of <code class="docutils literal notranslate"><span cl
 <dl class="data">
 <dt id="vunits.constants.V0">
 <code class="descclassname">vunits.constants.</code><code class="descname">V0</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.V0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Standard volume
-(0.024789561893699998 m3/mol). Units supported have dimensions of
-<code class="docutils literal notranslate"><span class="pre">volume</span></code>/<code class="docutils literal notranslate"><span class="pre">amount</span></code> or equivalent quantities.</p>
+<dd><p>Standard volume.</p>
+<p><strong>SI Value</strong>: 0.024789561893699998 m3/mol</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#volume-table"><span class="std std-ref">volume</span></a>/<a class="reference internal" href="unit_tables.html#amount-table"><span class="std std-ref">amount</span></a> or
+equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -309,8 +317,10 @@ supported have dimensions of <code class="docutils literal notranslate"><span cl
 <dl class="data">
 <dt id="vunits.constants.c">
 <code class="descclassname">vunits.constants.</code><code class="descname">c</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.c" title="Permalink to this definition">¶</a></dt>
-<dd><p>Speed of light (299792458 m/s). Units
-supported have dimensions of <code class="docutils literal notranslate"><span class="pre">length</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code> or equivalent quantities.</p>
+<dd><p>Speed of light.</p>
+<p><strong>SI Value</strong>: 299792458 m/s</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#length-table"><span class="std std-ref">length</span></a>/<a class="reference internal" href="unit_tables.html#time-table"><span class="std std-ref">time</span></a> or equivalent
+quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -324,8 +334,9 @@ supported have dimensions of <code class="docutils literal notranslate"><span cl
 <dl class="data">
 <dt id="vunits.constants.e">
 <code class="descclassname">vunits.constants.</code><code class="descname">e</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.e" title="Permalink to this definition">¶</a></dt>
-<dd><p>Charge of electron (1.6021766208e-19 C).
-Units supported have dimensions of <code class="docutils literal notranslate"><span class="pre">charge</span></code> or equivalent quantities.</p>
+<dd><p>Charge of electron.</p>
+<p><strong>SI Value</strong>: 1.6021766208e-19 C</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#charge-table"><span class="std std-ref">charge</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -339,9 +350,10 @@ Units supported have dimensions of <code class="docutils literal notranslate"><s
 <dl class="data">
 <dt id="vunits.constants.eps_0">
 <code class="descclassname">vunits.constants.</code><code class="descname">eps_0</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.eps_0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Vacuum electric permittivity
-(8.8541878128e-12 F/m ). Units supported have dimensions
-of <code class="docutils literal notranslate"><span class="pre">capacitance</span></code>/<code class="docutils literal notranslate"><span class="pre">length</span></code> or equivalent quantities.</p>
+<dd><p>Vacuum permittivity.</p>
+<p><strong>SI Value</strong>: 8.8541878128e-12 F/m</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#capacitance-table"><span class="std std-ref">capacitance</span></a>/<a class="reference internal" href="unit_tables.html#length-table"><span class="std std-ref">length</span></a>
+or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -355,8 +367,9 @@ of <code class="docutils literal notranslate"><span class="pre">capacitance</spa
 <dl class="data">
 <dt id="vunits.constants.h">
 <code class="descclassname">vunits.constants.</code><code class="descname">h</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.h" title="Permalink to this definition">¶</a></dt>
-<dd><p>Planck’s constant (6.626070040e-34 J s).
-Units supported have dimensions of <code class="docutils literal notranslate"><span class="pre">energy</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code> or equivalent
+<dd><p>Planck’s constant.</p>
+<p><strong>SI Value</strong>: 6.626070040e-34 J s.</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#energy-table"><span class="std std-ref">energy</span></a>/<a class="reference internal" href="unit_tables.html#time-table"><span class="std std-ref">time</span></a> or equivalent
 quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -372,8 +385,10 @@ quantities.</p>
 <dt id="vunits.constants.h_bar">
 <code class="descclassname">vunits.constants.</code><code class="descname">h_bar</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.h_bar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Planck’s constant divided by
-2:math:<cite>pi</cite> (1.0545718e-34 J s). Units supported have dimensions of
-<code class="docutils literal notranslate"><span class="pre">energy</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code> or equivalent quantities.</p>
+2<span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<p><strong>SI Value</strong>: 1.0545718e-34 J s</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#energy-table"><span class="std std-ref">energy</span></a>/<a class="reference internal" href="unit_tables.html#time-table"><span class="std std-ref">time</span></a> or
+equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -387,9 +402,10 @@ quantities.</p>
 <dl class="data">
 <dt id="vunits.constants.kb">
 <code class="descclassname">vunits.constants.</code><code class="descname">kb</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.kb" title="Permalink to this definition">¶</a></dt>
-<dd><p>Boltzmann constant (1.38064852e-23 J/K).
-Units supported have dimensions of <code class="docutils literal notranslate"><span class="pre">energy</span></code>/<code class="docutils literal notranslate"><span class="pre">temperature</span></code> or equivalent
-quantities.</p>
+<dd><p>Boltzmann constant.</p>
+<p><strong>SI Value</strong>: 1.38064852e-23 J/K</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#energy-table"><span class="std std-ref">energy</span></a>/<a class="reference internal" href="unit_tables.html#temp-table"><span class="std std-ref">temperature</span></a> or
+equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -403,8 +419,9 @@ quantities.</p>
 <dl class="data">
 <dt id="vunits.constants.m_e">
 <code class="descclassname">vunits.constants.</code><code class="descname">m_e</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.m_e" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mass of a electron (9.1093837015 kg).
-Units supported have dimensions of <code class="docutils literal notranslate"><span class="pre">mass</span></code> or equivalent quantities.</p>
+<dd><p>Mass of a electron.</p>
+<p><strong>SI Value</strong>: 9.1093837015e-31 kg</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#mass-table"><span class="std std-ref">mass</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -418,8 +435,9 @@ Units supported have dimensions of <code class="docutils literal notranslate"><s
 <dl class="data">
 <dt id="vunits.constants.m_n">
 <code class="descclassname">vunits.constants.</code><code class="descname">m_n</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.m_n" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mass of a neutron (1.67492749804 kg).
-Units supported have dimensions of <code class="docutils literal notranslate"><span class="pre">mass</span></code> or equivalent quantities.</p>
+<dd><p>Mass of a neutron.</p>
+<p><strong>SI Value</strong>: 1.67492749804 kg</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#mass-table"><span class="std std-ref">mass</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -433,8 +451,9 @@ Units supported have dimensions of <code class="docutils literal notranslate"><s
 <dl class="data">
 <dt id="vunits.constants.m_p">
 <code class="descclassname">vunits.constants.</code><code class="descname">m_p</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.m_p" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mass of a proton (1.67262192369 kg).
-Units supported have dimensions of <code class="docutils literal notranslate"><span class="pre">mass</span></code> or equivalent quantities.</p>
+<dd><p>Mass of a proton.</p>
+<p><strong>SI Value</strong>: 1.67262192369e-27 kg</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#mass-table"><span class="std std-ref">mass</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -448,9 +467,10 @@ Units supported have dimensions of <code class="docutils literal notranslate"><s
 <dl class="data">
 <dt id="vunits.constants.mu_0">
 <code class="descclassname">vunits.constants.</code><code class="descname">mu_0</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.mu_0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Vacuum magnetic permittivity
-(1.25663706212 H/m ). Units supported have dimensions
-of <code class="docutils literal notranslate"><span class="pre">inductance</span></code>/<code class="docutils literal notranslate"><span class="pre">length</span></code> or equivalent quantities.</p>
+<dd><p>Vacuum permeability.</p>
+<p><strong>SI Value</strong>: 1.25663706212e-6 H/m</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#inductance-table"><span class="std std-ref">inductance</span></a>/<a class="reference internal" href="unit_tables.html#length-table"><span class="std std-ref">length</span></a>
+or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -464,9 +484,9 @@ of <code class="docutils literal notranslate"><span class="pre">inductance</span
 <dl class="data">
 <dt id="vunits.constants.r_bohr">
 <code class="descclassname">vunits.constants.</code><code class="descname">r_bohr</code><em class="property"> = &lt;vunits.quantity.Quantity object&gt;</em><a class="headerlink" href="#vunits.constants.r_bohr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bohr radius
-(5.291648330110941e-11 m). Units supported have dimensions
-of <code class="docutils literal notranslate"><span class="pre">length</span></code> or equivalent quantities.</p>
+<dd><p>Bohr radius.</p>
+<p><strong>SI Value</strong>: 5.291648330110941e-11 m</p>
+<p><strong>Dimensions</strong>: <a class="reference internal" href="unit_tables.html#length-table"><span class="std std-ref">length</span></a> or equivalent quantities.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -487,7 +507,7 @@ of <code class="docutils literal notranslate"><span class="pre">length</span></c
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="convert.html" class="btn btn-neutral float-right" title="Convert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="convert.html" class="btn btn-neutral float-right" title="Unit Conversions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="release_notes.html" class="btn btn-neutral" title="Release Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -524,6 +544,7 @@ of <code class="docutils literal notranslate"><span class="pre">length</span></c
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
