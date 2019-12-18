@@ -41,25 +41,27 @@ class TestConstants(unittest.TestCase):
         self.assertAlmostEqual(c.R('Eh/K'), self.ans.at['test_R', 14])
         self.assertAlmostEqual(c.R('Ha/K'), self.ans.at['test_R', 15])
         # Test R raises an error when an supported unit is passed
-        with self.assertRaises(KeyError):
+        with self.assertRaises(ValueError):
             c.R('arbitrary unit')
 
     def test_h(self):
         # Test h for all units (bar=False)
-        self.assertAlmostEqual(c.h('J s', bar=False), self.ans.at['test_h', 0])
-        self.assertAlmostEqual(c.h('kJ s', bar=False), self.ans.at['test_h', 1])
-        self.assertAlmostEqual(c.h('eV s', bar=False), self.ans.at['test_h', 2])
-        self.assertAlmostEqual(c.h('Eh s', bar=False), self.ans.at['test_h', 3])
-        self.assertAlmostEqual(c.h('Ha s', bar=False), self.ans.at['test_h', 4])
-        # Test h for all units (bar=True)
-        self.assertAlmostEqual(c.h('J s', bar=True), self.ans.at['test_h',5])
-        self.assertAlmostEqual(c.h('kJ s', bar=True), self.ans.at['test_h', 6])
-        self.assertAlmostEqual(c.h('eV s', bar=True), self.ans.at['test_h', 7])
-        self.assertAlmostEqual(c.h('Eh s', bar=True), self.ans.at['test_h', 8])
-        self.assertAlmostEqual(c.h('Ha s', bar=True), self.ans.at['test_h', 9])
+        self.assertAlmostEqual(c.h('J s'), self.ans.at['test_h', 0])
+        self.assertAlmostEqual(c.h('kJ s'), self.ans.at['test_h', 1])
+        self.assertAlmostEqual(c.h('eV s'), self.ans.at['test_h', 2])
+        self.assertAlmostEqual(c.h('Eh s'), self.ans.at['test_h', 3])
+        self.assertAlmostEqual(c.h('Ha s'), self.ans.at['test_h', 4])
         # Test h raises an error when an supported unit is passed
-        with self.assertRaises(KeyError):
+        with self.assertRaises(ValueError):
             c.h('arbitrary unit')
+
+    def test_h_bar(self):
+        # Test h for all units (bar=True)
+        self.assertAlmostEqual(c.h_bar('J s'), self.ans.at['test_h',5])
+        self.assertAlmostEqual(c.h_bar('kJ s'), self.ans.at['test_h', 6])
+        self.assertAlmostEqual(c.h_bar('eV s'), self.ans.at['test_h', 7])
+        self.assertAlmostEqual(c.h_bar('Eh s'), self.ans.at['test_h', 8])
+        self.assertAlmostEqual(c.h_bar('Ha s'), self.ans.at['test_h', 9])
 
     def test_kb(self):
         # Test kb for all units
@@ -71,7 +73,7 @@ class TestConstants(unittest.TestCase):
         self.assertAlmostEqual(c.kb('Eh/K'), self.ans.at['test_kb', 5])
         self.assertAlmostEqual(c.kb('Ha/K'), self.ans.at['test_kb', 6])
         # Test kb raises an error when an unsupported unit is passed
-        with self.assertRaises(KeyError):
+        with self.assertRaises(ValueError):
             c.kb('arbitrary unit')
 
     def test_c(self):
@@ -79,7 +81,7 @@ class TestConstants(unittest.TestCase):
         self.assertAlmostEqual(c.c('m/s'), self.ans.at['test_c', 0])
         self.assertAlmostEqual(c.c('cm/s'), self.ans.at['test_c', 1])
         # Test c raises an error when an unsupported unit is passed
-        with self.assertRaises(KeyError):
+        with self.assertRaises(ValueError):
             c.c('arbitrary unit')
 
     def test_m_e(self):
@@ -126,122 +128,13 @@ class TestConstants(unittest.TestCase):
 
     def test_V0(self):
         # Test V0 for all units
-        self.assertAlmostEqual(c.V0('m3'), self.ans.at['test_V0', 0])
-        self.assertAlmostEqual(c.V0('cm3'), self.ans.at['test_V0', 1])
-        self.assertAlmostEqual(c.V0('mL'), self.ans.at['test_V0', 2])
-        self.assertAlmostEqual(c.V0('L'), self.ans.at['test_V0', 3])
+        self.assertAlmostEqual(c.V0('m3/mol'), self.ans.at['test_V0', 0])
+        self.assertAlmostEqual(c.V0('cm3/mol'), self.ans.at['test_V0', 1])
+        self.assertAlmostEqual(c.V0('mL/mol'), self.ans.at['test_V0', 2])
+        self.assertAlmostEqual(c.V0('L/mol'), self.ans.at['test_V0', 3])
         # Test V0 raises an error when an unsupported unit is passed
         with self.assertRaises(ValueError):
             c.V0('arbitrary unit')
-
-    def test_convert_unit(self):
-        # Test all combinations for temperature conversion
-        self.assertAlmostEqual(c.convert_unit(c.T0('K'), initial='K', final='C'),
-                               self.ans.at['test_convert_unit', 1])
-        self.assertAlmostEqual(c.convert_unit(c.T0('K'), initial='K', final='F'),
-                               self.ans.at['test_convert_unit', 2])
-        self.assertAlmostEqual(c.convert_unit(c.T0('K'), initial='K', final='R'),
-                               self.ans.at['test_convert_unit', 3])
-
-        self.assertAlmostEqual(c.convert_unit(c.T0('C'), initial='C', final='K'),
-                               self.ans.at['test_convert_unit', 0])
-        self.assertAlmostEqual(c.convert_unit(c.T0('C'), initial='C', final='F'),
-                               self.ans.at['test_convert_unit', 2])
-        self.assertAlmostEqual(c.convert_unit(c.T0('C'), initial='C', final='R'),
-                               self.ans.at['test_convert_unit', 3])
-
-        self.assertAlmostEqual(c.convert_unit(c.T0('F'), initial='F', final='K'),
-                               self.ans.at['test_convert_unit', 0])
-        self.assertAlmostEqual(c.convert_unit(c.T0('F'), initial='F', final='C'),
-                               self.ans.at['test_convert_unit', 1])
-        self.assertAlmostEqual(c.convert_unit(c.T0('F'), initial='F', final='R'),
-                               self.ans.at['test_convert_unit', 3])
-
-        self.assertAlmostEqual(c.convert_unit(c.T0('R'), initial='R', final='K'),
-                               self.ans.at['test_convert_unit', 0])
-        self.assertAlmostEqual(c.convert_unit(c.T0('R'), initial='R', final='C'),
-                               self.ans.at['test_convert_unit', 1])
-        self.assertAlmostEqual(c.convert_unit(c.T0('R'), initial='R', final='F'),
-                               self.ans.at['test_convert_unit', 2])
-
-        # Test a unit conversion with multiple-based units
-        self.assertAlmostEqual(c.convert_unit(initial='m', final='cm'),
-                               self.ans.at['test_convert_unit', 4])
-        # Test if error raised when units in different set
-        with self.assertRaises(ValueError):
-            c.convert_unit(initial='cm', final='J')
-        # Test if error raised when unaccepted unit inputted
-        with self.assertRaises(ValueError):
-            c.convert_unit(initial='arbitrary unit', final='J')
-        with self.assertRaises(ValueError):
-            c.convert_unit(initial='cm', final='arbitrary unit')
-
-    def test_energy_to_freq(self):
-        E_J = c.convert_unit(0.1, initial='eV', final='J')
-        self.assertAlmostEqual(c.energy_to_freq(E_J),
-                               self.ans.at['test_energy_to_freq', 0])
-
-    def test_energy_to_temp(self):
-        E_J = c.convert_unit(0.1, initial='eV', final='J')
-        self.assertAlmostEqual(c.energy_to_temp(E_J),
-                               self.ans.at['test_energy_to_temp', 0])
-
-    def test_energy_to_wavenumber(self):
-        E_J = c.convert_unit(0.1, initial='eV', final='J')
-        self.assertAlmostEqual(c.energy_to_wavenumber(E_J),
-                               self.ans.at['test_energy_to_wavenumber', 0])
-
-    def test_freq_to_energy(self):
-        self.assertAlmostEqual(c.freq_to_energy(2.42E+13),
-                               self.ans.at['test_freq_to_energy', 0])
-
-    def test_freq_to_temp(self):
-        self.assertAlmostEqual(c.freq_to_temp(2.42E+13),
-                               self.ans.at['test_freq_to_temp', 0])
-
-    def test_freq_to_wavenumber(self):
-        self.assertAlmostEqual(c.freq_to_wavenumber(2.42E+13),
-                               self.ans.at['test_freq_to_wavenumber', 0])
-
-    def test_inertia_to_temp(self):
-        self.assertAlmostEqual(c.inertia_to_temp(7.20E-46),
-                               self.ans.at['test_inertia_to_temp', 0])
-
-    def test_temp_to_energy(self):
-        self.assertAlmostEqual(c.temp_to_energy(1160.),
-                               self.ans.at['test_temp_to_energy', 0])
-
-    def test_temp_to_freq(self):
-        self.assertAlmostEqual(c.temp_to_freq(1160.),
-                               self.ans.at['test_temp_to_freq', 0])
-
-    def test_temp_to_wavenumber(self):
-        self.assertAlmostEqual(c.temp_to_wavenumber(1160.),
-                               self.ans.at['test_temp_to_wavenumber', 0])
-
-    def test_wavenumber_to_energy(self):
-        self.assertAlmostEqual(c.wavenumber_to_energy(810.),
-                               self.ans.at['test_wavenumber_to_energy', 0])
-
-    def test_wavenumber_to_freq(self):
-        self.assertAlmostEqual(c.wavenumber_to_freq(810.),
-                               self.ans.at['test_wavenumber_to_freq', 0])
-
-    def test_wavenumber_to_inertia(self):
-        self.assertAlmostEqual(c.wavenumber_to_inertia(810.),
-                               self.ans.at['test_wavenumber_to_inertia', 0])
-    
-    def test_wavenumber_to_temp(self):
-        self.assertAlmostEqual(c.wavenumber_to_temp(810.),
-                               self.ans.at['test_wavenumber_to_temp', 0])
-
-    def test_debye_to_einstein(self):
-        self.assertAlmostEqual(c.debye_to_einstein(215.),
-                               self.ans.at['test_debye_to_einstein', 0])
-
-    def test_einstein_to_debye(self):
-        self.assertAlmostEqual(c.einstein_to_debye(175.),
-                               self.ans.at['test_einstein_to_debye', 0])
 
 if __name__ == '__main__':
     unittest.main()

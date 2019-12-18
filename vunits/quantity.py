@@ -10,7 +10,7 @@ class Quantity:
     Attributes
     ----------
         mag : float, optional
-            Magnitude of ``Quantity``. Default is 1.
+            Magnitude of :class:`~vunits.quantity.Quantity`. Default is 1.
         m : float, optional
             Power of meter (length). Default is 0.
         kg : float, optional
@@ -35,7 +35,7 @@ class Quantity:
 
     @property
     def units(self):
-        """Units of ``Quantity``
+        """Units of :class:`~vunits.quantity.Quantity`
 
         Returns
         -------
@@ -53,7 +53,7 @@ class Quantity:
 
     @property
     def dim(self):
-        """Dimensions of ``Quantity``
+        """Dimensions of :class:`~vunits.quantity.Quantity`
 
         Returns
         -------
@@ -78,7 +78,7 @@ class Quantity:
 
     @property
     def length(self):
-        """float: Length dimension or ``Quantity``"""
+        """float: Length dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['m']
     
     @property
@@ -91,7 +91,7 @@ class Quantity:
 
     @property
     def mass(self):
-        """float: Mass dimension or ``Quantity``"""
+        """float: Mass dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['kg']
 
     @property
@@ -104,7 +104,7 @@ class Quantity:
 
     @property
     def time(self):
-        """float: Time dimension or ``Quantity``"""
+        """float: Time dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['s']
     
     @property
@@ -117,7 +117,7 @@ class Quantity:
 
     @property
     def current(self):
-        """float: Current dimension or ``Quantity``"""
+        """float: Current dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['A']
     
     @property
@@ -130,7 +130,7 @@ class Quantity:
 
     @property
     def temperature(self):
-        """float: Temperature dimension or ``Quantity``"""
+        """float: Temperature dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['K']
     
     @property
@@ -143,7 +143,7 @@ class Quantity:
 
     @property
     def amount(self):
-        """float: Amount dimension or ``Quantity``"""
+        """float: Amount dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['mol']
     
     @property
@@ -156,7 +156,7 @@ class Quantity:
 
     @property
     def intensity(self):
-        """float: Intensity dimension or ``Quantity``"""
+        """float: Intensity dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['cd']
     
     def __pos__(self):
@@ -646,18 +646,3 @@ def _return_quantity(quantity, return_quantity, units_out=None):
         return quantity
     else:
         return quantity(units_out)
-
-short_prefixes = {'Y': 1.e24, 'Z': 1.e21, 'E': 1.e18, 'P': 1.e15, 'T': 1.e12,
-                  'G': 1.e9, 'M': 1.e6, 'k': 1.e3, 'h': 1.e2, 'da': 1.e1,
-                  'd': 1.e-1, 'c': 1.e-2, 'm': 1.e-3, 'mu': 1.e-6, 'n': 1.e-9,
-                  'p': 1.e-12, 'f': 1.e-15, 'a': 1.e-18, 'z': 1.e-21,
-                  'y': 1.e-24}
-"""dict: Short prefix used for unit symbols (e.g. km)."""
-
-long_prefixes = {'yotta': 1.e24, 'zetta': 1.e21, 'exa': 1.e18, 'peta': 1.e15,
-                 'tera': 1.e12, 'giga': 1.e9, 'mega': 1.e6, 'kilo': 1.e3,
-                 'hecto': 1.e2, 'deca': 1.e1, 'deci': 1.e-1, 'centi': 1.e-2,
-                 'milli': 1.e-3, 'micro': 1.e-6, 'nano': 1.e-9, 'pico': 1.e-12,
-                 'femto': 1.e-15, 'atto': 1.e-18, 'zepto': 1.e-21,
-                 'yocto': 1.e-24}
-"""dict: Long prefix used for unit descriptions (e.g. kilometer)."""

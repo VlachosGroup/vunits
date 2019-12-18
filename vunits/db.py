@@ -1,4 +1,21 @@
-from vunits.quantity import UnitQuantity, short_prefixes, long_prefixes
+from vunits.quantity import UnitQuantity
+
+short_prefixes = {'Y': 1.e24, 'Z': 1.e21, 'E': 1.e18, 'P': 1.e15, 'T': 1.e12,
+                  'G': 1.e9, 'M': 1.e6, 'k': 1.e3, 'h': 1.e2, 'da': 1.e1,
+                  'd': 1.e-1, 'c': 1.e-2, 'm': 1.e-3, 'mu': 1.e-6, 'n': 1.e-9,
+                  'p': 1.e-12, 'f': 1.e-15, 'a': 1.e-18, 'z': 1.e-21,
+                  'y': 1.e-24}
+"""dict: Short prefix used for unit symbols (e.g. km). See table of values
+in the :ref:`prefix section <prefix_table>`"""
+
+long_prefixes = {'yotta': 1.e24, 'zetta': 1.e21, 'exa': 1.e18, 'peta': 1.e15,
+                 'tera': 1.e12, 'giga': 1.e9, 'mega': 1.e6, 'kilo': 1.e3,
+                 'hecto': 1.e2, 'deca': 1.e1, 'deci': 1.e-1, 'centi': 1.e-2,
+                 'milli': 1.e-3, 'micro': 1.e-6, 'nano': 1.e-9, 'pico': 1.e-12,
+                 'femto': 1.e-15, 'atto': 1.e-18, 'zepto': 1.e-21,
+                 'yocto': 1.e-24}
+"""dict: Long prefix used for unit descriptions (e.g. kilometer). See table of
+values in the :ref:`prefix section <prefix_table>`"""
 
 unit_db = {
     # Time
@@ -8,9 +25,11 @@ unit_db = {
     'second': UnitQuantity(s=1., add_short_prefix=False),
     'min': UnitQuantity(mag=60., s=1., add_short_prefix=False),
     'minute': UnitQuantity(mag=60., s=1., add_short_prefix=False),
+    'h': UnitQuantity(mag=3600., s=1., add_short_prefix=False),
     'hr': UnitQuantity(mag=3600., s=1., add_short_prefix=False),
     'hour': UnitQuantity(mag=3600., s=1., add_short_prefix=False),
     'day': UnitQuantity(mag=3600.*24., s=1., add_short_prefix=False),
+    'week': UnitQuantity(mag=3600.*24.*7., s=1., add_short_prefix=False),
     'yr': UnitQuantity(mag=3600.*24.*365.25, s=1., add_short_prefix=False),
     'year': UnitQuantity(mag=3600.*24.*365.25, s=1., add_short_prefix=False),
     # Amount
@@ -86,12 +105,12 @@ unit_db = {
     'Latm': UnitQuantity(mag=101.325, kg=1., m=2., s=-2.,
                          add_short_prefix=False, add_long_prefix=False,
                          add_plural=False),
-    'Eh': UnitQuantity(mag=1./2293710448690592., kg=1., m=2., s=-2.,
+    'Eh': UnitQuantity(mag=4.3597447222071e-18, kg=1., m=2., s=-2.,
                        add_long_prefix=False, add_plural=False),
-    'Ha': UnitQuantity(mag=1./2293710448690592., kg=1., m=2., s=-2.,
+    'Ha': UnitQuantity(mag=4.3597447222071e-18, kg=1., m=2., s=-2.,
                        add_long_prefix=False, add_plural=False),
-    'hartree': UnitQuantity(mag=1./2293710448690592., kg=1., m=2., s=-2.,
-                       add_short_prefix=False),
+    'hartree': UnitQuantity(mag=4.3597447222071e-18, kg=1., m=2., s=-2.,
+                            add_short_prefix=False),
     'BTU': UnitQuantity(mag=1055., kg=1., m=2., s=-2, add_short_prefix=False,
                         add_long_prefix=False, add_plural=True),
     # Pressure
@@ -148,7 +167,8 @@ unit_db = {
 
 Notes
 -----
-    See units_tables_ for a complete list of units.
+    See :ref:`units page <unit_tables>` for a complete list of units and the
+    :ref:`prefix section <prefix_table>` for supported prefixes.
 """
 
 def _add_prefixes(qty_dict):
@@ -226,8 +246,9 @@ def _add_plural(qty_dict):
     qty_dict_out = {**qty_dict, **_plural_unit_db}
     return qty_dict_out
 
-# unit_db = _add_prefixes(unit_db)
-# unit_db = _add_plural(unit_db)
+# Add prefix and plural entries
+unit_db = _add_prefixes(unit_db)
+unit_db = _add_plural(unit_db)
 
 _temp_units = ('K', 'R', 'oC', 'oF')
 """tuple: Helper tuple to identify if a unit belongs to temperature."""

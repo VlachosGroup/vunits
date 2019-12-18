@@ -4,37 +4,6 @@ from vunits.db import _temp_units
 from vunits.quantity import Quantity, _force_get_quantity, _return_quantity
 from vunits import constants as c
 
-def convert_unit(num=None, initial=None, final=None):
-    """Converts units between two unit sets
-
-    Parameters
-    ----------
-        num : float, optional
-            Number to convert. I not specified, will return the appropriate
-            conversion factor.
-        initial : str
-            Units that num is currently in. Different units must be sparated by
-            a ' ' or '/'. Supports powers as numbers after units. e.g. 'cm/s2',
-            'cm s-2', or 'cm s^-2'.
-        final : str
-            Units you would like num to be in. Different units must be sparated
-            by a ' ' or '/'. Supports powers as numbers after units. e.g.
-            'cm/s2', 'cm s-2', or 'cm s^-2'.
-    Returns
-    -------
-        conversion_num : float
-            num in the appropriate units
-    Raises
-    ------
-        ValueError
-            If unit types are not consistent or not supported
-    """
-    if initial in _temp_units and final in _temp_units:
-        return convert_temp(num=num, initial=initial, final=final)
-    else:
-        in_qty = Quantity.from_units(mag=num, units=initial)
-        return in_qty(final)
-
 def convert_temp(num, initial, final):
     """Converts temperature from one unit set to another
 
@@ -104,6 +73,37 @@ def convert_temp(num, initial, final):
     else:
         raise ValueError(initial_err_msg)
     return result
+
+def convert_unit(num=None, initial=None, final=None):
+    """Converts units between two unit sets
+
+    Parameters
+    ----------
+        num : float, optional
+            Number to convert. I not specified, will return the appropriate
+            conversion factor.
+        initial : str
+            Units that num is currently in. Different units must be sparated by
+            a ' ' or '/'. Supports powers as numbers after units. e.g. 'cm/s2',
+            'cm s-2', or 'cm s^-2'.
+        final : str
+            Units you would like num to be in. Different units must be sparated
+            by a ' ' or '/'. Supports powers as numbers after units. e.g.
+            'cm/s2', 'cm s-2', or 'cm s^-2'.
+    Returns
+    -------
+        conversion_num : float
+            num in the appropriate units
+    Raises
+    ------
+        ValueError
+            If unit types are not consistent or not supported
+    """
+    if initial in _temp_units and final in _temp_units:
+        return convert_temp(num=num, initial=initial, final=final)
+    else:
+        in_qty = Quantity.from_units(mag=num, units=initial)
+        return in_qty(final)
 
 def energy_to_freq(energy, units_in='J', return_quantity=False, units_out='Hz'):
     """Converts energy to frequency
