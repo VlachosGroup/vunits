@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Unit Conversions &mdash; VUnits 0.0.0 documentation</title>
+  <title>Unit Conversions &mdash; VUnits 0.0.1 documentation</title>
   
 
   
@@ -204,8 +204,9 @@ conversion factor.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>num</strong> (<em>float</em><em>, </em><em>optional</em>) – Number to convert. I not specified, will return the appropriate
-conversion factor.</li>
+<li><strong>num</strong> (<em>float</em><em>, </em><em>optional</em>) – Number to convert. If not specified, will return the appropriate
+conversion factor. Default is 0 for temperature-based units, 1
+otherwise.</li>
 <li><strong>initial</strong> (<em>str</em>) – Units that num is currently in. Different units must be sparated by
 a ‘ ‘ or ‘/’. Supports powers as numbers after units. e.g. ‘cm/s2’,
 ‘cm s-2’, or ‘cm s^-2’.</li>
