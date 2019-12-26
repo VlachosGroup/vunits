@@ -200,7 +200,7 @@ def _add_prefixes(qty_dict):
                         add_plural=qty_obj.add_plural)
                 _prefix_unit_db[new_unit] = new_obj
         # Add long prefixes
-        if qty_obj.add_short_prefix:
+        if qty_obj.add_long_prefix:
             for prefix, factor in long_prefixes.items():
                 new_unit = '{}{}'.format(prefix, base_unit)
                 new_obj = UnitQuantity._from_qty(
@@ -236,8 +236,7 @@ def _add_plural(qty_dict):
         try:
             qty_obj.add_plural
         except AttributeError:
-            print(base_unit)
-            print(qty_obj.__dict__)
+            pass
         if not qty_obj.add_plural:
             continue
         new_unit = '{}s'.format(base_unit)

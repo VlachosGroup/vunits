@@ -80,8 +80,9 @@ def convert_unit(num=None, initial=None, final=None):
     Parameters
     ----------
         num : float, optional
-            Number to convert. I not specified, will return the appropriate
-            conversion factor.
+            Number to convert. If not specified, will return the appropriate
+            conversion factor. Default is 0 for temperature-based units, 1
+            otherwise.
         initial : str
             Units that num is currently in. Different units must be sparated by
             a ' ' or '/'. Supports powers as numbers after units. e.g. 'cm/s2',
@@ -100,8 +101,12 @@ def convert_unit(num=None, initial=None, final=None):
             If unit types are not consistent or not supported
     """
     if initial in _temp_units and final in _temp_units:
+        if num is None:
+            num = 0.
         return convert_temp(num=num, initial=initial, final=final)
     else:
+        if num is None:
+            num = 1.
         in_qty = Quantity.from_units(mag=num, units=initial)
         return in_qty(final)
 

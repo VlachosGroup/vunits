@@ -168,8 +168,8 @@ class Quantity:
     def __abs__(self):
         return Quantity._from_qty(units=self.units, mag=np.abs(self.mag))
 
-    def __round__(self):
-        return Quantity._from_qty(units=self.units, mag=round(self.mag))
+    def __round__(self, n):
+        return Quantity._from_qty(units=self.units, mag=round(self.mag, n))
 
     def __floor__(self):
         return Quantity._from_qty(units=self.units, mag=math.floor(self.mag))
@@ -183,9 +183,8 @@ class Quantity:
     def __iadd__(self, other):
         err_msg = ('Addition incompatible due to different units, {} and {}.'
                    ''.format(str(self), str(other)))
-        try:
-            other_units = other.units
-        except AttributeError:
+        other_units = self._get_other_units(other)
+        if other_units is None:
             # If self is dimensionless, add value and return simpler type
             if self._is_dimless():
                 self.mag += other
@@ -205,12 +204,9 @@ class Quantity:
         return self
 
     def __imul__(self, other):
-        try:
-            other_units = other.units
-        except AttributeError:
-            # If self is dimensionless, add value and return Unit type
-            if self._is_dimless():
-                self.mag *= other
+        other_units = self._get_other_units(other)
+        if other_units is None:
+            self.mag *= other
         else:
             self.units = self.units + other_units
             self.mag *= other.mag
@@ -326,7 +322,7 @@ class Quantity:
         other_units = self._get_other_units(other)
         if other_units is None:
             # If other is dimensionless, floor divide the magnitude
-            out = Quantity._from_qty(units=self.units, mag=other//self.mag)
+            out = Quantity._from_qty(units=-self.units, mag=other//self.mag)
         else:
             out_units = other_units - self.units
             out = Quantity._from_qty(mag=other.mag//self.mag, units=out_units)
@@ -343,10 +339,10 @@ class Quantity:
         return out
 
     def __rtruediv__(self, other):
-        other_units = self._get_other_units
+        other_units = self._get_other_units(other)
         if other_units is None:
             # If other is dimensionless, add value and return Unit type
-            out = Quantity._from_qty(units=self.units, mag=other/self.mag)
+            out = Quantity._from_qty(units=-self.units, mag=other/self.mag)
         else:
             out_units = other_units - self.units
             out = Quantity._from_qty(mag=other.mag/self.mag, units=out_units)
@@ -604,7 +600,7 @@ class UnitQuantity(Quantity):
         self.add_long_prefix = add_long_prefix
         self.add_plural = add_plural
 
-def _force_get_quantity(obj, units):
+def _force_get_quantity(obj, units=None):
     """Helper method to return :class:`~vunits.quantity.Quantity` object.
 
     Parameters
