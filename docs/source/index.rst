@@ -19,6 +19,10 @@ Welcome to VUnits's documentation!
    :caption: API Reference
 
    constants
+   convert
+   quantity
+   unit_tables
+   db
 
 .. toctree::
    :maxdepth: 2
