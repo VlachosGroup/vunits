@@ -90,7 +90,7 @@ r""":class:`~vunits.quantity.Quantity`: Standard temperature.
 V0 = R*T0/P0
 r""":class:`~vunits.quantity.Quantity`: Standard volume. 
 
-**SI Value**: 0.024789561893699998 m3/mol
+**SI Value**: 0.024789561893699998 m\ :sup:`3`\ /mol
 
 **Dimensions**: :ref:`volume <volume_table>`/:ref:`amount <amount_table>` or
 equivalent quantities."""
@@ -128,7 +128,7 @@ equivalent quantities."""
 G = Quantity(mag=6.67430e-11, m=3., kg=-1., s=-2)
 r""":class:`~vunits.quantity.Quantity`: Gravitational constant.
 
-**SI Value**: 6.67430e-11 m3 kg\ :sup:`-1`\ s\ :sup:`-2`\.
+**SI Value**: 6.67430e-11 m\ :sup:`3`\ kg\ :sup:`-1`\ s\ :sup:`-2`\.
 
 **Dimensions**: :ref:`volume <volume_table>`/:ref:`mass <mass_table>`/
 :ref:`time <time_table>` or equivalent quantities."""
@@ -138,8 +138,8 @@ r""":class:`~vunits.quantity.Quantity`: Vacuum permittivity.
 
 **SI Value**: 8.8541878128e-12 F/m
 
-**Dimensions**: :ref:`capacitance <capacitance_table>`/:ref:`length <length_table>`
-or equivalent quantities.
+**Dimensions**: :ref:`capacitance <capacitance_table>`/
+:ref:`length <length_table>` or equivalent quantities.
 """
 
 mu_0 = Quantity.from_units(1.25663706212e-6, 'H/m')
@@ -147,8 +147,8 @@ r""":class:`~vunits.quantity.Quantity`: Vacuum permeability.
 
 **SI Value**: 1.25663706212e-6 H/m
 
-**Dimensions**: :ref:`inductance <inductance_table>`/:ref:`length <length_table>`
-or equivalent quantities.
+**Dimensions**: :ref:`inductance <inductance_table>`/
+:ref:`length <length_table>` or equivalent quantities.
 """
 
 R_inf = m_e*e**4/8./eps_0**2/h**2
