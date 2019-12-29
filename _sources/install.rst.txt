@@ -34,9 +34,9 @@ follow the instructions below.
 
 Installing the developer branch
 -------------------------------
-VUnits has a release roughly once a month. Changes that will be in the next
-release will be located in the Developer branch but may have more bugs than
-the master branch. You can install using the following:
+Changes that will be in the next release will be located in the Developer branch
+but may have more bugs than the master branch. You can install using the
+following:
 ::
 
 
