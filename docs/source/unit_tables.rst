@@ -238,10 +238,11 @@ Temperature
 -----------
 
 The values here represent incremental quantities
-(i.e. 1 K\ _table:sup_table:`-1`\ = 1 \ _table:sup_table:`o`\ C\ _table:sup_table:`-1`\ = 1.8 R\ _table:sup_table:`-1`\ = 1.8 
-\ _table:sup_table:`o`\ F\ _table:sup_table:`-1`\ ). If the _table:class_table:`~vunits.quantity.Quantity` object's
-dimensions are only ``temperature``, unit conversions are done accounting for
-different reference points.
+(i.e. 1 K\ :sup:`-1`\ = 1 \ :sup:`o`\ C\ :sup:`-1`\ = 1.8 R\ :sup:`-1`\ =
+1.8 \ :sup:`o`\ F\ :sup:`-1`\ ). If the :class:`~vunits.quantity.Quantity`
+object's dimensions are only ``temperature``, unit conversions are done
+accounting for different reference points (i.e. 298.15 K = 25 \ :sup:`o`\ C =
+536.67 R = 77 \ :sup:`o`\ F).
 
 +------+--------------------------+--------------------------------+--------------------------------------+------------------------------+
 | Unit | SI Base Units Equivalent | Short Prefix Allowed (e.g. km) | Long Prefix Allowed (e.g. kilometer) | Plural Allowed (e.g. meters) |
