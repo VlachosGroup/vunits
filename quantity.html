@@ -197,7 +197,7 @@ objects is by using <code class="docutils literal notranslate"><span class="pre"
 also supported. Units should be separated by spaces (‘ ‘) or forward slashes
 (‘/’). Powers can be specified by appending a number with or without a
 tilda (‘^’). Below, we show statements using <code class="docutils literal notranslate"><span class="pre">from_units</span></code> that create the
-same object as above.:</p>
+same object as above.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="s1">&#39;m^3 s-1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">10000.</span><span class="p">,</span> <span class="s1">&#39;cm^3/ms&#39;</span><span class="p">)</span>
 </pre></div>
@@ -208,43 +208,53 @@ same object as above.:</p>
 <p>Unit conversions are all handled internally. After a
 <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object is created, you can specify any
 equivalent unit by passing the desired unit as a string. For example, below we
-convert <code class="docutils literal notranslate"><span class="pre">vol_flow_rate</span></code> to ft<sup>3</sup>/hr:</p>
+convert <code class="docutils literal notranslate"><span class="pre">vol_flow_rate</span></code> to ft<sup>3</sup>/hr.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span><span class="p">(</span><span class="s1">&#39;ft3/min&#39;</span><span class="p">)</span>
 <span class="go">21188.802067018023</span>
 </pre></div>
 </div>
-<p>Units can be compounded as long as the net dimension is equivalent.:</p>
+<p>Units can be compounded as long as the net dimension is equivalent.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span><span class="p">(</span><span class="s1">&#39;mile ft km/day&#39;</span><span class="p">)</span>
 <span class="go">1.7613672154617037</span>
 </pre></div>
 </div>
-<p>Converting the object to a string will give the magnitude and SI base units.:</p>
+<p>Converting the object to a string (using <code class="docutils literal notranslate"><span class="pre">str</span></code>) will give the magnitude and
+SI base units.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">vol_flow_rate</span><span class="p">)</span>
 <span class="go">&#39;10.0 m^3 s^-1&#39;</span>
 </pre></div>
 </div>
-<p>Calling the object without a desired unit set will return a float of the SI
-magnitude.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span><span class="p">()</span>
-<span class="go">10.0</span>
-</pre></div>
-</div>
-<p>An error message will print out if the units are not equivalent.:</p>
+<p>An error message will print out if the inputted units are not compatible with
+the dimensions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span><span class="p">(</span><span class="s1">&#39;kg/m3&#39;</span><span class="p">)</span>
 <span class="go">ValueError: Unit conversion not possible due to incompatibility between</span>
 <span class="go">object&#39;s units, 10.0 m^3 s^-1, and requested units, 1.0 m^-3 kg.</span>
 </pre></div>
 </div>
+<p>Calling the object without a desired unit set will return the magnitude in SI
+units.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span><span class="p">()</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code> will convert the magnitude to the corresponding type.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">vol_flow_rate</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">vol_flow_rate</span><span class="p">)</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="operations">
 <h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> objects support arithmetic (+, -, <em>, /, *</em>)
+<p><a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> objects support arithmetic (+, -, *, /,
+**)
 and logical operations (&lt;, &gt;, &lt;=, &gt;=, ==).</p>
 <div class="section" id="addition-and-subtraction">
 <h3>Addition and Subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this headline">¶</a></h3>
 <p>All unit conversions are done under the hood, allowing two
 <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> to be added or subtracted. Below, we add two
-volumetric rates.:</p>
+volumetric rates.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;mol/cm3/s&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate2</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">7200.</span><span class="p">,</span> <span class="s1">&#39;mol/cm3/hr&#39;</span><span class="p">)</span> <span class="c1"># 2 mol/cm3/s</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">net_vol_rate</span> <span class="o">=</span> <span class="n">vol_rate1</span> <span class="o">+</span> <span class="n">vol_rate2</span>
@@ -253,7 +263,7 @@ volumetric rates.:</p>
 </pre></div>
 </div>
 <p>Addition and subtraction are only valid if the dimensions agree. Below, we
-try to add a surface rate to a volumetric rate and it throws an error.:</p>
+try to add a surface rate to a volumetric rate and it throws an error.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">surf_rate</span> <span class="o">=</span> <span class="n">Quantity</span><span class="o">.</span><span class="n">from_units</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;mol/cm2/s&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bad_sum</span> <span class="o">=</span> <span class="n">vol_rate1</span> <span class="o">+</span> <span class="n">surf_rate</span>
 <span class="go">TypeError: Addition incompatible due to different units,</span>
@@ -261,7 +271,7 @@ try to add a surface rate to a volumetric rate and it throws an error.:</p>
 </pre></div>
 </div>
 <p>Similarly, an error will be raised if simple numerical types are added to
-<a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object with units.:</p>
+<a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object with units.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_flow_rate</span> <span class="o">+</span> <span class="mf">1.</span>
 <span class="go">TypeError: Addition incompatible due to different units,</span>
 <span class="go">999999.9999999999 m^-3 s^-1 mol and 1.</span>
@@ -270,13 +280,15 @@ try to add a surface rate to a volumetric rate and it throws an error.:</p>
 <p>However, if the <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object is dimensionless, no
 error will be thrown but the result will be another
 <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object. Use <code class="docutils literal notranslate"><span class="pre">()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, or <code class="docutils literal notranslate"><span class="pre">int()</span></code>
-to convert to the desired type.:</p>
+to convert to the desired type.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Adding a float to Quantity will return a Quantity object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_ratio</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">+</span> <span class="mf">0.2</span>
 <span class="go">&lt;vunits.quantity.Quantity object at 0x000002DFCD2364A8&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">ratio</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">)()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access the magnitude by calling object or using float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_ratio</span><span class="p">()</span>
 <span class="go">0.7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">ratio</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">new_ratio</span><span class="p">)</span>
 <span class="go">0.7</span>
 </pre></div>
 </div>
@@ -285,17 +297,14 @@ to convert to the desired type.:</p>
 <h3>Multiplication and Division<a class="headerlink" href="#multiplication-and-division" title="Permalink to this headline">¶</a></h3>
 <p>Multiplying and dividing units will apply the appropriate operations to the
 units. Below, we calculate the standard molar volume by importing constants
-(which are also <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> objects).:</p>
+(which are also <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> objects).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vunits.constants</span> <span class="k">import</span> <span class="n">R</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">P0</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Standard temperature</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">T0</span><span class="p">)</span>
 <span class="go">298.15 K</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Standard pressure</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">P0</span><span class="p">)</span>
 <span class="go">100000.0 m^-1.0 kg s^-2.0</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate standard molar volume</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">V0</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">T0</span><span class="o">/</span><span class="n">P0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
@@ -304,7 +313,7 @@ units. Below, we calculate the standard molar volume by importing constants
 </div>
 <p>Multiplying by simpler Python types (like float) will result in the magnitude
 changing but remember that unless a unit set is called, it will return a
-<a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object.:</p>
+<a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">V0</span><span class="p">)</span>
 <span class="go">&#39;2.47895618937 m^3 mol^-1&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">100</span><span class="o">*</span><span class="n">V0</span>
@@ -316,7 +325,7 @@ changing but remember that unless a unit set is called, it will return a
 <h3>Powers<a class="headerlink" href="#powers" title="Permalink to this headline">¶</a></h3>
 <p>Similarly to multiplying and dividing, the power operator (**) will handle
 unit conversions appropriately. Below we square the volumetric flow rate from
-the unit conversion section.:</p>
+the unit conversion section.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">vol_flow_rate</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">&#39;100.0 m^6 s^-2&#39;</span>
 </pre></div>
@@ -325,7 +334,7 @@ the unit conversion section.:</p>
 <div class="section" id="logical">
 <h3>Logical<a class="headerlink" href="#logical" title="Permalink to this headline">¶</a></h3>
 <p>Most of the logical operations (&lt;, &gt;, &lt;=, =&gt;) will only return without errors
-if the units are equivalent.:</p>
+if the units are equivalent.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">&gt;</span> <span class="n">vol_rate2</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">&lt;</span> <span class="n">vol_rate2</span>
@@ -334,6 +343,7 @@ if the units are equivalent.:</p>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">&lt;=</span> <span class="n">vol_rate2</span>
 <span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Error raised for different types</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">&gt;</span> <span class="n">surf_rate</span>
 <span class="go">TypeError: Greater than operation incompatible due to different units,</span>
 <span class="go">999999.9999999999 m^-3 s^-1 mol and 10000.0 m^-2 s^-1 mol.</span>
@@ -343,13 +353,16 @@ if the units are equivalent.:</p>
 If both are <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> objects, the units and magnitude
 are compared. A dimensionless <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object can be
 compared to elementary types (e.g. float). In this case, the magnitudes are
-compared:</p>
+compared.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">==</span> <span class="n">vol_rate1</span>
 <span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Different magnitudes result in False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">==</span> <span class="n">vol_rate2</span>
 <span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Different units result in False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">==</span> <span class="n">surf_rate</span>
 <span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Different types result in False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">==</span> <span class="mf">1.</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vol_rate1</span> <span class="o">!=</span> <span class="mf">1.</span>
@@ -357,8 +370,9 @@ compared:</p>
 </pre></div>
 </div>
 <p>If the <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> object is dimensionless, logical
-operators will compare the magnitude.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&gt;</span> <span class="mf">0.6</span>
+operators will compare the magnitude.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># From previous section, ratio = Quantity(0.5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&gt;</span> <span class="mf">0.6</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&lt;</span> <span class="mf">0.6</span>
 <span class="go">True</span>
