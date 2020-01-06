@@ -547,7 +547,7 @@ class Quantity:
         return out
 
     @classmethod
-    def from_units(cls, mag=1., units=''):
+    def from_units(cls, mag=1., units='', unit_db=None):
         """Method to create a :class:`~vunits.quantity.Quantity` by parsing
         units.
         
@@ -559,13 +559,18 @@ class Quantity:
                 Units to parse. Different units must be sparated by a ' ' or
                 '/'. Supports powers as numbers after units. e.g. 'cm/s2',
                 'cm s-2', or 'cm s^-2'. Default is ''
+            unit_db : dict, optional
+                Unit database to use parse units. Keys should be strings of
+                expected units and values are :class:`~vunits.quantity.Quantity`
+                objects. If ``unit_db`` is not specified, uses the
+                ``vunits.db.unit_db``.
         Returns
         -------
             quantity : :class:`~vunits.quantity.Quantity`
                 New quantity object.
         """
         from vunits.parse import _parse_unit
-        qty_obj = _parse_unit(units=units, mag=mag)
+        qty_obj = _parse_unit(units=units, mag=mag, unit_db=unit_db)
         return cls._from_qty(units=qty_obj.units, mag=qty_obj.mag)
 
 

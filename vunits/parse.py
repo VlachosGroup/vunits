@@ -2,7 +2,7 @@ import re
 from vunits.quantity import Quantity
 from vunits.db import unit_db, _temp_units
 
-def _parse_unit(mag=1., units=''):
+def _parse_unit(mag=1., units='', unit_db=None):
     """Helper method to parse units
 
     Parameters
@@ -13,11 +13,20 @@ def _parse_unit(mag=1., units=''):
             Units to parse. Different units must be sparated by a space (' ') or
             forward slash ('/'). Supports powers as numbers after units.
             e.g. 'cm/s2', 'cm s-2', or 'cm s^-2'. Default is ''.
+        unit_db : dict, optional
+            Unit database to use parse units. Keys should be strings of
+            expected units and values are :class:`~vunits.quantity.Quantity`
+            objects. If ``unit_db`` is not specified, uses the
+            ``vunits.db.unit_db``.
     Returns
     -------
         quantity : :class:`~vunits.quantity.Quantity`
             New quantity object.
     """
+    # Load appropriate database
+    if unit_db is None:
+        from vunits.db import unit_db as vunits_units_db
+        unit_db = vunits_units_db
     # Check if temperature unit and parse independently
     if units in _temp_units:
         from vunits.convert import convert_temp
