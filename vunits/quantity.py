@@ -29,7 +29,11 @@ class Quantity:
 
     def __init__(self, mag=1., m=0., kg=0., s=0., A=0., K=0., mol=0.,
                  cd=0.):
-        self.mag = mag
+        # Convert magnitude list to numpy array without altering original list
+        mag_in = mag
+        if isinstance(mag, list):
+            mag_in = np.array(mag)
+        self.mag = mag_in
         self._units = pd.Series(data={'m': m, 'kg': kg, 's': s, 'A': A, 'K': K,
                                       'mol': mol, 'cd': cd})
 
@@ -543,7 +547,7 @@ class Quantity:
         return out
 
     @classmethod
-    def from_units(cls, mag=1., units=''):
+    def from_units(cls, mag=1., units='', unit_db=None):
         """Method to create a :class:`~vunits.quantity.Quantity` by parsing
         units.
         
@@ -555,13 +559,18 @@ class Quantity:
                 Units to parse. Different units must be sparated by a ' ' or
                 '/'. Supports powers as numbers after units. e.g. 'cm/s2',
                 'cm s-2', or 'cm s^-2'. Default is ''
+            unit_db : dict, optional
+                Unit database to use parse units. Keys should be strings of
+                expected units and values are :class:`~vunits.quantity.Quantity`
+                objects. If ``unit_db`` is not specified, uses the
+                ``vunits.db.unit_db``.
         Returns
         -------
             quantity : :class:`~vunits.quantity.Quantity`
                 New quantity object.
         """
         from vunits.parse import _parse_unit
-        qty_obj = _parse_unit(units=units, mag=mag)
+        qty_obj = _parse_unit(units=units, mag=mag, unit_db=unit_db)
         return cls._from_qty(units=qty_obj.units, mag=qty_obj.mag)
 
 
@@ -589,6 +598,51 @@ class Quantity:
                    A=units['A'], K=units['K'], mol=units['mol'], cd=units['cd'],
                    **kwargs)
 
+    
+    def to_dict(self):
+        """Represents object as dictionary with JSON-accepted datatypes
+
+        Returns
+        -------
+            obj_dict : dict
+        """
+        obj_dict = {
+            'class': str(self.__class__),
+            'm': self.m,
+            'kg': self.kg,
+            's': self.s,
+            'A': self.A,
+            'K': self.K,
+            'mol': self.mol,
+            'cd': self.cd
+        }
+        # Create simple type out of magnitude
+        try:
+            # See if magnitude has to_dict() method
+            obj_dict['mag'] = self.mag.to_dict()
+        except AttributeError:
+            if isinstance(self.mag, np.ndarray):
+                obj_dict['mag'] = list(self.mag)
+            else:
+                obj_dict['mag'] = self.mag
+
+        return obj_dict
+
+    @classmethod
+    def from_dict(cls, json_obj):
+        """Recreate an object from the JSON representation.
+
+        Parameters
+        ----------
+            json_obj : dict
+                JSON representation
+        Returns
+        -------
+            Obj : Appropriate object
+        """
+        json_obj.pop('class', None)
+        return cls(**json_obj)
+
 class UnitQuantity(Quantity):
     """Helper class for defining specific units for unit parsing. Inherits from
     :class:`~vunits.quantity.Quantity`"""
@@ -600,7 +654,7 @@ class UnitQuantity(Quantity):
         self.add_long_prefix = add_long_prefix
         self.add_plural = add_plural
 
-def _force_get_quantity(obj, units=None):
+def _force_get_quantity(obj, units=''):
     """Helper method to return :class:`~vunits.quantity.Quantity` object.
 
     Parameters
@@ -621,7 +675,7 @@ def _force_get_quantity(obj, units=None):
         out = Quantity.from_units(mag=obj, units=units)
     return out
 
-def _return_quantity(quantity, return_quantity, units_out=None):
+def _return_quantity(quantity, return_quantity, units_out=''):
     """Helper method to return appropriate unit type
 
     Parameters
