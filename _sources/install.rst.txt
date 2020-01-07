@@ -52,21 +52,19 @@ To upgrade to a newer release, use the --upgrade flag:
 Running unit tests
 ------------------
 VUnits has a suite of unit tests that should be run before committing any code.
-To run the tests, navigate to the tests folder (vunits/tests) via a command line
-with access to Python.
-
-Run the following command:
+To run the tests, run the following commands in a Python terminal.
 ::
 
-     python -m unittest
+     import vunits
+     vunits.run_tests()
 
 The expected output is shown below. The number of tests will not
 necessarily be the same. ::
 
-    .........................
+    ............................................................................
     ----------------------------------------------------------------------
-    Ran 25 tests in 0.020s
-
+    Ran 76 tests in 1.643s
+    
     OK
 
 .. _`Download Anaconda here`: https://www.anaconda.com/distribution/#download-section

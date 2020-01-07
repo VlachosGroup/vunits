@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Supported Units &mdash; VUnits 0.0.1 documentation</title>
+  <title>Supported Units &mdash; VUnits 0.0.2 documentation</title>
   
 
   
@@ -190,7 +190,7 @@
 units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
 <a class="reference internal" href="#prefix-table"><span class="std std-ref">prefixes section</span></a> below for supported values.</p>
 <p>For custom units, add a <a class="reference internal" href="quantity.html#vunits.quantity.UnitQuantity" title="vunits.quantity.UnitQuantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitQuantity</span></code></a> object to
-<a class="reference internal" href="db.html#vunits.db.unit_db" title="vunits.db.unit_db"><code class="xref py py-data docutils literal notranslate"><span class="pre">unit_db</span></code></a>.</p>
+<code class="xref py py-data docutils literal notranslate"><span class="pre">unit_db</span></code>.</p>
 <div class="section" id="time">
 <span id="time-table"></span><h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -391,15 +391,16 @@ units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
 </div>
 <div class="section" id="volume">
 <span id="volume-table"></span><h2>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
-<p>Note that all <a class="reference internal" href="#length-table"><span class="std std-ref">length</span></a> units can be combined to form new units for volume.
-For example, ‘m3’, ‘cm3’, ‘cm inch ft’ are all valid volume units.</p>
+<p>Note that all <a class="reference internal" href="#length-table"><span class="std std-ref">length</span></a> units can be combined to form new
+units for volume. For example, ‘m3’, ‘cm3’, ‘cm inch ft’ are all valid volume
+units.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="5%" />
-<col width="20%" />
+<col width="6%" />
+<col width="19%" />
 <col width="24%" />
-<col width="29%" />
-<col width="23%" />
+<col width="28%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Unit</th>
@@ -418,6 +419,18 @@ For example, ‘m3’, ‘cm3’, ‘cm inch ft’ are all valid volume units.</
 </tr>
 <tr class="row-odd"><td>liter</td>
 <td>0.001 m<sup>3</sup></td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>gal</td>
+<td>0.003785 m<sup>3</sup></td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>gallon</td>
+<td>0.003785 m<sup>3</sup></td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>

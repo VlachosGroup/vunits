@@ -7,6 +7,14 @@ Development Branch
 ------------------
 `Development Branch`_
 
+Version 0.0.2
+-------------
+Jan. 7, 2020
+
+- Saved ``unit_db`` as JSON file for faster initialization.
+- Wrote ``vunits.run_tests`` function to simplify running the test suite.
+- Added ability to express :class:`~vunits.quantity.Quantity` object as a dict.
+
 Version 0.0.1
 -------------
 Dec. 26, 2019

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quantity Class &mdash; VUnits 0.0.1 documentation</title>
+  <title>Quantity Class &mdash; VUnits 0.0.2 documentation</title>
   
 
   
@@ -575,8 +575,26 @@ operators will compare the magnitude.</p>
 </dd></dl>
 
 <dl class="classmethod">
+<dt id="vunits.quantity.Quantity.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>json_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.quantity.Quantity.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recreate an object from the JSON representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>json_obj</strong> (<em>dict</em>) – JSON representation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>Obj</strong></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Appropriate object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
 <dt id="vunits.quantity.Quantity.from_units">
-<em class="property">classmethod </em><code class="descname">from_units</code><span class="sig-paren">(</span><em>mag=1.0</em>, <em>units=''</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.quantity.Quantity.from_units" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_units</code><span class="sig-paren">(</span><em>mag=1.0</em>, <em>units=''</em>, <em>unit_db=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.quantity.Quantity.from_units" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to create a <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> by parsing
 units.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -588,6 +606,10 @@ units.</p>
 <li><strong>units</strong> (<em>str</em><em>, </em><em>optional</em>) – Units to parse. Different units must be sparated by a ‘ ‘ or
 ‘/’. Supports powers as numbers after units. e.g. ‘cm/s2’,
 ‘cm s-2’, or ‘cm s^-2’. Default is ‘’</li>
+<li><strong>unit_db</strong> (<em>dict</em><em>, </em><em>optional</em>) – Unit database to use parse units. Keys should be strings of
+expected units and values are <a class="reference internal" href="#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>
+objects. If <code class="docutils literal notranslate"><span class="pre">unit_db</span></code> is not specified, uses the
+<code class="docutils literal notranslate"><span class="pre">vunits.db.unit_db</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -666,6 +688,22 @@ units.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vunits.quantity.Quantity.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vunits.quantity.Quantity.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents object as dictionary with JSON-accepted datatypes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>obj_dict</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
