@@ -237,6 +237,9 @@ class Quantity:
                 str_out += ' {}^{}'.format(unit, power)
         return str_out
     
+    # def __repr__(self):
+    #     return ''
+
     def add(self, other, return_quantity=True, operation='Addition'):
         """Helper method for addition.
 
@@ -648,11 +651,11 @@ class UnitQuantity(Quantity):
     :class:`~vunits.quantity.Quantity`"""
     def __init__(self, mag=1., m=0., kg=0., s=0., A=0., K=0., mol=0.,
                  cd=0., add_short_prefix=True, add_long_prefix=True,
-                 add_plural=True):
+                 plural_suffix=None):
         super().__init__(mag=mag, m=m, kg=kg, s=s, A=A, K=K, mol=mol, cd=cd)
         self.add_short_prefix = add_short_prefix
         self.add_long_prefix = add_long_prefix
-        self.add_plural = add_plural
+        self.plural_suffix = plural_suffix
 
 def _force_get_quantity(obj, units=''):
     """Helper method to return :class:`~vunits.quantity.Quantity` object.

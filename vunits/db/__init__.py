@@ -40,167 +40,174 @@ def write_unit_db(filename=None, unit_db=None, json_kwargs=None):
     if unit_db is None:
         unit_db = {
             # Empty string
-            '': UnitQuantity(add_plural=False, add_long_prefix=False,
-                            add_short_prefix=False),
+            '': UnitQuantity(add_long_prefix=False, add_short_prefix=False),
             # Time
-            's': UnitQuantity(s=1., add_plural=False, add_long_prefix=False),
+            's': UnitQuantity(s=1.,  add_long_prefix=False),
             'sec': UnitQuantity(s=1., add_short_prefix=False,
                                 add_long_prefix=False),
-            'second': UnitQuantity(s=1., add_short_prefix=False),
+            'second': UnitQuantity(s=1., add_short_prefix=False,
+                                   plural_suffix='s'),
             'min': UnitQuantity(mag=60., s=1., add_short_prefix=False),
-            'minute': UnitQuantity(mag=60., s=1., add_short_prefix=False),
+            'minute': UnitQuantity(mag=60., s=1., add_short_prefix=False,
+                                   plural_suffix='s'),
             'h': UnitQuantity(mag=3600., s=1., add_short_prefix=False),
             'hr': UnitQuantity(mag=3600., s=1., add_short_prefix=False),
-            'hour': UnitQuantity(mag=3600., s=1., add_short_prefix=False),
-            'day': UnitQuantity(mag=3600.*24., s=1., add_short_prefix=False),
+            'hour': UnitQuantity(mag=3600., s=1., add_short_prefix=False,
+                                 plural_suffix='s'),
+            'day': UnitQuantity(mag=3600.*24., s=1., add_short_prefix=False,
+                                plural_suffix='s'),
             'week': UnitQuantity(mag=3600.*24.*7., s=1.,
-                                 add_short_prefix=False),
+                                 add_short_prefix=False, plural_suffix='s'),
             'yr': UnitQuantity(mag=3600.*24.*365.25, s=1.,
                                add_short_prefix=False),
             'year': UnitQuantity(mag=3600.*24.*365.25, s=1.,
-                                 add_short_prefix=False),
+                                 add_short_prefix=False, plural_suffix='s'),
             # Amount
             'mol': UnitQuantity(mol=1.),
-            'mole': UnitQuantity(mol=1.),
+            'mole': UnitQuantity(mol=1., plural_suffix='s'),
             'molecule': UnitQuantity(mag=1./6.02214086e23, mol=1.,
-                                    add_short_prefix=False),
+                                     add_short_prefix=False,
+                                     plural_suffix='s'),
             'molec': UnitQuantity(mag=1./6.02214086e23, mol=1.,
-                                  add_short_prefix=False, add_plural=False),
+                                  add_short_prefix=False),
             'particle': UnitQuantity(mag=1./6.02214086e23, mol=1.,
-                                     add_short_prefix=False),
+                                     add_short_prefix=False, plural_suffix='s'),
             # Mass
-            'g': UnitQuantity(mag=1.e-3, kg=1., add_plural=False),
-            'gram': UnitQuantity(mag=1.e-3, kg=1.),
-            'u': UnitQuantity(mag=1./6.022e+26, kg=1., add_short_prefix=False,
-                            add_plural=False),
+            'g': UnitQuantity(mag=1.e-3, kg=1.),
+            'gram': UnitQuantity(mag=1.e-3, kg=1., plural_suffix='s'),
+            'u': UnitQuantity(mag=1./6.022e+26, kg=1., add_short_prefix=False),
             'amu': UnitQuantity(mag=1./6.022e+26, kg=1.,
                                 add_short_prefix=False),
-            'Da': UnitQuantity(mag=1./6.022e+26, kg=1., add_plural=False),
+            'Da': UnitQuantity(mag=1./6.022e+26, kg=1.),
             'dalton': UnitQuantity(mag=1./6.022e+26, kg=1.,
-                                   add_short_prefix=False),
-            'lb': UnitQuantity(mag=1./2.20462, kg=1., add_short_prefix=False),
+                                   add_short_prefix=False, plural_suffix='s'),
+            'lb': UnitQuantity(mag=1./2.20462, kg=1., add_short_prefix=False,
+                               plural_suffix='s'),
             'pound': UnitQuantity(mag=1./2.20462, kg=1.,
-                                  add_short_prefix=False),
+                                  add_short_prefix=False, plural_suffix='s'),
             # Length
-            'm': UnitQuantity(m=1., add_plural=False),
-            'meter': UnitQuantity(m=1., add_short_prefix=False),
-            'in': UnitQuantity(mag=1./39.3701, m=1., add_short_prefix=False),
-            'inch': UnitQuantity(mag=1./39.3701, m=1., add_short_prefix=False),
+            'm': UnitQuantity(m=1.),
+            'meter': UnitQuantity(m=1., add_short_prefix=False,
+                                  plural_suffix='s'),
+            'in': UnitQuantity(mag=1./39.3701, m=1., add_short_prefix=False,
+                               add_long_prefix=False),
+            'inch': UnitQuantity(mag=1./39.3701, m=1., add_short_prefix=False,
+                                 plural_suffix='es', add_long_prefix=False),
             'ft': UnitQuantity(mag=1./3.28084, m=1., add_short_prefix=False),
-            'foot': UnitQuantity(mag=1./3.28084, m=1., add_short_prefix=False,
-                                add_plural=False),
-            'feet': UnitQuantity(mag=1./3.28084, m=1., add_short_prefix=False,
-                                add_plural=False),
-            'mile': UnitQuantity(mag=1609.344, m=1., add_short_prefix=False),
+            'foot': UnitQuantity(mag=1./3.28084, m=1., add_short_prefix=False),
+            'feet': UnitQuantity(mag=1./3.28084, m=1., add_short_prefix=False),
+            'mile': UnitQuantity(mag=1609.344, m=1., add_short_prefix=False,
+                                 plural_suffix='s'),
             'Ang': UnitQuantity(mag=1.e-10, m=1., add_short_prefix=False),
             # Temperature
             'K': UnitQuantity(K=1., add_short_prefix=False,
-                              add_long_prefix=False, add_plural=False),
+                              add_long_prefix=False),
             'oC': UnitQuantity(K=1., add_short_prefix=False,
-                               add_long_prefix=False, add_plural=False),
+                               add_long_prefix=False),
             'R': UnitQuantity(mag=1.8, K=1., add_short_prefix=False,
-                              add_long_prefix=False, add_plural=False),
+                              add_long_prefix=False),
             'oF': UnitQuantity(mag=1.8, K=1., add_short_prefix=False,
-                               add_long_prefix=False, add_plural=False),
+                               add_long_prefix=False),
             # Current
-            'A': UnitQuantity(A=1., add_long_prefix=False, add_plural=False),
+            'A': UnitQuantity(A=1., add_long_prefix=False),
             'ampere': UnitQuantity(A=1., add_short_prefix=False,
-                                   add_plural=False),
+                                   plural_suffix='s'),
             # Intensity
-            'cd': UnitQuantity(cd=1., add_long_prefix=False, add_plural=False),
-            'candela': UnitQuantity(cd=1., add_short_prefix=False),
+            'cd': UnitQuantity(cd=1., add_long_prefix=False),
+            'candela': UnitQuantity(cd=1., add_short_prefix=False,
+                                    plural_suffix='s'),
             # Volume
-            'L': UnitQuantity(mag=1.e-3, m=3., add_long_prefix=False,
-                              add_plural=False),
-            'liter': UnitQuantity(mag=1.e-3, m=3., add_short_prefix=False),
+            'L': UnitQuantity(mag=1.e-3, m=3., add_long_prefix=False),
+            'liter': UnitQuantity(mag=1.e-3, m=3., add_short_prefix=False,
+                                  plural_suffix='s'),
             'gal': UnitQuantity(mag=1./264.172052, m=3., add_short_prefix=False,
-                                add_long_prefix=False, add_plural=False),
+                                add_long_prefix=False),
             'gallon': UnitQuantity(mag=1.e-3, m=3., add_short_prefix=False,
-                                   add_long_prefix=False),
+                                   add_long_prefix=False, plural_suffix='s'),
             # Acceleration
-            'g0': UnitQuantity(mag=9.80665, m=1., s=-2., add_plural=False,
+            'g0': UnitQuantity(mag=9.80665, m=1., s=-2., 
                                add_long_prefix=False),
             # Force
-            'N': UnitQuantity(kg=1., m=1., s=-2., add_long_prefix=False,
-                              add_plural=False),
-            'newton': UnitQuantity(kg=1., m=1., s=-2., add_short_prefix=True),
+            'N': UnitQuantity(kg=1., m=1., s=-2., add_long_prefix=False),
+            'newton': UnitQuantity(kg=1., m=1., s=-2., add_short_prefix=False,
+                                   plural_suffix='s'),
             'dyn': UnitQuantity(mag=1.e-5, kg=1., m=1., s=-2.,
-                                add_long_prefix=False, add_plural=False),
+                                add_long_prefix=False),
             'dyne': UnitQuantity(mag=1.e-5, kg=1., m=1., s=-2.,
                                  add_short_prefix=False),
             'lbf': UnitQuantity(mag=4.448222, kg=1., m=1., s=-2.,
-                                add_short_prefix=False, add_long_prefix=False,
-                                add_plural=False),
+                                add_short_prefix=False, add_long_prefix=False),
             # Energy
-            'J': UnitQuantity(kg=1., m=2., s=-2., add_long_prefix=False,
-                              add_plural=False),
-            'joule': UnitQuantity(kg=1., m=2., s=-2., add_short_prefix=False),
+            'J': UnitQuantity(kg=1., m=2., s=-2., add_long_prefix=False),
+            'joule': UnitQuantity(kg=1., m=2., s=-2., add_short_prefix=False,
+                                  plural_suffix='s'),
             'cal': UnitQuantity(mag=4.184, kg=1., m=2., s=-2.,
-                                add_long_prefix=False, add_plural=False),
+                                add_long_prefix=False),
+            'calorie': UnitQuantity(mag=4.184, kg=1., m=2., s=-2.,
+                                    add_short_prefix=False, plural_suffix='s'),
             'eV': UnitQuantity(mag=1.6021766208e-19, kg=1., m=2., s=-2.,
-                               add_long_prefix=False, add_plural=False),
+                               add_long_prefix=False),
             'Latm': UnitQuantity(mag=101.325, kg=1., m=2., s=-2.,
-                                 add_short_prefix=False, add_long_prefix=False,
-                                 add_plural=False),
+                                 add_short_prefix=False, add_long_prefix=False),
             'Eh': UnitQuantity(mag=4.3597447222071e-18, kg=1., m=2., s=-2.,
-                               add_long_prefix=False, add_plural=False),
+                               add_long_prefix=False, ),
             'Ha': UnitQuantity(mag=4.3597447222071e-18, kg=1., m=2., s=-2.,
-                               add_long_prefix=False, add_plural=False),
+                               add_long_prefix=False, ),
             'hartree': UnitQuantity(mag=4.3597447222071e-18, kg=1., m=2., s=-2.,
-                                    add_short_prefix=False),
+                                    add_short_prefix=False, plural_suffix='s'),
             'BTU': UnitQuantity(mag=1055., kg=1., m=2., s=-2,
                                 add_short_prefix=False, add_long_prefix=False,
-                                add_plural=True),
+                                plural_suffix='s'),
             # Pressure
-            'Pa': UnitQuantity(kg=1, m=-1, s=-2, add_long_prefix=False,
-                               add_plural=False),
-            'pascal': UnitQuantity(kg=1, m=-1, s=-2, add_short_prefix=False),
+            'Pa': UnitQuantity(kg=1, m=-1, s=-2, add_long_prefix=False),
+            'pascal': UnitQuantity(kg=1, m=-1, s=-2, add_short_prefix=False,
+                                   plural_suffix='s'),
             'atm': UnitQuantity(mag=101325., kg=1, m=-1, s=-2,
-                                add_short_prefix=False, add_long_prefix=False,
-                                add_plural=False),
-            'bar': UnitQuantity(mag=1.e5, kg=1, m=-1, s=-2),
+                                add_short_prefix=False, add_long_prefix=False),
+            'bar': UnitQuantity(mag=1.e5, kg=1, m=-1, s=-2, plural_suffix='s'),
             'mmHg': UnitQuantity(mag=133.322, kg=1, m=-1, s=-2,
-                                 add_short_prefix=False, add_long_prefix=False,
-                                 add_plural=False),
-            'torr': UnitQuantity(mag=133.322, kg=1, m=-1, s=-2),
-            'Torr': UnitQuantity(mag=133.322, kg=1, m=-1, s=-2),
+                                 add_short_prefix=False, add_long_prefix=False),
+            'torr': UnitQuantity(mag=133.322, kg=1, m=-1, s=-2,
+                                 plural_suffix='s'),
+            'Torr': UnitQuantity(mag=133.322, kg=1, m=-1, s=-2,
+                                 plural_suffix='s'),
             'psi': UnitQuantity(mag=6894.76, kg=1, m=-1, s=-2,
-                                add_short_prefix=False, add_long_prefix=False,
-                                add_plural=False),
+                                add_short_prefix=False, add_long_prefix=False),
             # Charge
-            'C': UnitQuantity(A=1., s=1., add_long_prefix=False,
-                              add_plural=False),
-            'coulomb': UnitQuantity(A=1., s=1., add_short_prefix=True),
+            'C': UnitQuantity(A=1., s=1., add_long_prefix=False),
+            'coulomb': UnitQuantity(A=1., s=1., add_short_prefix=True,
+                                    plural_suffix='s'),
             # Potential difference
-            'V': UnitQuantity(kg=1., m=2., s=-3., A=-1., add_long_prefix=False,
-                              add_plural=False),
-            'volt': UnitQuantity(kg=1., m=2., s=-3., A=-1., add_short_prefix=False),
+            'V': UnitQuantity(kg=1., m=2., s=-3., A=-1., add_long_prefix=False),
+            'volt': UnitQuantity(kg=1., m=2., s=-3., A=-1.,
+                                 add_short_prefix=False, plural_suffix='s'),
             # Frequency
-            'Hz': UnitQuantity(s=-1, add_long_prefix=False, add_plural=False),
-            'hertz': UnitQuantity(s=-1, add_long_prefix=False, add_plural=False),
+            'Hz': UnitQuantity(s=-1, add_long_prefix=False),
+            'hertz': UnitQuantity(s=-1, add_long_prefix=False),
             # Capacitance
-            'F': UnitQuantity(s=4, A=2, m=-2, kg=-1, add_long_prefix=False,
-                              add_plural=False),
-            'farad': UnitQuantity(s=4, A=2, m=-2, kg=-1, add_short_prefix=False),
+            'F': UnitQuantity(s=4, A=2, m=-2, kg=-1, add_long_prefix=False),
+            'farad': UnitQuantity(s=4, A=2, m=-2, kg=-1,
+                                  add_short_prefix=False, plural_suffix='s'),
             # Electric inductance
-            'H': UnitQuantity(kg=1., m=2., s=-2, A=-2, add_long_prefix=False,
-                              add_plural=False),
+            'H': UnitQuantity(kg=1., m=2., s=-2, A=-2, add_long_prefix=False),
             'henry': UnitQuantity(kg=1., m=2., s=-2, A=-2, add_short_prefix=False),
+            'henries': UnitQuantity(kg=1., m=2., s=-2, A=-2,
+                                    add_short_prefix=False),
             # Power
-            'W': UnitQuantity(kg=1., m=2, s=-3, add_long_prefix=False,
-                              add_plural=False),
-            'watt': UnitQuantity(kg=1., m=2, s=-3, add_short_prefix=False),
+            'W': UnitQuantity(kg=1., m=2, s=-3, add_long_prefix=False),
+            'watt': UnitQuantity(kg=1., m=2, s=-3, add_short_prefix=False,
+                                 plural_suffix='s'),
             # Electric resistance
-            'ohm': UnitQuantity(kg=1., m=2, s=-3, A=-2),
+            'ohm': UnitQuantity(kg=1., m=2, s=-3, A=-2, plural_suffix='s'),
             # Magnetic flux density
-            'T': UnitQuantity(kg=1., s=-2, A=-1, add_plural=False,
+            'T': UnitQuantity(kg=1., s=-2, A=-1, 
                               add_long_prefix=False),
-            'tesla': UnitQuantity(kg=1., s=-2, A=-1, add_short_prefix=False),
+            'tesla': UnitQuantity(kg=1., s=-2, A=-1, add_short_prefix=False,
+                                  plural_suffix='s'),
             # Magnetic flux
-            'Wb': UnitQuantity(kg=1., m=2, s=-2, A=-1, add_long_prefix=False,
-                               add_plural=False),
+            'Wb': UnitQuantity(kg=1., m=2, s=-2, A=-1, add_long_prefix=False),
             'weber': UnitQuantity(kg=1., m=2, s=-2, A=-1,
-                                  add_short_prefix=False),
+                                  add_short_prefix=False, plural_suffix='s'),
         }
 
     # Add prefix and plural entries
@@ -221,7 +228,7 @@ def write_unit_db(filename=None, unit_db=None, json_kwargs=None):
     with open(filename, 'w') as f_ptr:
         json.dump(json_unit_db, f_ptr, **json_kwargs)
             
-def read_unit_db(filename=None):
+def read_unit_db(filename=None, json_lib='json'):
     """Updates unit database
 
     Parameters
@@ -241,7 +248,6 @@ def read_unit_db(filename=None):
         filename = os.path.join(os.path.dirname(__file__), 'unit_db.json')
     with open(filename, 'r') as f_ptr:
         json_unit_db = json.load(f_ptr)
-    # Convert JSON format to VUnits format
     unit_db = {}
     for key, val in json_unit_db.items():
         unit_db[key] = Quantity.from_dict(val)
@@ -265,26 +271,36 @@ def _add_prefixes(qty_dict):
     # Add prefixes to dictionary
     _prefix_unit_db = {}
     for base_unit, qty_obj in qty_dict.items():
-        # Add short prefixes
-        if qty_obj.add_short_prefix:
-            for prefix, factor in short_prefixes.items():
-                new_unit = '{}{}'.format(prefix, base_unit)
-                new_obj = UnitQuantity._from_qty(
-                        units=qty_obj.units, mag=qty_obj.mag*factor,
-                        add_short_prefix=qty_obj.add_short_prefix,
-                        add_long_prefix=qty_obj.add_long_prefix,
-                        add_plural=qty_obj.add_plural)
-                _prefix_unit_db[new_unit] = new_obj
+        try:
+            add_short_prefix = qty_obj.add_short_prefix
+        except AttributeError:
+            pass
+        else:
+            # Add short prefixes
+            if qty_obj.add_short_prefix:
+                for prefix, factor in short_prefixes.items():
+                    new_unit = '{}{}'.format(prefix, base_unit)
+                    new_obj = UnitQuantity._from_qty(
+                            units=qty_obj.units, mag=qty_obj.mag*factor,
+                            add_short_prefix=qty_obj.add_short_prefix,
+                            add_long_prefix=qty_obj.add_long_prefix,
+                            plural_suffix=qty_obj.plural_suffix)
+                    _prefix_unit_db[new_unit] = new_obj
         # Add long prefixes
-        if qty_obj.add_long_prefix:
-            for prefix, factor in long_prefixes.items():
-                new_unit = '{}{}'.format(prefix, base_unit)
-                new_obj = UnitQuantity._from_qty(
-                        units=qty_obj.units, mag=qty_obj.mag*factor,
-                        add_short_prefix=qty_obj.add_short_prefix,
-                        add_long_prefix=qty_obj.add_long_prefix,
-                        add_plural=qty_obj.add_plural)
-                _prefix_unit_db[new_unit] = new_obj
+        try:
+            add_long_prefix = qty_obj.add_long_prefix
+        except AttributeError:
+            pass
+        else:
+            if qty_obj.add_long_prefix:
+                for prefix, factor in long_prefixes.items():
+                    new_unit = '{}{}'.format(prefix, base_unit)
+                    new_obj = UnitQuantity._from_qty(
+                            units=qty_obj.units, mag=qty_obj.mag*factor,
+                            add_short_prefix=qty_obj.add_short_prefix,
+                            add_long_prefix=qty_obj.add_long_prefix,
+                            plural_suffix=qty_obj.plural_suffix)
+                    _prefix_unit_db[new_unit] = new_obj
 
     # Add entries with prefixes
     qty_dict_out = {**qty_dict, **_prefix_unit_db}
@@ -310,12 +326,13 @@ def _add_plural(qty_dict):
     for base_unit, qty_obj in qty_dict.items():
         # Skip species that do not allow prefixes
         try:
-            qty_obj.add_plural
+            plural_suffix = qty_obj.plural_suffix
         except AttributeError:
             pass
-        if not qty_obj.add_plural:
+        if plural_suffix is None:
             continue
-        new_unit = '{}s'.format(base_unit)
+
+        new_unit = '{}{}'.format(base_unit, plural_suffix)
         _plural_unit_db[new_unit] = qty_obj
     # Add entries with prefixes
     qty_dict_out = {**qty_dict, **_plural_unit_db}
