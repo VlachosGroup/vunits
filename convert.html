@@ -13,44 +13,52 @@
 
   
   
+    <link rel="shortcut icon" href="_static/vunits_icon.ico"/>
+  
   
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Quantity Class" href="quantity.html" />
     <link rel="prev" title="Constants" href="constants.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
             <a href="index.html" class="icon icon-home"> VUnits
           
 
+          
+            
+            <img src="_static/VUnits_White.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -166,481 +174,415 @@
 <p>Here we list functionality converting between units and unit sets.</p>
 <span class="target" id="module-vunits.convert"></span><dl class="function">
 <dt id="vunits.convert.convert_temp">
-<code class="descclassname">vunits.convert.</code><code class="descname">convert_temp</code><span class="sig-paren">(</span><em>num</em>, <em>initial</em>, <em>final</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.convert_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">convert_temp</code><span class="sig-paren">(</span><em class="sig-param">num</em>, <em class="sig-param">initial</em>, <em class="sig-param">final</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.convert_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts temperature from one unit set to another</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>num</strong> (<em>float</em><em>, </em><em>optional</em>) – Number to convert. I not specified, will return the appropriate
-conversion factor.</li>
-<li><strong>initial</strong> (<em>str</em>) – Units that num is currently in. Accepted options include ‘C’, ‘oC’,
-‘F’, ‘oF’, ‘R’, ‘K’.</li>
-<li><strong>final</strong> (<em>str</em>) – Units you would like num to be in. Accepted options include ‘C’,
-‘oC’, ‘F’, ‘oF’, ‘R’, ‘K’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>float</em><em>, </em><em>optional</em>) – Number to convert. I not specified, will return the appropriate
+conversion factor.</p></li>
+<li><p><strong>initial</strong> (<em>str</em>) – Units that num is currently in. Accepted options include ‘C’, ‘oC’,
+‘F’, ‘oF’, ‘R’, ‘K’.</p></li>
+<li><p><strong>final</strong> (<em>str</em>) – Units you would like num to be in. Accepted options include ‘C’,
+‘oC’, ‘F’, ‘oF’, ‘R’, ‘K’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>conversion_num</strong> – num in the appropriate units</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">float</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If unit types are not consistent or not supported</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>conversion_num</strong> – num in the appropriate units</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If unit types are not consistent or not supported</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.convert_unit">
-<code class="descclassname">vunits.convert.</code><code class="descname">convert_unit</code><span class="sig-paren">(</span><em>num=None</em>, <em>initial=None</em>, <em>final=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.convert_unit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">convert_unit</code><span class="sig-paren">(</span><em class="sig-param">num=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">final=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.convert_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts units between two unit sets</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>num</strong> (<em>float</em><em>, </em><em>optional</em>) – Number to convert. If not specified, will return the appropriate
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>float</em><em>, </em><em>optional</em>) – Number to convert. If not specified, will return the appropriate
 conversion factor. Default is 0 for temperature-based units, 1
-otherwise.</li>
-<li><strong>initial</strong> (<em>str</em>) – Units that num is currently in. Different units must be sparated by
+otherwise.</p></li>
+<li><p><strong>initial</strong> (<em>str</em>) – Units that num is currently in. Different units must be sparated by
 a ‘ ‘ or ‘/’. Supports powers as numbers after units. e.g. ‘cm/s2’,
-‘cm s-2’, or ‘cm s^-2’.</li>
-<li><strong>final</strong> (<em>str</em>) – Units you would like num to be in. Different units must be sparated
+‘cm s-2’, or ‘cm s^-2’.</p></li>
+<li><p><strong>final</strong> (<em>str</em>) – Units you would like num to be in. Different units must be sparated
 by a ‘ ‘ or ‘/’. Supports powers as numbers after units. e.g.
-‘cm/s2’, ‘cm s-2’, or ‘cm s^-2’.</li>
+‘cm/s2’, ‘cm s-2’, or ‘cm s^-2’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>conversion_num</strong> – num in the appropriate units</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">float</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If unit types are not consistent or not supported</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>conversion_num</strong> – num in the appropriate units</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If unit types are not consistent or not supported</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.debye_to_einstein">
-<code class="descclassname">vunits.convert.</code><code class="descname">debye_to_einstein</code><span class="sig-paren">(</span><em>debye_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.debye_to_einstein" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">debye_to_einstein</code><span class="sig-paren">(</span><em class="sig-param">debye_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.debye_to_einstein" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts Debye temperature to Einstein temperature</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>debye_temperature</strong> (<em>float</em>) – Debye temperature in K</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>einstein_temperature</strong> – Einstein temperature in K</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>debye_temperature</strong> (<em>float</em>) – Debye temperature in K</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>einstein_temperature</strong> – Einstein temperature in K</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.einstein_to_debye">
-<code class="descclassname">vunits.convert.</code><code class="descname">einstein_to_debye</code><span class="sig-paren">(</span><em>einstein_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.einstein_to_debye" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">einstein_to_debye</code><span class="sig-paren">(</span><em class="sig-param">einstein_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.einstein_to_debye" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts Einstein temperature to Debye temperature</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>einstein_temperature</strong> (<em>float</em>) – Einstein temperature in K</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>debye_temperature</strong> – Debye temperature in K</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>einstein_temperature</strong> (<em>float</em>) – Einstein temperature in K</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>debye_temperature</strong> – Debye temperature in K</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.energy_to_freq">
-<code class="descclassname">vunits.convert.</code><code class="descname">energy_to_freq</code><span class="sig-paren">(</span><em>energy</em>, <em>units_in='J'</em>, <em>return_quantity=False</em>, <em>units_out='Hz'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.energy_to_freq" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">energy_to_freq</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">units_in='J'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='Hz'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.energy_to_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts energy to frequency</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>energy</strong> (float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj) – Energy</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj) – Energy</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>freq</strong> – Frequency corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>freq</strong> – Frequency corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.energy_to_temp">
-<code class="descclassname">vunits.convert.</code><code class="descname">energy_to_temp</code><span class="sig-paren">(</span><em>energy</em>, <em>units_in='J'</em>, <em>return_quantity=False</em>, <em>units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.energy_to_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">energy_to_temp</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">units_in='J'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.energy_to_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts energy to temperature</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>energy</strong> (<em>float</em>) – Energy</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em>) – Energy</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>temp</strong> – Temperature  corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temp</strong> – Temperature  corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.energy_to_wavenumber">
-<code class="descclassname">vunits.convert.</code><code class="descname">energy_to_wavenumber</code><span class="sig-paren">(</span><em>energy</em>, <em>units_in='J'</em>, <em>return_quantity=False</em>, <em>units_out='cm-1'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.energy_to_wavenumber" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">energy_to_wavenumber</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">units_in='J'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='cm-1'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.energy_to_wavenumber" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts energy to wavenumber</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>energy</strong> (<em>float</em>) – Energy</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em>) – Energy</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wavenumber</strong> – Wavenumber corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>wavenumber</strong> – Wavenumber corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.freq_to_energy">
-<code class="descclassname">vunits.convert.</code><code class="descname">freq_to_energy</code><span class="sig-paren">(</span><em>freq</em>, <em>units_in='Hz'</em>, <em>return_quantity=False</em>, <em>units_out='J'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.freq_to_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">freq_to_energy</code><span class="sig-paren">(</span><em class="sig-param">freq</em>, <em class="sig-param">units_in='Hz'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='J'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.freq_to_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts frequency to energy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>freq</strong> (<em>float</em>) – Frequency</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘Hz’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq</strong> (<em>float</em>) – Frequency</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘Hz’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>energy</strong> – Energy corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>energy</strong> – Energy corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.freq_to_temp">
-<code class="descclassname">vunits.convert.</code><code class="descname">freq_to_temp</code><span class="sig-paren">(</span><em>freq</em>, <em>units_in='Hz'</em>, <em>return_quantity=False</em>, <em>units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.freq_to_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">freq_to_temp</code><span class="sig-paren">(</span><em class="sig-param">freq</em>, <em class="sig-param">units_in='Hz'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.freq_to_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts frequency to temperature</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>freq</strong> (<em>float</em>) – Frequency</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq</strong> (<em>float</em>) – Frequency</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>temp</strong> – Temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temp</strong> – Temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.freq_to_wavenumber">
-<code class="descclassname">vunits.convert.</code><code class="descname">freq_to_wavenumber</code><span class="sig-paren">(</span><em>freq</em>, <em>units_in='Hz'</em>, <em>return_quantity=False</em>, <em>units_out='cm-1'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.freq_to_wavenumber" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">freq_to_wavenumber</code><span class="sig-paren">(</span><em class="sig-param">freq</em>, <em class="sig-param">units_in='Hz'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='cm-1'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.freq_to_wavenumber" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts frequency to wavenumber</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>freq</strong> (<em>float</em>) – Frequency</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq</strong> (<em>float</em>) – Frequency</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wavenumber</strong> – Wavenumber corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>wavenumber</strong> – Wavenumber corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.inertia_to_temp">
-<code class="descclassname">vunits.convert.</code><code class="descname">inertia_to_temp</code><span class="sig-paren">(</span><em>inertia</em>, <em>units_in='kg m2'</em>, <em>return_quantity=False</em>, <em>units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.inertia_to_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">inertia_to_temp</code><span class="sig-paren">(</span><em class="sig-param">inertia</em>, <em class="sig-param">units_in='kg m2'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.inertia_to_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts moment of inertia into rotational temperature</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>inertia</strong> (<em>float</em>) – Moment of inertia</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">inertia</span></code>. Default is ‘kg m2’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inertia</strong> (<em>float</em>) – Moment of inertia</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">inertia</span></code>. Default is ‘kg m2’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rot_temperature</strong> – Rotational temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>rot_temperature</strong> – Rotational temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.temp_to_energy">
-<code class="descclassname">vunits.convert.</code><code class="descname">temp_to_energy</code><span class="sig-paren">(</span><em>temp</em>, <em>units_in='K'</em>, <em>return_quantity=False</em>, <em>units_out='J'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.temp_to_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">temp_to_energy</code><span class="sig-paren">(</span><em class="sig-param">temp</em>, <em class="sig-param">units_in='K'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='J'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.temp_to_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts temperature to energy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>temp</strong> (<em>float</em>) – Temperature in K</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp</strong> (<em>float</em>) – Temperature in K</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>energy</strong> – Energy corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>energy</strong> – Energy corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.temp_to_freq">
-<code class="descclassname">vunits.convert.</code><code class="descname">temp_to_freq</code><span class="sig-paren">(</span><em>temp</em>, <em>units_in='K'</em>, <em>return_quantity=False</em>, <em>units_out='Hz'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.temp_to_freq" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">temp_to_freq</code><span class="sig-paren">(</span><em class="sig-param">temp</em>, <em class="sig-param">units_in='K'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='Hz'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.temp_to_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts temperature to frequency</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>temp</strong> (<em>float</em>) – Temperature in K</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp</strong> (<em>float</em>) – Temperature in K</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>freq</strong> – Frequency corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>freq</strong> – Frequency corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.temp_to_wavenumber">
-<code class="descclassname">vunits.convert.</code><code class="descname">temp_to_wavenumber</code><span class="sig-paren">(</span><em>temp</em>, <em>units_in='K'</em>, <em>return_quantity=False</em>, <em>units_out='cm-1'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.temp_to_wavenumber" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">temp_to_wavenumber</code><span class="sig-paren">(</span><em class="sig-param">temp</em>, <em class="sig-param">units_in='K'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='cm-1'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.temp_to_wavenumber" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts vibrational/rotational temperature to wavenumber</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>temp</strong> (<em>float</em>) – Temperature in K</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp</strong> (<em>float</em>) – Temperature in K</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wavenumber</strong> – Wavenumber corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>wavenumber</strong> – Wavenumber corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.wavenumber_to_energy">
-<code class="descclassname">vunits.convert.</code><code class="descname">wavenumber_to_energy</code><span class="sig-paren">(</span><em>wavenumber</em>, <em>units_in='cm-1'</em>, <em>return_quantity=False</em>, <em>units_out='J'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">wavenumber_to_energy</code><span class="sig-paren">(</span><em class="sig-param">wavenumber</em>, <em class="sig-param">units_in='cm-1'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='J'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts wavenumbers to energies</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘1/cm’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘1/cm’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">energy</span></code>. Default is ‘J’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>energy</strong> – Energy corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>energy</strong> – Energy corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.wavenumber_to_freq">
-<code class="descclassname">vunits.convert.</code><code class="descname">wavenumber_to_freq</code><span class="sig-paren">(</span><em>wavenumber</em>, <em>units_in='cm-1'</em>, <em>return_quantity=False</em>, <em>units_out='Hz'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_freq" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">wavenumber_to_freq</code><span class="sig-paren">(</span><em class="sig-param">wavenumber</em>, <em class="sig-param">units_in='cm-1'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='Hz'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts wavenumber to frequency</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">freq</span></code>. Default is ‘Hz’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>freq</strong> – Frequency corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>freq</strong> – Frequency corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.wavenumber_to_inertia">
-<code class="descclassname">vunits.convert.</code><code class="descname">wavenumber_to_inertia</code><span class="sig-paren">(</span><em>wavenumber</em>, <em>units_in='cm-1'</em>, <em>return_quantity=False</em>, <em>units_out='kg m2'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_inertia" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">wavenumber_to_inertia</code><span class="sig-paren">(</span><em class="sig-param">wavenumber</em>, <em class="sig-param">units_in='cm-1'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='kg m2'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_inertia" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts wavenumber (1/cm) to moment of inertia</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">inertia</span></code>. Default is ‘kg m2’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">inertia</span></code>. Default is ‘kg m2’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mu</strong> – Moment of inertia corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mu</strong> – Moment of inertia corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vunits.convert.wavenumber_to_temp">
-<code class="descclassname">vunits.convert.</code><code class="descname">wavenumber_to_temp</code><span class="sig-paren">(</span><em>wavenumber</em>, <em>units_in='cm-1'</em>, <em>return_quantity=False</em>, <em>units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_temp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">wavenumber_to_temp</code><span class="sig-paren">(</span><em class="sig-param">wavenumber</em>, <em class="sig-param">units_in='cm-1'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_temp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts wavenumbers (1/cm) to temperatures (K)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</li>
-<li><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</li>
-<li><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
-returns float.</li>
-<li><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>temperature</strong> – Temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temperature</strong> – Temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -656,7 +598,7 @@ returns float.</li>
         <a href="quantity.html" class="btn btn-neutral float-right" title="Quantity Class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="constants.html" class="btn btn-neutral" title="Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="constants.html" class="btn btn-neutral float-left" title="Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -682,26 +624,28 @@ returns float.</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #46494c;
+    }
+    
+    .wy-menu-vertical header, .wy-menu-vertical p.caption {
+     color: #5E6EB4;
+    }
+  </style>
+
 
 </body>
 </html>
