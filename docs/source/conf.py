@@ -184,3 +184,7 @@ napoleon_google_docstring = True
 # Latex equations options
 imgmath_image_format = 'svg'
 imgmath_font_size = 18
+
+# Logo
+html_logo = './logos/VUnits_White.png'
+html_favicon = './logos/vunits_icon.ico'
