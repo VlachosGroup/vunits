@@ -1,8 +1,11 @@
 import math
+from warnings import warn
 from collections import defaultdict
 
 import numpy as np
 import pandas as pd
+
+HANDLED_FUNCTIONS = {}
 
 class Quantity:
     """Represents a quantity with units
@@ -162,6 +165,25 @@ class Quantity:
     def intensity(self):
         """float: Intensity dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['cd']
+
+    @property
+    def units_str(self):
+        str_out = ''
+        for unit, power in self.units.items():
+            int_power = int(round(power))
+            # Skip if no contribution from quantity
+            if power == 0:
+                continue
+            # Add unit with appropriate power
+            if np.isclose(power, 1.):
+                str_out += ' {}'.format(unit)
+            elif np.isclose(power, int_power):
+                str_out += ' {}^{}'.format(unit, int_power)
+            else:
+                str_out += ' {}^{}'.format(unit, power)
+        # Remove leading space
+        str_out = str_out.strip()
+        return str_out
     
     def __pos__(self):
         return Quantity._from_qty(units=self.units, mag=self.mag)
@@ -223,18 +245,7 @@ class Quantity:
         return float(self.mag)
 
     def __str__(self):
-        str_out = str(self.mag)
-        for unit, power in self.units.items():
-            int_power = int(round(power))
-            # Skip if no contribution from quantity
-            if power == 0:
-                continue
-            if np.isclose(power, 1.):
-                str_out += ' {}'.format(unit)
-            elif np.isclose(power, int_power):
-                str_out += ' {}^{}'.format(unit, int_power)
-            else:
-                str_out += ' {}^{}'.format(unit, power)
+        str_out = '{} {}'.format(self.mag, self.units_str)
         return str_out
     
     # def __repr__(self):
@@ -549,6 +560,40 @@ class Quantity:
             out = (self/units_obj).mag
         return out
 
+    def __array__(self):
+        return self.mag
+        # if isinstance(self.mag, np.ndarray):
+        #     out = self.mag
+        # else:
+        #     # If magnitude is not a numpy array already
+        #     try:
+        #         iter(self.mag)
+        #     except TypeError:
+        #         # If the magnitude is not iterable
+        #         out = np.array([self.mag])
+        #     else:
+        #         out = np.array(self.mag)
+        # return out
+
+    # def __array_ufunc__(self, ufunc, method, *args, **kwargs):
+    #     if method == '__call__':
+    #         args_out = []
+    #         for arg in args:
+    #             try:
+    #                 args_out.append(arg.mag)
+    #             except AttributeError:
+    #                 args_out.append(arg)
+    #         return Quantity._from_qty(units=self.units,
+    #                                   mag=ufunc(*args_out, **kwargs))
+    #     else:
+    #         raise NotImplementedError()
+
+    def __array_function__(self, func, types, args, kwargs):
+        if func not in HANDLED_FUNCTIONS:
+            raise NotImplementedError()
+
+        return HANDLED_FUNCTIONS[func](*args, **kwargs)
+
     @classmethod
     def from_units(cls, mag=1., units='', unit_db=None):
         """Method to create a :class:`~vunits.quantity.Quantity` by parsing
@@ -699,3 +744,267 @@ def _return_quantity(quantity, return_quantity, units_out=''):
         return quantity
     else:
         return quantity(units_out)
+
+def implements(np_function):
+    def decorator(func):
+        HANDLED_FUNCTIONS[np_function] = func
+        return func
+    return decorator
+
+'''
+Sums, products, differences
+https://docs.scipy.org/doc/numpy/reference/routines.math.html#sums-products-differences
+'''
+@implements(np.prod)
+def prod(a, **kwargs):
+    mag_out = np.prod(a.mag, **kwargs)
+    units_out = _get_units_prod(a.mag, mag_out)*a.units
+    return Quantity._from_qty(units=units_out, mag=mag_out)
+
+@implements(np.sum)
+def sum(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.sum(a.mag, **kwargs))
+
+@implements(np.nanprod)
+def nanprod(a, **kwargs):
+    mag_out = np.nanprod(a.mag, **kwargs)
+    units_out = _get_units_prod(a.mag, mag_out)*a.units
+    return Quantity._from_qty(units=units_out, mag=mag_out)
+
+@implements(np.nansum)
+def nansum(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.nansum(a.mag, **kwargs))
+
+@implements(np.cumsum)
+def cumsum(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.cumprod(a.mag, **kwargs))
+
+@implements(np.nancumsum)
+def nancumsum(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.nancumprod(a.mag, **kwargs))
+
+@implements(np.diff)
+def diff(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.diff(a.mag, **kwargs))
+
+@implements(np.ediff1d)
+def ediff1d(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.ediff1d(a.mag, **kwargs))
+
+'''
+Exponents and logarithms
+https://docs.scipy.org/doc/numpy/reference/routines.math.html#exponents-and-logarithms
+'''
+@implements(np.exp)
+def exp(x, **kwargs):
+    print(x)
+    _dimless_warn('numpy.exp', x)
+    return Quantity(mag=np.exp(x.mag, **kwargs))
+
+@implements(np.expm1)
+def expm1(x, **kwargs):
+    _dimless_warn('numpy.expm1', x)
+    return Quantity(mag=np.expm1(x.mag, **kwargs))    
+
+@implements(np.exp2)
+def exp2(x, **kwargs):
+    _dimless_warn('numpy.exp2', x)
+    return Quantity(mag=np.exp2(x.mag, **kwargs))    
+
+@implements(np.log)
+def log(x, **kwargs):
+    _dimless_warn('numpy.log', x)
+    return Quantity(mag=np.log(x.mag, **kwargs))
+
+@implements(np.log10)
+def log10(x, **kwargs):
+    _dimless_warn('numpy.log10', x)
+    return Quantity(mag=np.log10(x.mag, **kwargs))
+
+@implements(np.log2)
+def log2(x, **kwargs):
+    _dimless_warn('numpy.log2', x)
+    return Quantity(mag=np.log2(x.mag, **kwargs))
+
+@implements(np.log1p)
+def log1p(x, **kwargs):
+    _dimless_warn('numpy.log1p', x)
+    return Quantity(mag=np.log1p(x.mag, **kwargs))
+
+@implements(np.logaddexp)
+def logaddexp(x, **kwargs):
+    _dimless_warn('numpy.logaddexp', x)
+    return Quantity(mag=np.logaddexp(x.mag, **kwargs))
+
+@implements(np.logaddexp2)
+def logaddexp2(x, **kwargs):
+    _dimless_warn('numpy.logaddexp2', x)
+    return Quantity(mag=np.logaddexp2(x.mag, **kwargs))
+
+@implements(np.trapz)
+def trapz(y, x=None, dx=1.):
+    try:
+        x_units = x.units
+    except AttributeError:
+        if x is None:
+            # If x is not set, infer units from dx
+            try:
+                x_units = dx.units
+            except AttributeError:
+                warn_msg = ('Inputted dx variable to numpy.trapz was not a '
+                            'Quantity object ({}) so units cannot be inferred. '
+                            'Therefore the result will have the same units as '
+                            'y.'.format(dx))
+                warn(warn_msg)                
+                x_units = Quantity().units
+        else:
+            warn_msg = ('Inputted x variable to numpy.trapz was not a '
+                        'Quantity object ({}) so units cannot be inferred. '
+                        'Therefore the result will have the same units as '
+                        'y.'.format(x))
+            warn(warn_msg)                
+            x_units = Quantity().units
+    units_out = y_units + x_units
+    return Quantity._from_qty(mag=np.trapz(y.mag, **kwargs), units=units_out)
+
+
+'''
+Other special functions
+https://docs.scipy.org/doc/numpy/reference/routines.math.html#other-special-functions
+'''
+@implements(np.i0)
+def i0(x, **kwargs):
+    _dimless_warn('numpy.i0', x)
+    return Quantity(mag=np.i0(x.mag, **kwargs))
+
+@implements(np.sinc)
+def sinc(x, **kwargs):
+    _dimless_warn('numpy.sinc', x)
+    return Quantity(mag=np.sinc(x.mag, **kwargs))
+
+'''
+Miscellaneous
+https://docs.scipy.org/doc/numpy/reference/routines.math.html#miscellaneous
+'''
+@implements(np.clip)
+def clip(a, **kwargs):
+    return Quantity._from_qty(units=a.units, mag=np.clip(a.mag, **kwargs))
+
+@implements(np.sqrt)
+def sqrt(x, **kwargs):
+    units_out = x.units/2.
+    return Quantity._from_qty(units=units_out, mag=np.sqrt(x.mag, **kwargs))
+
+@implements(np.cbrt)
+def cbrt(x, **kwargs):
+    units_out = a.units/3.
+    return Quantity._from_qty(units=units_out, mag=np.cbrt(x.mag, **kwargs))
+
+@implements(np.square)
+def square(x, **kwargs):
+    units_out = x.units*2.
+    return Quantity._from_qty(units=units_out, mag=np.square(x.mag, **kwargs))
+
+@implements(np.absolute)
+def absolute(x, **kwargs):
+    return Quantity._from_qty(units=x.units, mag=np.absolute(x.mag, **kwargs))
+
+@implements(np.fabs)
+def fabs(x, **kwargs):
+    return Quantity._from_qty(units=x.units, mag=np.fabs(x.mag, **kwargs))
+
+@implements(np.sign)
+def sign(x, **kwargs):
+    return Quantity(mag=np.sign(x.mag, **kwargs))
+
+@implements(np.heaviside)
+def heaviside(x1, x2, **kwargs):
+    try:
+        x2_mag = x2.mag
+    except AttributeError:
+        x2_mag = x2
+    return Quantity(mag=np.heaviside(x1=x1.mag, x2=x2_mag, **kwargs))
+
+@implements(np.maximum)
+def maximum(x, **kwargs):
+    return Quantity._from_qty(units=x.units, mag=np.maximum(x.mag, **kwargs))
+
+@implements(np.minimum)
+def minimum(x, **kwargs):
+    return Quantity._from_qty(units=x.units, mag=np.minimum(x.mag, **kwargs))
+
+@implements(np.fmax)
+def fmax(x1, x2, **kwargs):
+    x2_units = x1._get_other_units(x2)
+    if not x1.equals(x2):
+        err_msg = ('Incompatible units between x1 ({}) and x2 ({}) for '
+                   'numpy.fmax.'.format(x1, x2))
+        raise TypeError(err_msg)
+    return Quantity._from_qty(units=x.units,
+                              mag=np.fmax(x1.mag, x2.mag, **kwargs))
+
+@implements(np.fmin)
+def fmin(x1, x2, **kwargs):
+    x2_units = x1._get_other_units(x2)
+    if not x1.equals(x2):
+        err_msg = ('Incompatible units between x1 ({}) and x2 ({}) for '
+                   'numpy.fmin.'.format(x1, x2))
+        raise TypeError(err_msg)
+    return Quantity._from_qty(units=x.units,
+                              mag=np.fmin(x1.mag, x2.mag, **kwargs))
+
+@implements(np.nan_to_num)
+def nan_to_num(x, **kwargs):
+    return Quantity._from_qty(units=x.units,
+                              mag=np.nan_to_num(x.mag, **kwargs))
+
+@implements(np.interp)
+def interp(x, xp, fp, **kwargs):
+    xp_out = _return_quantity(quantity=xp, return_quantity=False,
+                              units_out=x.units_str)
+    fp_out = _return_quantity(quantity=fp, return_quantity=False,
+                              units_out=None)
+    try:
+        fp_units = fp.units
+    except AttributeError:
+        fp_units = ''
+    return Quantity.from_units(units=fp_units,
+                               mag=np.interp(x.mag, xp=xp, fp=fp_out, **kwargs))
+
+
+@implements(np.mean)
+def mean(a):
+    return Quantity._from_qty(units=a.units, mag=np.mean(a.mag, **kwargs))
+
+
+'''Helper functions'''
+def _get_units_prod(array_in, array_out):
+    """Helper method calculate units after a product operation
+    
+    Parameters
+    ----------
+        array_in : np.ndarray
+            Array before product operation
+        array_out : np.ndarray, float
+            Array after product operation
+    Returns
+    -------
+        n : int
+            Factor to multiply units
+    """
+    try:
+        size_out = array_out.size
+    except AttributeError:
+        # Use 1 if float is returned
+        size_out = 1
+    return array_in.size/size_out
+
+def _dimless_warn(func_name, quantity):
+    """Helper method that warns when mathematical operations expect
+    dimensionless quantities but dimensional quantities are passed."""
+    a = 1
+    if not quantity._is_dimless():
+        warn_msg = ('Passed Quantity object with units ({}) to {} '
+                    'function. The Quantity object should be dimensionless'
+                    ''.format(quantity, func_name))
+        warn(warn_msg)
