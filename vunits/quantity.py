@@ -580,7 +580,7 @@ class Quantity:
     @classmethod
     def _from_qty(cls, units, mag=1., **kwargs):
         """Helper method to create a :class:`~vunits.quantity.Quantity`
-        using the magnitude and units.
+        using the magnitude and units formatted as a Pandas Series.
 
         Parameters
         ----------
@@ -601,6 +601,24 @@ class Quantity:
                    A=units['A'], K=units['K'], mol=units['mol'], cd=units['cd'],
                    **kwargs)
 
+    @classmethod
+    def _from_str(cls, quantity_str):
+        """Helper method to create the Quantity object from a string. It assumes
+        the value and the units are separated by a space.
+
+        Parameters
+        ----------
+            quantity_str : str
+                The quantity represented by a string. The value and units should
+                be separated by a space.
+                e.g. '10 m/s', '0.5 kg mol-1'
+        Returns
+        -------
+            quantity : :class:`~vunits.quantity.Quantity`
+                New quantity object.
+        """
+        val, units = quantity_str.split(' ', 1)
+        return Quantity.from_units(mag=float(val), units=units)
     
     def to_dict(self):
         """Represents object as dictionary with JSON-accepted datatypes

@@ -3,12 +3,33 @@
 Quantity Class
 **************
 
+Docstring
+---------
+
+.. currentmodule:: vunits.quantity
+
+.. autosummary::
+   :toctree: quantity
+   :nosignatures:
+
+   Quantity
+   UnitQuantity
+
+--------------------------------------------------------------------------------
+
 Initializing
 ------------
 
 A :class:`~vunits.quantity.Quantity` object can represent most physical
-quantities as it is based on elementary units (i.e. length, mass, time,
-temperature, amount, electric current, and light intensity).
+quantities as it is based on elementary units:
+
+- length
+- mass
+- time
+- temperature
+- amount
+- electric current
+- light intensity
 
 A :class:`~vunits.quantity.Quantity` object can be created manually if one knows
 the magnitude and the corresponding SI base units. Below we initialize a
@@ -31,6 +52,8 @@ same object as above.
 
    >>> vol_flow_rate = Quantity.from_units(10., 'm^3 s-1')
    >>> vol_flow_rate = Quantity.from_units(10000., 'cm^3/ms')
+
+--------------------------------------------------------------------------------
 
 Unit Conversions
 ----------------
@@ -73,6 +96,8 @@ Using ``int`` or ``float`` will convert the magnitude to the corresponding type.
    10
    >>> float(vol_flow_rate)
    10.0
+
+--------------------------------------------------------------------------------
 
 Operations
 ----------
@@ -214,12 +239,3 @@ operators will compare the magnitude.
    True
    >>> ratio != 0.6
    True
-
-Docstring
----------
-
-.. autoclass:: vunits.quantity.Quantity
-   :members:
-
-.. autoclass:: vunits.quantity.UnitQuantity
-   :members:

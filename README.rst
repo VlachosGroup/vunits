@@ -6,7 +6,7 @@ unit conversion and constants developed by the Vlachos Research Group at the
 University of Delaware. This code supports Python-based Virutal Kinetic
 Laboratory software and aims to be lightweight.
 
-.. image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/logos/VUnits_RGB_2.png
+.. image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/logos/vunits_web.png
    :target: https://vlachosgroup.github.io/vunits/
    :align: center
 

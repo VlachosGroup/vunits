@@ -39,11 +39,19 @@ release = '0.0.2'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autosummary',
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
 ]
+
+# Automatically generate summaries
+autosummary_generate = True
+autodoc_default_flags = ['members',
+                         'undoc-members',
+                         'show-inheritance',
+                         'inherited-members']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -186,5 +194,5 @@ imgmath_image_format = 'svg'
 imgmath_font_size = 18
 
 # Logo
-html_logo = './logos/VUnits_White.png'
+html_logo = './logos/vunits_inverse_highres.png'
 html_favicon = './logos/vunits_icon.ico'

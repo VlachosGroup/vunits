@@ -18,11 +18,11 @@ Welcome to VUnits's documentation!
    :maxdepth: 2
    :caption: API Reference
 
-   constants
-   convert
-   quantity
+   api/constants/constants
+   api/convert/convert
+   api/quantity/quantity
    unit_tables
-   db
+   api/db/db
 
 .. toctree::
    :maxdepth: 2

@@ -3,9 +3,16 @@
 Supported Units
 ***************
 
-The following units are supported by VUnits when parsing strings. Prefix of the
-units (e.g. 'km' or 'kilometer') are also supported. See the
-:ref:`prefixes section <prefix_table>` below for supported values.
+The following units are supported by VUnits when parsing strings. These units
+can be combined to form different quantities. For example, dividing an entry
+from the :ref:`supported lengths <length_table>` (e.g. ``m``) by an entry from 
+the :ref:`supported times <time_table>` (e.g. ``s``) will produce a quantity
+that represents a velocity (``m/s``).
+
+Prefixes of the units (e.g. 'km' or 'kilometer') are also supported. See the
+:ref:`prefixes section <prefix_table>` below for supported prefixes.
+
+.. contents::
 
 For custom units, add a :class:`~vunits.quantity.UnitQuantity` object to
 :py:data:`~vunits.db.unit_db`.
