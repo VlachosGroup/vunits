@@ -57,7 +57,7 @@
 
           
             
-            <img src="_static/VUnits_White.png" class="logo" alt="Logo"/>
+            <img src="_static/vunits_inverse_highres.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -93,12 +93,12 @@
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="constants.html">Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Unit Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/constants/constants.html">Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/convert/convert.html">Unit Conversions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/quantity/quantity.html">Quantity Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unit_tables.html">Supported Units</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unit_tables.html#supported-prefixes">Supported Prefixes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/db/db.html">Database</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Useful Links</span></p>
 <ul>
@@ -182,6 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="includeme.html#contributing">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="includeme.html#questions">Questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="includeme.html#funding">Funding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="includeme.html#special-thanks">Special Thanks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
@@ -205,13 +206,39 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="constants.html">Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Unit Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity Class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quantity.html#initializing">Initializing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantity.html#unit-conversions">Unit Conversions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantity.html#operations">Operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantity.html#docstring">Docstring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/constants/constants.html">Constants</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.F.html">vunits.constants.F</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.G.html">vunits.constants.G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.N0.html">vunits.constants.N0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.Na.html">vunits.constants.Na</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.P0.html">vunits.constants.P0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.R.html">vunits.constants.R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.R_inf.html">vunits.constants.R_inf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.T0.html">vunits.constants.T0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.V0.html">vunits.constants.V0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.c.html">vunits.constants.c</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.e.html">vunits.constants.e</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.eps_0.html">vunits.constants.eps_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.h.html">vunits.constants.h</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.h_bar.html">vunits.constants.h_bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.kb.html">vunits.constants.kb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.m_e.html">vunits.constants.m_e</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.m_n.html">vunits.constants.m_n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.m_p.html">vunits.constants.m_p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.mu_0.html">vunits.constants.mu_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/constants/constants/vunits.constants.r_bohr.html">vunits.constants.r_bohr</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/convert/convert.html">Unit Conversions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/convert/convert.html#converting-units-of-the-same-dimensions">Converting units of the same dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/convert/convert.html#converting-units-of-different-dimensions">Converting units of different dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/quantity/quantity.html">Quantity Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/quantity/quantity.html#docstring">Docstring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/quantity/quantity.html#initializing">Initializing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/quantity/quantity.html#unit-conversions">Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/quantity/quantity.html#operations">Operations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unit_tables.html">Supported Units</a><ul>
@@ -239,7 +266,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unit_tables.html#supported-prefixes">Supported Prefixes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/db/db.html">Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/db/db.html#unit-database">Unit Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/db/db.html#prefixes">Prefixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/db/db.html#misc">Misc.</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">

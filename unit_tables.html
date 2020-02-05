@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Database" href="db.html" />
-    <link rel="prev" title="Quantity Class" href="quantity.html" /> 
+    <link rel="next" title="Database" href="api/db/db.html" />
+    <link rel="prev" title="vunits.quantity.UnitQuantity" href="api/quantity/quantity/vunits.quantity.UnitQuantity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -58,7 +58,7 @@
 
           
             
-            <img src="_static/VUnits_White.png" class="logo" alt="Logo"/>
+            <img src="_static/vunits_inverse_highres.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -94,9 +94,9 @@
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="constants.html">Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Unit Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantity.html">Quantity Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/constants/constants.html">Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/convert/convert.html">Unit Conversions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/quantity/quantity.html">Quantity Class</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Units</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#time">Time</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#frequency">Frequency</a></li>
@@ -122,7 +122,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#supported-prefixes">Supported Prefixes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/db/db.html">Database</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Useful Links</span></p>
 <ul>
@@ -193,14 +193,49 @@
            <div itemprop="articleBody">
             
   <div class="section" id="supported-units">
-<span id="unit-tables"></span><h1>Supported Units<a class="headerlink" href="#supported-units" title="Permalink to this headline">¶</a></h1>
-<p>The following units are supported by VUnits when parsing strings. Prefix of the
-units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
-<a class="reference internal" href="#prefix-table"><span class="std std-ref">prefixes section</span></a> below for supported values.</p>
-<p>For custom units, add a <a class="reference internal" href="quantity.html#vunits.quantity.UnitQuantity" title="vunits.quantity.UnitQuantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitQuantity</span></code></a> object to
+<span id="unit-tables"></span><h1><a class="toc-backref" href="#id1">Supported Units</a><a class="headerlink" href="#supported-units" title="Permalink to this headline">¶</a></h1>
+<p>The following units are supported by VUnits when parsing strings. These units
+can be combined to form different quantities. For example, dividing an entry
+from the <a class="reference internal" href="#length-table"><span class="std std-ref">supported lengths</span></a> (e.g. <code class="docutils literal notranslate"><span class="pre">m</span></code>) by an entry from
+the <a class="reference internal" href="#time-table"><span class="std std-ref">supported times</span></a> (e.g. <code class="docutils literal notranslate"><span class="pre">s</span></code>) will produce a quantity
+that represents a velocity (<code class="docutils literal notranslate"><span class="pre">m/s</span></code>).</p>
+<p>Prefixes of the units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
+<a class="reference internal" href="#prefix-table"><span class="std std-ref">prefixes section</span></a> below for supported prefixes.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#supported-units" id="id1">Supported Units</a></p>
+<ul>
+<li><p><a class="reference internal" href="#time" id="id2">Time</a></p></li>
+<li><p><a class="reference internal" href="#frequency" id="id3">Frequency</a></p></li>
+<li><p><a class="reference internal" href="#length" id="id4">Length</a></p></li>
+<li><p><a class="reference internal" href="#volume" id="id5">Volume</a></p></li>
+<li><p><a class="reference internal" href="#acceleration" id="id6">Acceleration</a></p></li>
+<li><p><a class="reference internal" href="#mass" id="id7">Mass</a></p></li>
+<li><p><a class="reference internal" href="#force" id="id8">Force</a></p></li>
+<li><p><a class="reference internal" href="#energy" id="id9">Energy</a></p></li>
+<li><p><a class="reference internal" href="#power" id="id10">Power</a></p></li>
+<li><p><a class="reference internal" href="#pressure" id="id11">Pressure</a></p></li>
+<li><p><a class="reference internal" href="#amount" id="id12">Amount</a></p></li>
+<li><p><a class="reference internal" href="#temperature" id="id13">Temperature</a></p></li>
+<li><p><a class="reference internal" href="#electric-current" id="id14">Electric Current</a></p></li>
+<li><p><a class="reference internal" href="#light-intensity" id="id15">Light Intensity</a></p></li>
+<li><p><a class="reference internal" href="#charge" id="id16">Charge</a></p></li>
+<li><p><a class="reference internal" href="#potential-difference" id="id17">Potential Difference</a></p></li>
+<li><p><a class="reference internal" href="#capacitance" id="id18">Capacitance</a></p></li>
+<li><p><a class="reference internal" href="#electrical-inductance" id="id19">Electrical Inductance</a></p></li>
+<li><p><a class="reference internal" href="#electrical-resistance" id="id20">Electrical Resistance</a></p></li>
+<li><p><a class="reference internal" href="#magnetic-flux-density" id="id21">Magnetic Flux Density</a></p></li>
+<li><p><a class="reference internal" href="#magnetic-flux" id="id22">Magnetic Flux</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#supported-prefixes" id="id23">Supported Prefixes</a></p></li>
+</ul>
+</div>
+<p>For custom units, add a <a class="reference internal" href="api/quantity/quantity/vunits.quantity.UnitQuantity.html#vunits.quantity.UnitQuantity" title="vunits.quantity.UnitQuantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitQuantity</span></code></a> object to
 <code class="xref py py-data docutils literal notranslate"><span class="pre">unit_db</span></code>.</p>
 <div class="section" id="time">
-<span id="time-table"></span><h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<span id="time-table"></span><h2><a class="toc-backref" href="#id2">Time</a><a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 6%" />
@@ -288,7 +323,7 @@ units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
 </table>
 </div>
 <div class="section" id="frequency">
-<span id="frequency-table"></span><h2>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h2>
+<span id="frequency-table"></span><h2><a class="toc-backref" href="#id3">Frequency</a><a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 5%" />
@@ -322,7 +357,7 @@ units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
 </table>
 </div>
 <div class="section" id="length">
-<span id="length-table"></span><h2>Length<a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h2>
+<span id="length-table"></span><h2><a class="toc-backref" href="#id4">Length</a><a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 5%" />
@@ -398,7 +433,7 @@ units (e.g. ‘km’ or ‘kilometer’) are also supported. See the
 </table>
 </div>
 <div class="section" id="volume">
-<span id="volume-table"></span><h2>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
+<span id="volume-table"></span><h2><a class="toc-backref" href="#id5">Volume</a><a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
 <p>Note that all <a class="reference internal" href="#length-table"><span class="std std-ref">length</span></a> units can be combined to form new
 units for volume. For example, ‘m3’, ‘cm3’, ‘cm inch ft’ are all valid volume
 units.</p>
@@ -447,7 +482,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="acceleration">
-<span id="acceleration-table"></span><h2>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h2>
+<span id="acceleration-table"></span><h2><a class="toc-backref" href="#id6">Acceleration</a><a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 5%" />
@@ -475,7 +510,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="mass">
-<span id="mass-table"></span><h2>Mass<a class="headerlink" href="#mass" title="Permalink to this headline">¶</a></h2>
+<span id="mass-table"></span><h2><a class="toc-backref" href="#id7">Mass</a><a class="headerlink" href="#mass" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 6%" />
@@ -545,7 +580,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="force">
-<span id="force-table"></span><h2>Force<a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h2>
+<span id="force-table"></span><h2><a class="toc-backref" href="#id8">Force</a><a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 6%" />
@@ -597,7 +632,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="energy">
-<span id="energy-table"></span><h2>Energy<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h2>
+<span id="energy-table"></span><h2><a class="toc-backref" href="#id9">Energy</a><a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -662,7 +697,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="power">
-<span id="power-table"></span><h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
+<span id="power-table"></span><h2><a class="toc-backref" href="#id10">Power</a><a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -696,7 +731,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="pressure">
-<span id="pressure-table"></span><h2>Pressure<a class="headerlink" href="#pressure" title="Permalink to this headline">¶</a></h2>
+<span id="pressure-table"></span><h2><a class="toc-backref" href="#id11">Pressure</a><a class="headerlink" href="#pressure" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 5%" />
@@ -766,7 +801,7 @@ units.</p>
 </table>
 </div>
 <div class="section" id="amount">
-<span id="amount-table"></span><h2>Amount<a class="headerlink" href="#amount" title="Permalink to this headline">¶</a></h2>
+<span id="amount-table"></span><h2><a class="toc-backref" href="#id12">Amount</a><a class="headerlink" href="#amount" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 7%" />
@@ -818,10 +853,10 @@ units.</p>
 </table>
 </div>
 <div class="section" id="temperature">
-<span id="temp-table"></span><h2>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h2>
+<span id="temp-table"></span><h2><a class="toc-backref" href="#id13">Temperature</a><a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h2>
 <p>The values here represent incremental quantities
 (i.e. 1 K<sup>-1</sup>= 1 <sup>o</sup>C<sup>-1</sup>= 1.8 R<sup>-1</sup>=
-1.8 <sup>o</sup>F<sup>-1</sup>). If the <a class="reference internal" href="quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>
+1.8 <sup>o</sup>F<sup>-1</sup>). If the <a class="reference internal" href="api/quantity/quantity/vunits.quantity.Quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>
 object’s dimensions are only <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, unit conversions are done
 accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 536.67 R = 77 <sup>o</sup>F).</p>
@@ -870,7 +905,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="electric-current">
-<span id="current-table"></span><h2>Electric Current<a class="headerlink" href="#electric-current" title="Permalink to this headline">¶</a></h2>
+<span id="current-table"></span><h2><a class="toc-backref" href="#id14">Electric Current</a><a class="headerlink" href="#electric-current" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 6%" />
@@ -904,7 +939,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="light-intensity">
-<span id="intensity-table"></span><h2>Light Intensity<a class="headerlink" href="#light-intensity" title="Permalink to this headline">¶</a></h2>
+<span id="intensity-table"></span><h2><a class="toc-backref" href="#id15">Light Intensity</a><a class="headerlink" href="#light-intensity" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 7%" />
@@ -938,7 +973,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="charge">
-<span id="charge-table"></span><h2>Charge<a class="headerlink" href="#charge" title="Permalink to this headline">¶</a></h2>
+<span id="charge-table"></span><h2><a class="toc-backref" href="#id16">Charge</a><a class="headerlink" href="#charge" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 7%" />
@@ -972,7 +1007,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="potential-difference">
-<span id="potential-diff-table"></span><h2>Potential Difference<a class="headerlink" href="#potential-difference" title="Permalink to this headline">¶</a></h2>
+<span id="potential-diff-table"></span><h2><a class="toc-backref" href="#id17">Potential Difference</a><a class="headerlink" href="#potential-difference" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -1006,7 +1041,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="capacitance">
-<span id="capacitance-table"></span><h2>Capacitance<a class="headerlink" href="#capacitance" title="Permalink to this headline">¶</a></h2>
+<span id="capacitance-table"></span><h2><a class="toc-backref" href="#id18">Capacitance</a><a class="headerlink" href="#capacitance" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -1040,7 +1075,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="electrical-inductance">
-<span id="inductance-table"></span><h2>Electrical Inductance<a class="headerlink" href="#electrical-inductance" title="Permalink to this headline">¶</a></h2>
+<span id="inductance-table"></span><h2><a class="toc-backref" href="#id19">Electrical Inductance</a><a class="headerlink" href="#electrical-inductance" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -1074,7 +1109,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="electrical-resistance">
-<span id="resistance-table"></span><h2>Electrical Resistance<a class="headerlink" href="#electrical-resistance" title="Permalink to this headline">¶</a></h2>
+<span id="resistance-table"></span><h2><a class="toc-backref" href="#id20">Electrical Resistance</a><a class="headerlink" href="#electrical-resistance" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -1102,7 +1137,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="magnetic-flux-density">
-<span id="mag-flux-den-table"></span><h2>Magnetic Flux Density<a class="headerlink" href="#magnetic-flux-density" title="Permalink to this headline">¶</a></h2>
+<span id="mag-flux-den-table"></span><h2><a class="toc-backref" href="#id21">Magnetic Flux Density</a><a class="headerlink" href="#magnetic-flux-density" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 5%" />
@@ -1136,7 +1171,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </table>
 </div>
 <div class="section" id="magnetic-flux">
-<span id="mag-flux-table"></span><h2>Magnetic Flux<a class="headerlink" href="#magnetic-flux" title="Permalink to this headline">¶</a></h2>
+<span id="mag-flux-table"></span><h2><a class="toc-backref" href="#id22">Magnetic Flux</a><a class="headerlink" href="#magnetic-flux" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -1171,7 +1206,7 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
 </div>
 </div>
 <div class="section" id="supported-prefixes">
-<span id="prefix-table"></span><h1>Supported Prefixes<a class="headerlink" href="#supported-prefixes" title="Permalink to this headline">¶</a></h1>
+<span id="prefix-table"></span><h1><a class="toc-backref" href="#id23">Supported Prefixes</a><a class="headerlink" href="#supported-prefixes" title="Permalink to this headline">¶</a></h1>
 <p>VUnits supports the following prefixes when parsing units.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1278,10 +1313,10 @@ accounting for different reference points (i.e. 298.15 K = 25 <sup>o</sup>C =
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="db.html" class="btn btn-neutral float-right" title="Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api/db/db.html" class="btn btn-neutral float-right" title="Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quantity.html" class="btn btn-neutral float-left" title="Quantity Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="api/quantity/quantity/vunits.quantity.UnitQuantity.html" class="btn btn-neutral float-left" title="vunits.quantity.UnitQuantity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

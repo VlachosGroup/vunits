@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Unit Conversions &mdash; VUnits 0.0.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/vunits_icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="vunits.convert.convert_temp" href="same_dim/vunits.convert.convert_temp.html" />
+    <link rel="prev" title="vunits.constants.r_bohr" href="../constants/constants/vunits.constants.r_bohr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VUnits
+          
+
+          
+            
+            <img src="../../_static/vunits_inverse_highres.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includeme.html">Virtual Kinetic Laboratory Units (VUnits)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../constants/constants.html">Constants</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unit Conversions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#converting-units-of-the-same-dimensions">Converting units of the same dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="same_dim/vunits.convert.convert_temp.html">vunits.convert.convert_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="same_dim/vunits.convert.convert_unit.html">vunits.convert.convert_unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="same_dim/vunits.convert.debye_to_einstein.html">vunits.convert.debye_to_einstein</a></li>
+<li class="toctree-l3"><a class="reference internal" href="same_dim/vunits.convert.einstein_to_debye.html">vunits.convert.einstein_to_debye</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-units-of-different-dimensions">Converting units of different dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.energy_to_freq.html">vunits.convert.energy_to_freq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.energy_to_temp.html">vunits.convert.energy_to_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.energy_to_wavenumber.html">vunits.convert.energy_to_wavenumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.freq_to_energy.html">vunits.convert.freq_to_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.freq_to_temp.html">vunits.convert.freq_to_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.freq_to_wavenumber.html">vunits.convert.freq_to_wavenumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.inertia_to_temp.html">vunits.convert.inertia_to_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.temp_to_energy.html">vunits.convert.temp_to_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.temp_to_freq.html">vunits.convert.temp_to_freq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.temp_to_wavenumber.html">vunits.convert.temp_to_wavenumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_energy.html">vunits.convert.wavenumber_to_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_freq.html">vunits.convert.wavenumber_to_freq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_inertia.html">vunits.convert.wavenumber_to_inertia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_temp.html">vunits.convert.wavenumber_to_temp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quantity/quantity.html">Quantity Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unit_tables.html">Supported Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unit_tables.html#supported-prefixes">Supported Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/db.html">Database</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/VlachosGroup/vunits">View Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/VlachosGroup/vunits/issues">Report an Issue</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VUnits</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Unit Conversions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/convert/convert.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="unit-conversions">
+<span id="convert"></span><h1>Unit Conversions<a class="headerlink" href="#unit-conversions" title="Permalink to this headline">¶</a></h1>
+<p>Here we list functionality converting between units and unit sets.</p>
+<div class="section" id="converting-units-of-the-same-dimensions">
+<h2>Converting units of the same dimensions<a class="headerlink" href="#converting-units-of-the-same-dimensions" title="Permalink to this headline">¶</a></h2>
+<p>This section shows API related to converting units of similar sets. For example,
+<code class="docutils literal notranslate"><span class="pre">m/s</span></code> and <code class="docutils literal notranslate"><span class="pre">miles/hr</span></code> both have dimensions of <code class="docutils literal notranslate"><span class="pre">length</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code>.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="same_dim/vunits.convert.convert_temp.html#vunits.convert.convert_temp" title="vunits.convert.convert_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_temp</span></code></a></p></td>
+<td><p>Converts temperature from one unit set to another</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="same_dim/vunits.convert.convert_unit.html#vunits.convert.convert_unit" title="vunits.convert.convert_unit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_unit</span></code></a></p></td>
+<td><p>Converts units between two unit sets</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="same_dim/vunits.convert.debye_to_einstein.html#vunits.convert.debye_to_einstein" title="vunits.convert.debye_to_einstein"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debye_to_einstein</span></code></a></p></td>
+<td><p>Converts Debye temperature to Einstein temperature</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="same_dim/vunits.convert.einstein_to_debye.html#vunits.convert.einstein_to_debye" title="vunits.convert.einstein_to_debye"><code class="xref py py-obj docutils literal notranslate"><span class="pre">einstein_to_debye</span></code></a></p></td>
+<td><p>Converts Einstein temperature to Debye temperature</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="converting-units-of-different-dimensions">
+<h2>Converting units of different dimensions<a class="headerlink" href="#converting-units-of-different-dimensions" title="Permalink to this headline">¶</a></h2>
+<p>These are conversions between unit sets. For example, finding the vibrational
+temperature (dimensions of <code class="docutils literal notranslate"><span class="pre">temperature</span></code>) to vibrational frequencies
+(dimensions of inverse <code class="docutils literal notranslate"><span class="pre">time</span></code>).</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.energy_to_freq.html#vunits.convert.energy_to_freq" title="vunits.convert.energy_to_freq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_to_freq</span></code></a></p></td>
+<td><p>Converts energy to frequency</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.energy_to_temp.html#vunits.convert.energy_to_temp" title="vunits.convert.energy_to_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_to_temp</span></code></a></p></td>
+<td><p>Converts energy to temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.energy_to_wavenumber.html#vunits.convert.energy_to_wavenumber" title="vunits.convert.energy_to_wavenumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_to_wavenumber</span></code></a></p></td>
+<td><p>Converts energy to wavenumber</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.freq_to_energy.html#vunits.convert.freq_to_energy" title="vunits.convert.freq_to_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">freq_to_energy</span></code></a></p></td>
+<td><p>Converts frequency to energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.freq_to_temp.html#vunits.convert.freq_to_temp" title="vunits.convert.freq_to_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">freq_to_temp</span></code></a></p></td>
+<td><p>Converts frequency to temperature</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.freq_to_wavenumber.html#vunits.convert.freq_to_wavenumber" title="vunits.convert.freq_to_wavenumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">freq_to_wavenumber</span></code></a></p></td>
+<td><p>Converts frequency to wavenumber</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.inertia_to_temp.html#vunits.convert.inertia_to_temp" title="vunits.convert.inertia_to_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inertia_to_temp</span></code></a></p></td>
+<td><p>Converts moment of inertia into rotational temperature</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.temp_to_energy.html#vunits.convert.temp_to_energy" title="vunits.convert.temp_to_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temp_to_energy</span></code></a></p></td>
+<td><p>Converts temperature to energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.temp_to_freq.html#vunits.convert.temp_to_freq" title="vunits.convert.temp_to_freq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temp_to_freq</span></code></a></p></td>
+<td><p>Converts temperature to frequency</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.temp_to_wavenumber.html#vunits.convert.temp_to_wavenumber" title="vunits.convert.temp_to_wavenumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temp_to_wavenumber</span></code></a></p></td>
+<td><p>Converts vibrational/rotational temperature to wavenumber</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_energy.html#vunits.convert.wavenumber_to_energy" title="vunits.convert.wavenumber_to_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wavenumber_to_energy</span></code></a></p></td>
+<td><p>Converts wavenumbers to energies</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_freq.html#vunits.convert.wavenumber_to_freq" title="vunits.convert.wavenumber_to_freq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wavenumber_to_freq</span></code></a></p></td>
+<td><p>Converts wavenumber to frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_inertia.html#vunits.convert.wavenumber_to_inertia" title="vunits.convert.wavenumber_to_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wavenumber_to_inertia</span></code></a></p></td>
+<td><p>Converts wavenumber (1/cm) to moment of inertia</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="diff_dim/vunits.convert.wavenumber_to_temp.html#vunits.convert.wavenumber_to_temp" title="vunits.convert.wavenumber_to_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wavenumber_to_temp</span></code></a></p></td>
+<td><p>Converts wavenumbers (1/cm) to temperatures (K)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="same_dim/vunits.convert.convert_temp.html" class="btn btn-neutral float-right" title="vunits.convert.convert_temp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../constants/constants/vunits.constants.r_bohr.html" class="btn btn-neutral float-left" title="vunits.constants.r_bohr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Vlachos Research Group
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #46494c;
+    }
+    
+    .wy-menu-vertical header, .wy-menu-vertical p.caption {
+     color: #5E6EB4;
+    }
+  </style>
+
+
+</body>
+</html>

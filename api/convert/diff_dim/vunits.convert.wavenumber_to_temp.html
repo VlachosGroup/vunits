@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vunits.convert.wavenumber_to_temp &mdash; VUnits 0.0.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/vunits_icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Quantity Class" href="../../quantity/quantity.html" />
+    <link rel="prev" title="vunits.convert.wavenumber_to_inertia" href="vunits.convert.wavenumber_to_inertia.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> VUnits
+          
+
+          
+            
+            <img src="../../../_static/vunits_inverse_highres.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../includeme.html">Virtual Kinetic Laboratory Units (VUnits)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../constants/constants.html">Constants</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../convert.html">Unit Conversions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../convert.html#converting-units-of-the-same-dimensions">Converting units of the same dimensions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../convert.html#converting-units-of-different-dimensions">Converting units of different dimensions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.energy_to_freq.html">vunits.convert.energy_to_freq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.energy_to_temp.html">vunits.convert.energy_to_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.energy_to_wavenumber.html">vunits.convert.energy_to_wavenumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.freq_to_energy.html">vunits.convert.freq_to_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.freq_to_temp.html">vunits.convert.freq_to_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.freq_to_wavenumber.html">vunits.convert.freq_to_wavenumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.inertia_to_temp.html">vunits.convert.inertia_to_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.temp_to_energy.html">vunits.convert.temp_to_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.temp_to_freq.html">vunits.convert.temp_to_freq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.temp_to_wavenumber.html">vunits.convert.temp_to_wavenumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.wavenumber_to_energy.html">vunits.convert.wavenumber_to_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.wavenumber_to_freq.html">vunits.convert.wavenumber_to_freq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vunits.convert.wavenumber_to_inertia.html">vunits.convert.wavenumber_to_inertia</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">vunits.convert.wavenumber_to_temp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantity/quantity.html">Quantity Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unit_tables.html">Supported Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unit_tables.html#supported-prefixes">Supported Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../db/db.html">Database</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/VlachosGroup/vunits">View Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/VlachosGroup/vunits/issues">Report an Issue</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">VUnits</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../convert.html">Unit Conversions</a> &raquo;</li>
+        
+      <li>vunits.convert.wavenumber_to_temp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/convert/diff_dim/vunits.convert.wavenumber_to_temp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vunits-convert-wavenumber-to-temp">
+<h1>vunits.convert.wavenumber_to_temp<a class="headerlink" href="#vunits-convert-wavenumber-to-temp" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="vunits.convert.wavenumber_to_temp">
+<code class="sig-prename descclassname">vunits.convert.</code><code class="sig-name descname">wavenumber_to_temp</code><span class="sig-paren">(</span><em class="sig-param">wavenumber</em>, <em class="sig-param">units_in='cm-1'</em>, <em class="sig-param">return_quantity=False</em>, <em class="sig-param">units_out='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#vunits.convert.wavenumber_to_temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts wavenumbers (1/cm) to temperatures (K)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavenumber</strong> (<em>float</em>) – Wavenumber</p></li>
+<li><p><strong>units_in</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">wavenumber</span></code>. Default is ‘cm-1’.</p></li>
+<li><p><strong>return_quantity</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns <a class="reference internal" href="../../quantity/quantity/vunits.quantity.Quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a>. Otherwise,
+returns float.</p></li>
+<li><p><strong>units_out</strong> (<em>str</em><em>, </em><em>optional</em>) – Units corresponding to <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Default is ‘K’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>temperature</strong> – Temperature corresponding to <code class="docutils literal notranslate"><span class="pre">units_out</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or <a class="reference internal" href="../../quantity/quantity/vunits.quantity.Quantity.html#vunits.quantity.Quantity" title="vunits.quantity.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quantity</span></code></a> obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../quantity/quantity.html" class="btn btn-neutral float-right" title="Quantity Class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vunits.convert.wavenumber_to_inertia.html" class="btn btn-neutral float-left" title="vunits.convert.wavenumber_to_inertia" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Vlachos Research Group
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #46494c;
+    }
+    
+    .wy-menu-vertical header, .wy-menu-vertical p.caption {
+     color: #5E6EB4;
+    }
+  </style>
+
+
+</body>
+</html>
