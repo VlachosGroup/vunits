@@ -2,6 +2,8 @@ import os
 import unittest
 import math
 
+import numpy as np
+
 from vunits.quantity import Quantity, _force_get_quantity, _return_quantity
 
 class TestQuantityModule(unittest.TestCase):
@@ -295,6 +297,304 @@ class TestQuantityClass(unittest.TestCase):
                                             units=self.vel1.units),
                          self.vel1)
                          
+class TestQuantityNumpyCompatibility(unittest.TestCase):
+    def test_prod(self):
+        # Testing a 1D array
+        mag_1d = np.array([5., 6.])
+        speeds_1d = Quantity.from_units(mag=mag_1d, units='m/s')
+        units_1d = speeds_1d.units
+        expected_prod_1d = Quantity._from_qty(mag=np.prod(mag_1d),
+                                              units=units_1d*len(mag_1d))
+        self.assertEqual(expected_prod_1d, np.prod(speeds_1d))
+
+        # Testing a 2D array
+        mag_2d = np.array([[5., 6.], [7., 8.]])
+        speeds_2d = Quantity.from_units(mag=mag_2d, units='m/s')
+        units_2d = speeds_2d.units
+
+        # Axis not specified
+        expected_prod_2d = Quantity._from_qty(mag=np.prod(mag_2d),
+                                              units=units_2d*mag_2d.size)
+        self.assertEqual(expected_prod_2d, np.prod(speeds_2d))
+
+        # Axis = 0
+        axis = 0
+        expected_prod_2d = Quantity._from_qty(mag=np.prod(mag_2d, axis=axis),
+                                              units=units_2d*mag_2d.shape[1])
+        np.testing.assert_array_equal(expected_prod_2d,
+                                      np.prod(speeds_2d, axis=axis))
+
+        # Axis = 1
+        axis = 1
+        expected_prod_2d = Quantity._from_qty(mag=np.prod(mag_2d, axis=axis),
+                                              units=units_2d*mag_2d.shape[0])
+        np.testing.assert_array_equal(expected_prod_2d,
+                                      np.prod(speeds_2d, axis=axis))
+
+    def test_sum(self):
+        # Testing a 1D array
+        mag_1d = np.array([5., 6.])
+        speeds_1d = Quantity.from_units(mag=mag_1d, units='m/s')
+        units_1d = speeds_1d.units
+        expected_sum_1d = Quantity._from_qty(mag=np.sum(mag_1d),
+                                              units=units_1d)
+        self.assertEqual(expected_sum_1d, np.sum(speeds_1d))
+
+        # Testing a 2D array
+        mag_2d = np.array([[5., 6.], [7., 8.]])
+        speeds_2d = Quantity.from_units(mag=mag_2d, units='m/s')
+        units_2d = speeds_2d.units
+
+        # Axis not specified
+        expected_sum_2d = Quantity._from_qty(mag=np.sum(mag_2d),
+                                              units=units_2d)
+        self.assertEqual(expected_sum_2d, np.sum(speeds_2d))
+
+        # Axis = 0
+        axis = 0
+        expected_sum_2d = Quantity._from_qty(mag=np.sum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_sum_2d,
+                                      np.sum(speeds_2d, axis=axis))
+
+        # Axis = 1
+        axis = 1
+        expected_sum_2d = Quantity._from_qty(mag=np.sum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_sum_2d,
+                                      np.sum(speeds_2d, axis=axis))
+
+    def test_nanprod(self):
+        # Testing a 1D array
+        mag_1d = np.array([5., 6., np.nan])
+        speeds_1d = Quantity.from_units(mag=mag_1d, units='m/s')
+        units_1d = speeds_1d.units
+        expected_nanprod_1d = Quantity._from_qty(mag=np.nanprod(mag_1d),
+                                              units=units_1d*len(mag_1d))
+        self.assertEqual(expected_nanprod_1d, np.nanprod(speeds_1d))
+
+        # Testing a 2D array
+        mag_2d = np.array([[5., 6.], [7., np.nan]])
+        speeds_2d = Quantity.from_units(mag=mag_2d, units='m/s')
+        units_2d = speeds_2d.units
+
+        # Axis not specified
+        expected_nanprod_2d = Quantity._from_qty(mag=np.nanprod(mag_2d),
+                                              units=units_2d*mag_2d.size)
+        self.assertEqual(expected_nanprod_2d, np.nanprod(speeds_2d))
+
+        # Axis = 0
+        axis = 0
+        expected_nanprod_2d = Quantity._from_qty(mag=np.nanprod(mag_2d, axis=axis),
+                                              units=units_2d*mag_2d.shape[1])
+        np.testing.assert_array_equal(expected_nanprod_2d,
+                                      np.nanprod(speeds_2d, axis=axis))
+
+        # Axis = 1
+        axis = 1
+        expected_nanprod_2d = Quantity._from_qty(mag=np.nanprod(mag_2d, axis=axis),
+                                              units=units_2d*mag_2d.shape[0])
+        np.testing.assert_array_equal(expected_nanprod_2d,
+                                      np.nanprod(speeds_2d, axis=axis))
+
+    def test_nansum(self):
+        # Testing a 1D array
+        mag_1d = np.array([5., 6.])
+        speeds_1d = Quantity.from_units(mag=mag_1d, units='m/s')
+        units_1d = speeds_1d.units
+        expected_nansum_1d = Quantity._from_qty(mag=np.nansum(mag_1d),
+                                              units=units_1d)
+        self.assertEqual(expected_nansum_1d, np.nansum(speeds_1d))
+
+        # Testing a 2D array
+        mag_2d = np.array([[5., 6.], [7., 8.]])
+        speeds_2d = Quantity.from_units(mag=mag_2d, units='m/s')
+        units_2d = speeds_2d.units
+
+        # Axis not specified
+        expected_nansum_2d = Quantity._from_qty(mag=np.nansum(mag_2d),
+                                              units=units_2d)
+        self.assertEqual(expected_nansum_2d, np.nansum(speeds_2d))
+
+        # Axis = 0
+        axis = 0
+        expected_nansum_2d = Quantity._from_qty(mag=np.nansum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_nansum_2d,
+                                      np.nansum(speeds_2d, axis=axis))
+
+        # Axis = 1
+        axis = 1
+        expected_nansum_2d = Quantity._from_qty(mag=np.nansum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_nansum_2d,
+                                      np.nansum(speeds_2d, axis=axis))
+
+    def test_cumsum(self):
+        # Testing a 1D array
+        mag_1d = np.array([5., 6.])
+        speeds_1d = Quantity.from_units(mag=mag_1d, units='m/s')
+        units_1d = speeds_1d.units
+        expected_cumsum_1d = Quantity._from_qty(mag=np.cumsum(mag_1d),
+                                                units=units_1d)
+        np.testing.assert_array_equal(expected_cumsum_1d,
+                                      np.cumsum(speeds_1d))
+
+        # Testing a 2D array
+        mag_2d = np.array([[5., 6.], [7., 8.]])
+        speeds_2d = Quantity.from_units(mag=mag_2d, units='m/s')
+        units_2d = speeds_2d.units
+
+        # Axis not specified
+        expected_cumsum_2d = Quantity._from_qty(mag=np.cumsum(mag_2d),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_cumsum_2d,
+                                      np.cumsum(speeds_2d))
+
+        # Axis = 0
+        axis = 0
+        expected_cumsum_2d = Quantity._from_qty(mag=np.cumsum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_cumsum_2d,
+                                      np.cumsum(speeds_2d, axis=axis))
+
+        # Axis = 1
+        axis = 1
+        expected_cumsum_2d = Quantity._from_qty(mag=np.cumsum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_cumsum_2d,
+                                      np.cumsum(speeds_2d, axis=axis))
+
+    def test_nancumsum(self):
+        # Testing a 1D array
+        mag_1d = np.array([5., np.nan])
+        speeds_1d = Quantity.from_units(mag=mag_1d, units='m/s')
+        units_1d = speeds_1d.units
+        expected_nancumsum_1d = Quantity._from_qty(mag=np.nancumsum(mag_1d),
+                                              units=units_1d)
+        np.testing.assert_array_equal(expected_nancumsum_1d,
+                                      np.nancumsum(speeds_1d))
+
+        # Testing a 2D array
+        mag_2d = np.array([[5., 6.], [7., np.nan]])
+        speeds_2d = Quantity.from_units(mag=mag_2d, units='m/s')
+        units_2d = speeds_2d.units
+
+        # Axis not specified
+        expected_nancumsum_2d = Quantity._from_qty(mag=np.nancumsum(mag_2d),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_nancumsum_2d,
+                                      np.nancumsum(speeds_2d))
+
+        # Axis = 0
+        axis = 0
+        expected_nancumsum_2d = Quantity._from_qty(mag=np.nancumsum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_nancumsum_2d,
+                                      np.nancumsum(speeds_2d, axis=axis))
+
+        # Axis = 1
+        axis = 1
+        expected_nancumsum_2d = Quantity._from_qty(mag=np.nancumsum(mag_2d, axis=axis),
+                                              units=units_2d)
+        np.testing.assert_array_equal(expected_nancumsum_2d,
+                                      np.nancumsum(speeds_2d, axis=axis))
+
+    def test_diff(self):
+        pass
+
+    def test_ediff1d(self):
+        pass
+
+    def test_exp(self):
+        val = Quantity(1., m=1)
+        exp_val = Quantity(np.exp(1.))
+        self.assertEqual(np.exp(val),
+                         exp_val)
+
+    def test_expm1(self):
+        pass
+
+    def test_exp2(self):
+        pass
+
+    def test_log(self):
+        pass
+
+    def test_log10(self):
+        pass
+
+    def test_log2(self):
+        pass
+
+    def test_log1p(self):
+        pass
+
+    def test_logaddexp(self):
+        pass
+
+    def test_logaddexp2(self):
+        pass
+
+    def test_trapz(self):
+        pass
+
+    def test_i0(self):
+        pass
+
+    def test_sinc(self):
+        pass
+
+    def test_clip(self):
+        pass
+
+    def test_sqrt(self):
+        pass
+
+    def test_cbrt(self):
+        pass
+
+    def test_square(self):
+        pass
+
+    def test_absolute(self):
+        pass
+
+    def test_fabs(self):
+        pass
+
+    def test_sign(self):
+        pass
+
+    def test_heaviside(self):
+        pass
+
+    def test_maximum(self):
+        pass
+
+    def test_minimum(self):
+        pass
+
+    def test_fmax(self):
+        pass
+
+    def test_fmin(self):
+        pass
+
+    def test_nan_to_num(self):
+        pass
+
+    def test_interp(self):
+        pass
+
+    def test_mean(self):
+        pass
+
+    '''Helper functions'''
+    def test_get_units_prod(self):
+        pass
+
+
 
 if __name__ == '__main__':
     unittest.main()
