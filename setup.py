@@ -15,12 +15,12 @@ with open('README.rst', 'r') as fh:
 
 setuptools_info = {
 	'name': 'VUnits',
-	'version': '0.0.2',
+	'version': '0.0.3',
 	'author': 'Vlachos Research Group',
 	'author_email': 'vlachos@udel.edu',
 	'description': 'Virtual Kinetic Laboratory Units (VUnits)',
 	'long_description': long_description,
-	'zip_safe': True,
+	'zip_safe': False,
 	'url': 'https://github.com/VlachosGroup/vunits',
 	'packages': setuptools.find_packages(),
 	'package_data': {'':['*.xlsx', '*.json']},
