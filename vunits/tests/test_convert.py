@@ -236,7 +236,7 @@ class TestConvert(unittest.TestCase):
         # and units agreeing. Separating tests
         wavenumber_out = c.temp_to_wavenumber(temp, return_quantity=True)
         self.assertAlmostEqual(wavenumber_out.mag, wavenumber.mag)
-        self.assertTrue(wavenumber_out.units.equals(wavenumber.units))
+        self.assertEqual(wavenumber_out.units, wavenumber.units)
 
     def test_wavenumber_to_energy(self):
         wavenumber = Quantity.from_units(800., 'cm-1')
@@ -317,7 +317,7 @@ class TestConvert(unittest.TestCase):
         # and units agreeing. Separating tests
         temp_out = c.wavenumber_to_temp(wavenumber, return_quantity=True)
         self.assertAlmostEqual(temp_out.mag, temp.mag)
-        self.assertTrue(temp_out.units.equals(temp.units))
+        self.assertEqual(temp_out.units, temp.units)
 
     def test_debye_to_einstein(self):
         debye_temp = Quantity.from_units(200., 'K')
