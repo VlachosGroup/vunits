@@ -7,6 +7,19 @@ Development Branch
 ------------------
 `Development Branch`_
 
+Version 0.0.4
+-------------
+Jun. 30, 2020
+
+- Updated :class:`~vunits.quantity.Quantity` class to use simple dictionaries
+  instead of pandas.DataFrame objects to increase database loading speed.
+
+Version 0.0.3
+-------------
+Jun. 25, 2020
+
+- Fixed issues related to installation.
+
 Version 0.0.2
 -------------
 Jan. 7, 2020

@@ -15,7 +15,7 @@ with open('README.rst', 'r') as fh:
 
 setuptools_info = {
 	'name': 'VUnits',
-	'version': '0.0.3',
+	'version': '0.0.4',
 	'author': 'Vlachos Research Group',
 	'author_email': 'vlachos@udel.edu',
 	'description': 'Virtual Kinetic Laboratory Units (VUnits)',

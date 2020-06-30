@@ -2,7 +2,6 @@ import math
 from collections import defaultdict
 
 import numpy as np
-import pandas as pd
 
 class Quantity:
     """Represents a quantity with units
@@ -47,7 +46,6 @@ class Quantity:
                 Powers of units. Columns are labeled with 'm', 'kg', 's', 'A',
                 'K', 'mol', 'cd'.
 
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         return self._units
 
@@ -65,7 +63,6 @@ class Quantity:
                 Powers of units. Columns are labeled with 'length', 'mass',
                 'time', 'current', 'temperature', 'amount', 'intensity'.
 
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         return {'length': self.m, 'mass': self.kg, 'time': self.s,
                 'current': self.current, 'temperature': self.K,
@@ -504,11 +501,9 @@ class Quantity:
                 Variable to test
         Returns
         -------
-            other_units : (7,) `pd.Series`_ or None
+            other_units : dict or None
                 If ``other`` is a :class:`~vunits.quantity.Quantity`, accesses
                 ``other.units``. Otherwise return None
-
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         try:
             other_units = other.units
@@ -587,7 +582,7 @@ class Quantity:
 
         Parameters
         ----------
-            units : (7,) `pd.Series`_
+            units : dict
                 Units of the new quantity.
             mag : float, optional
                 Magnitude of new quantity. Default is 1.
@@ -597,8 +592,6 @@ class Quantity:
         -------
             quantity : :class:`~vunits.quantity.Quantity`
                 New quantity object.
-
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         return cls(mag=mag, m=units['m'], kg=units['kg'], s=units['s'],
                    A=units['A'], K=units['K'], mol=units['mol'], cd=units['cd'],

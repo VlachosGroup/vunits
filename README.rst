@@ -25,7 +25,7 @@ Dependencies
 
 -  Python3
 -  `Numpy`_: Used for vector and matrix operations
--  `Pandas`_: Used to represent unit dimensions of Quantity objects
+-  `Pandas`_: (Optional) Used by testing suite to read Excel spreadsheets
 -  `xlrd`_: (Optional) Used by testing suite to read Excel spreadsheets
 
 Getting Started
