@@ -12,6 +12,7 @@ Welcome to VUnits's documentation!
 
    includeme
    install
+   publications
    release_notes
 
 .. toctree::
