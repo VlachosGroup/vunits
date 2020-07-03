@@ -1,5 +1,4 @@
 import math
-from warnings import warn
 from collections import defaultdict
 
 import numpy as np
@@ -575,6 +574,13 @@ class Quantity:
                 out = np.array([self.mag])
         return out
 
+    def __array_ufunc__(self, ufunc, method, *args, **kwargs):
+        from vunits.quantity.numpy import HANDLED_FUNCTIONS
+        if ufunc not in HANDLED_FUNCTIONS:
+            raise NotImplementedError()
+
+        return HANDLED_FUNCTIONS[ufunc](*args, **kwargs)        
+
     # def __array_ufunc__(self, ufunc, method, *args, **kwargs):
     #     if method == '__call__':
     #         args_out = []
@@ -592,8 +598,8 @@ class Quantity:
         from vunits.quantity.numpy import HANDLED_FUNCTIONS
         if func not in HANDLED_FUNCTIONS:
             err_msg = ('Numpy function, {}, not implemented for '
-                       '{}} object.'.format(func, self.__class__))
-            raise NotImplementedError()
+                       '{} object.'.format(func, self.__class__))
+            raise NotImplementedError(err_msg)
 
         return HANDLED_FUNCTIONS[func](*args, **kwargs)
 

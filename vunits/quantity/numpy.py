@@ -1,5 +1,8 @@
+from warnings import warn
+
 import numpy as np
 from vunits.quantity import Quantity as Qty
+from vunits.quantity import _add_units, _sub_units, _mul_units
 
 HANDLED_FUNCTIONS = {}
 
@@ -17,7 +20,7 @@ https://docs.scipy.org/doc/numpy/reference/routines.math.html#sums-products-diff
 @implements(np.prod)
 def prod(a, **kwargs):
     mag_out = np.prod(a.mag, **kwargs)
-    units_out = _get_units_prod(a.mag, mag_out)*a.units
+    units_out = _mul_units(a.units, _get_units_prod(a.mag, mag_out))
     return Qty._from_qty(units=units_out, mag=mag_out)
 
 @implements(np.sum)
@@ -27,7 +30,7 @@ def sum(a, **kwargs):
 @implements(np.nanprod)
 def nanprod(a, **kwargs):
     mag_out = np.nanprod(a.mag, **kwargs)
-    units_out = _get_units_prod(a.mag, mag_out)*a.units
+    units_out = _mul_units(a.units, _get_units_prod(a.mag, mag_out))
     return Qty._from_qty(units=units_out, mag=mag_out)
 
 @implements(np.nansum)
@@ -56,7 +59,6 @@ https://docs.scipy.org/doc/numpy/reference/routines.math.html#exponents-and-loga
 '''
 @implements(np.exp)
 def exp(x, **kwargs):
-    pass
     _dimless_warn('numpy.exp', x)
     return Qty(mag=np.exp(x.mag, **kwargs))
 
@@ -123,7 +125,7 @@ def trapz(y, x=None, dx=1.):
                         'y.'.format(x))
             warn(warn_msg)                
             x_units = Qty().units
-    units_out = y_units + x_units
+    units_out = _add_units(y_units, x_units)
     return Qty._from_qty(mag=np.trapz(y.mag, **kwargs), units=units_out)
 
 
@@ -151,17 +153,17 @@ def clip(a, **kwargs):
 
 @implements(np.sqrt)
 def sqrt(x, **kwargs):
-    units_out = x.units/2.
+    units_out = _mul_units(x.units, 0.5)
     return Qty._from_qty(units=units_out, mag=np.sqrt(x.mag, **kwargs))
 
 @implements(np.cbrt)
 def cbrt(x, **kwargs):
-    units_out = a.units/3.
+    units_out = _mul_units(a.units, 1./3.)
     return Qty._from_qty(units=units_out, mag=np.cbrt(x.mag, **kwargs))
 
 @implements(np.square)
 def square(x, **kwargs):
-    units_out = x.units*2.
+    units_out = _mul_units(x.units, 2.)
     return Qty._from_qty(units=units_out, mag=np.square(x.mag, **kwargs))
 
 @implements(np.absolute)
@@ -178,6 +180,7 @@ def sign(x, **kwargs):
 
 @implements(np.heaviside)
 def heaviside(x1, x2, **kwargs):
+    # TODO Check if this requires units
     try:
         x2_mag = x2.mag
     except AttributeError:
@@ -195,27 +198,27 @@ def minimum(x, **kwargs):
 @implements(np.fmax)
 def fmax(x1, x2, **kwargs):
     x2_units = x1._get_other_units(x2)
-    if not x1.equals(x2):
+    if x1.units != x2_units:
         err_msg = ('Incompatible units between x1 ({}) and x2 ({}) for '
                    'numpy.fmax.'.format(x1, x2))
         raise TypeError(err_msg)
     return Qty._from_qty(units=x.units,
-                              mag=np.fmax(x1.mag, x2.mag, **kwargs))
+                         mag=np.fmax(x1.mag, x2.mag, **kwargs))
 
 @implements(np.fmin)
 def fmin(x1, x2, **kwargs):
     x2_units = x1._get_other_units(x2)
-    if not x1.equals(x2):
+    if x1.units != x2_units:
         err_msg = ('Incompatible units between x1 ({}) and x2 ({}) for '
                    'numpy.fmin.'.format(x1, x2))
         raise TypeError(err_msg)
     return Qty._from_qty(units=x.units,
-                              mag=np.fmin(x1.mag, x2.mag, **kwargs))
+                         mag=np.fmin(x1.mag, x2.mag, **kwargs))
 
 @implements(np.nan_to_num)
 def nan_to_num(x, **kwargs):
     return Qty._from_qty(units=x.units,
-                              mag=np.nan_to_num(x.mag, **kwargs))
+                         mag=np.nan_to_num(x.mag, **kwargs))
 
 @implements(np.interp)
 def interp(x, xp, fp, **kwargs):
@@ -228,7 +231,7 @@ def interp(x, xp, fp, **kwargs):
     except AttributeError:
         fp_units = ''
     return Qty.from_units(units=fp_units,
-                               mag=np.interp(x.mag, xp=xp, fp=fp_out, **kwargs))
+                          mag=np.interp(x.mag, xp=xp, fp=fp_out, **kwargs))
 
 
 @implements(np.mean)
@@ -262,7 +265,7 @@ def _dimless_warn(func_name, quantity):
     """Helper method that warns when mathematical operations expect
     dimensionless quantities but dimensional quantities are passed."""
     if not quantity._is_dimless():
-        warn_msg = ('Passed Qty object with units ({}) to {} '
-                    'function. The Qty object should be dimensionless'
-                    ''.format(quantity, func_name))
+        warn_msg = ('Passed {} to {} function. The Quantity object should be '
+                    'dimensionless.'
+                    ''.format(repr(quantity), func_name))
         warn(warn_msg)
