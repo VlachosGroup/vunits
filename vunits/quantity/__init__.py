@@ -3,7 +3,6 @@ from warnings import warn
 from collections import defaultdict
 
 import numpy as np
-import pandas as pd
 
 class Quantity:
     """Represents a quantity with units
@@ -35,8 +34,8 @@ class Quantity:
         if isinstance(mag, list):
             mag_in = np.array(mag)
         self.mag = mag_in
-        self._units = pd.Series(data={'m': m, 'kg': kg, 's': s, 'A': A, 'K': K,
-                                      'mol': mol, 'cd': cd})
+        self._units = {'m': m, 'kg': kg, 's': s, 'A': A, 'K': K,
+                       'mol': mol, 'cd': cd}
 
     @property
     def units(self):
@@ -44,11 +43,10 @@ class Quantity:
 
         Returns
         -------
-            units : (7,) `pd.Series`_
+            units : dict
                 Powers of units. Columns are labeled with 'm', 'kg', 's', 'A',
                 'K', 'mol', 'cd'.
 
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         return self._units
 
@@ -62,16 +60,14 @@ class Quantity:
 
         Returns
         -------
-            dim : (7,) `pd.Series`_
+            dim : dict
                 Powers of units. Columns are labeled with 'length', 'mass',
                 'time', 'current', 'temperature', 'amount', 'intensity'.
 
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
-        return pd.Series(data={'length': self.m, 'mass': self.kg,
-                               'time': self.s, 'current': self.current,
-                               'temperature': self.K, 'amount': self.mol,
-                               'intensity': self.cd})
+        return {'length': self.m, 'mass': self.kg, 'time': self.s,
+                'current': self.current, 'temperature': self.K,
+                'amount': self.mol, 'intensity': self.cd}
 
     @property
     def m(self):
@@ -216,7 +212,7 @@ class Quantity:
                 raise TypeError(err_msg)
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
 
             # Create new Quantity object with same units and values added
@@ -232,7 +228,7 @@ class Quantity:
         if other_units is None:
             self.mag *= other
         else:
-            self.units = self.units + other_units
+            self.units = _add_units(self.units, other_units)
             self.mag *= other.mag
         return self
 
@@ -246,8 +242,10 @@ class Quantity:
         str_out = '{} {}'.format(self.mag, self.units_str)
         return str_out
     
-    # def __repr__(self):
-    #     return ''
+    def __repr__(self):
+        out = ('<vunits.quantity.Quantity object at {} with value {}>'
+               ''.format(hex(id(self)), str(self)))
+        return out
 
     def add(self, other, return_quantity=True, operation='Addition'):
         """Helper method for addition.
@@ -278,7 +276,7 @@ class Quantity:
                 out = Quantity._from_qty(units=self.units, mag=out)
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
 
             # Create new Quantity object with same units and values added
@@ -305,7 +303,7 @@ class Quantity:
             out = other - self.mag
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
             # Create new Quantity object with same units and values added
             out = Quantity._from_qty(units=self.units, mag=other.mag-self.mag)
@@ -317,7 +315,7 @@ class Quantity:
             # If other is dimensionless, add value and return Unit type
             out = Quantity._from_qty(units=self.units, mag=self.mag*other)
         else:
-            out_units = self.units + other_units            
+            out_units = _add_units(self.units, other_units)
             out = Quantity._from_qty(mag=self.mag*other.mag, units=out_units)
         return out
     
@@ -330,7 +328,7 @@ class Quantity:
             # If other is dimensionless, add value and return Unit type
             out = Quantity._from_qty(units=self.units, mag=self.mag//other)
         else:
-            out_units = self.units - other_units            
+            out_units = _sub_units(self.units, other_units)            
             out = Quantity._from_qty(mag=self.mag//other.mag, units=out_units)
         return out
 
@@ -338,9 +336,9 @@ class Quantity:
         other_units = self._get_other_units(other)
         if other_units is None:
             # If other is dimensionless, floor divide the magnitude
-            out = Quantity._from_qty(units=-self.units, mag=other//self.mag)
+            out = Quantity._from_qty(units=_neg_units(self.units), mag=other//self.mag)
         else:
-            out_units = other_units - self.units
+            out_units = _sub_units(other_units, self.units)
             out = Quantity._from_qty(mag=other.mag//self.mag, units=out_units)
         return out
 
@@ -350,7 +348,7 @@ class Quantity:
             # If other is dimensionless, divide the magnitude
             out = Quantity._from_qty(units=self.units, mag=self.mag/other)
         else:
-            out_units = self.units - other_units
+            out_units = _sub_units(self.units, other_units)
             out = Quantity._from_qty(mag=self.mag/other.mag, units=out_units)
         return out
 
@@ -358,20 +356,22 @@ class Quantity:
         other_units = self._get_other_units(other)
         if other_units is None:
             # If other is dimensionless, add value and return Unit type
-            out = Quantity._from_qty(units=-self.units, mag=other/self.mag)
+            out = Quantity._from_qty(units=_neg_units(self.units),
+                                     mag=other/self.mag)
         else:
-            out_units = other_units - self.units
-            out = Quantity._from_qty(mag=other.mag/self.mag, units=out_units)
+            out_units = _sub_units(other_units, self.units)
+            out = Quantity._from_qty(mag=other.mag/self.mag,
+                                     units=out_units)
         return out
 
     def __pow__(self, other):
         other_units = self._get_other_units(other)
         if other_units is None:
             mag = self.mag**other
-            units = self.units*other
+            units = _mul_units(self.units, other)
         elif other._is_dimless():
             mag = self.mag**other.mag
-            units = self.units*other.mag
+            units = _mul_units(self.units, other.mag)
         else:
             err_msg = ('Power operation incompatible exponent with units, {}.'
                        ''.format(str(other)))
@@ -392,7 +392,7 @@ class Quantity:
                 raise TypeError(err_msg)
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
             # Compare magnitudes
             out = self.mag < other.mag
@@ -411,7 +411,7 @@ class Quantity:
                 raise TypeError(err_msg)
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
             # Compare magnitudes
             out = self.mag <= other.mag
@@ -428,7 +428,7 @@ class Quantity:
                 out = False
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 out = False
             else:
                 # Compare magnitudes
@@ -451,7 +451,7 @@ class Quantity:
                 raise TypeError(err_msg)
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
             # Compare magnitudes
             out = self.mag > other.mag
@@ -470,7 +470,7 @@ class Quantity:
                 raise TypeError(err_msg)
         else:
             # Check if units are the same
-            if not self.units.equals(other_units):
+            if self.units != other_units:
                 raise TypeError(err_msg)
             # Compare magnitudes
             out = self.mag >= other.mag
@@ -485,7 +485,9 @@ class Quantity:
                 Returns True if all units are close to 0. Returns False
                 otherwise.
         """
-        return np.allclose(self.dim, np.zeros(len(self.dim)))
+        expected_val = {'m': 0., 'kg': 0., 's': 0., 'A': 0.,
+                        'K': 0., 'mol': 0., 'cd': 0.}
+        return self.units == expected_val
 
     def _is_temp(self):
         """Check if the :class:`~vunits.quantity.Quantity` is a temperature.
@@ -496,9 +498,9 @@ class Quantity:
                 Returns True if the units have a single power of 'K'. Returns
                 False otherwise.
         """
-        expected_val = pd.Series(data={'m': 0., 'kg': 0., 's': 0., 'A': 0.,
-                                       'K': 1., 'mol': 0., 'cd': 0.})
-        return self.units.equals(expected_val)
+        expected_val = {'m': 0., 'kg': 0., 's': 0., 'A': 0.,
+                        'K': 1., 'mol': 0., 'cd': 0.}
+        return self.units == expected_val
 
     def _get_other_units(self, other):
         """Helper method to test if ``other`` is a
@@ -510,11 +512,9 @@ class Quantity:
                 Variable to test
         Returns
         -------
-            other_units : (7,) `pd.Series`_ or None
+            other_units : dict or None
                 If ``other`` is a :class:`~vunits.quantity.Quantity`, accesses
                 ``other.units``. Otherwise return None
-
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         try:
             other_units = other.units
@@ -549,7 +549,7 @@ class Quantity:
         else:
             # Converts to the appropriate unit
             units_obj = Quantity.from_units(units=units)
-            if not self.units.equals(units_obj.units):
+            if self.units != units_obj.units:
                 err_msg = ('Unit conversion not possible due to '
                            'incompatibility between object\'s units, {}, and '
                            'requested units, {}.'
@@ -632,11 +632,11 @@ class Quantity:
     @classmethod
     def _from_qty(cls, units, mag=1., **kwargs):
         """Helper method to create a :class:`~vunits.quantity.Quantity`
-        using the magnitude and units.
+        using the magnitude and units formatted as a Pandas Series.
 
         Parameters
         ----------
-            units : (7,) `pd.Series`_
+            units : dict
                 Units of the new quantity.
             mag : float, optional
                 Magnitude of new quantity. Default is 1.
@@ -646,13 +646,29 @@ class Quantity:
         -------
             quantity : :class:`~vunits.quantity.Quantity`
                 New quantity object.
-
-        .. _`pd.Series`: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html
         """
         return cls(mag=mag, m=units['m'], kg=units['kg'], s=units['s'],
                    A=units['A'], K=units['K'], mol=units['mol'], cd=units['cd'],
                    **kwargs)
 
+    @classmethod
+    def _from_str(cls, quantity_str):
+        """Helper method to create the Quantity object from a string. It assumes
+        the value and the units are separated by a space.
+
+        Parameters
+        ----------
+            quantity_str : str
+                The quantity represented by a string. The value and units should
+                be separated by a space.
+                e.g. '10 m/s', '0.5 kg mol-1'
+        Returns
+        -------
+            quantity : :class:`~vunits.quantity.Quantity`
+                New quantity object.
+        """
+        val, units = quantity_str.split(' ', 1)
+        return Quantity.from_units(mag=float(val), units=units)
     
     def to_dict(self):
         """Represents object as dictionary with JSON-accepted datatypes
@@ -750,3 +766,77 @@ def _return_quantity(quantity, return_quantity, units_out=''):
         return quantity
     else:
         return quantity(units_out)
+
+def _add_units(units1, units2):
+    """Helper method to handle units when quantities are multiplied
+    
+    Parameters
+    ----------
+        units1 : dict
+            Units to add
+        units2 : dict
+            Units to add
+    Returns
+    -------
+        units_out : dict
+            Added units
+    """
+    out_dict = {}
+    for key in units1.keys():
+        out_dict[key] = units1[key] + units2[key]
+    return out_dict
+
+def _sub_units(units1, units2):
+    """Helper method to handle units when quantities are divided
+    
+    Parameters
+    ----------
+        units1 : dict
+            Units to subtract
+        units2 : dict
+            Units to subtract
+    Returns
+    -------
+        units_out : dict
+            Subtracted units
+    """
+    out_dict = {}
+    for key in units1.keys():
+        out_dict[key] = units1[key] - units2[key]
+    return out_dict
+
+def _mul_units(units, power):
+    """Helper method to handle units when quantities are raised to a power
+    
+    Parameters
+    ----------
+        units : dict
+            Units
+        power : float
+            Power to raise
+    Returns
+    -------
+        units_out : dict
+            Multiplied units
+    """
+    out_dict = {}
+    for key in units.keys():
+        out_dict[key] = units[key]*power
+    return out_dict
+
+def _neg_units(units):
+    """Helper method to invert sign of units
+    
+    Parameters
+    ----------
+        units : dict
+            Units
+    Returns
+    -------
+        units_out : dict
+            Inverted units
+    """
+    out_dict = {}
+    for key in units.keys():
+        out_dict[key] = - units[key]
+    return out_dict

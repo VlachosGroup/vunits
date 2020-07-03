@@ -268,8 +268,8 @@ class TestQuantityClass(unittest.TestCase):
         self.assertFalse(self.vel1._is_temp())
 
     def test_get_other_units(self):
-        self.assertTrue(self.vel2.units.equals(
-                self.vel1._get_other_units(self.vel2)))
+        self.assertEqual(self.vel2.units,
+                         self.vel1._get_other_units(self.vel2))
         self.assertIsNone(self.vel1._get_other_units(1))
 
     def test_call(self):

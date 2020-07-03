@@ -6,7 +6,7 @@ unit conversion and constants developed by the Vlachos Research Group at the
 University of Delaware. This code supports Python-based Virutal Kinetic
 Laboratory software and aims to be lightweight.
 
-.. image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/logos/VUnits_RGB_2.png
+.. image:: https://raw.githubusercontent.com/VlachosGroup/vunits/master/docs/source/logos/vunits_web.png
    :target: https://vlachosgroup.github.io/vunits/
    :align: center
 
@@ -25,7 +25,7 @@ Dependencies
 
 -  Python3
 -  `Numpy`_: Used for vector and matrix operations
--  `Pandas`_: Used to represent unit dimensions of Quantity objects
+-  `Pandas`_: (Optional) Used by testing suite to read Excel spreadsheets
 -  `xlrd`_: (Optional) Used by testing suite to read Excel spreadsheets
 
 Getting Started
