@@ -233,8 +233,10 @@ class Quantity:
                 str_out += ' {}^{}'.format(unit, power)
         return str_out
     
-    # def __repr__(self):
-    #     return ''
+    def __repr__(self):
+        out = ('<vunits.quantity.Quantity object at {} with value {}>'
+               ''.format(hex(id(self)), str(self)))
+        return out
 
     def add(self, other, return_quantity=True, operation='Addition'):
         """Helper method for addition.
