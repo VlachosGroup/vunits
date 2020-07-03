@@ -1,4 +1,5 @@
 import math
+from warnings import warn
 from collections import defaultdict
 
 import numpy as np
@@ -158,6 +159,25 @@ class Quantity:
     def intensity(self):
         """float: Intensity dimension or :class:`~vunits.quantity.Quantity`"""
         return self._units['cd']
+
+    @property
+    def units_str(self):
+        str_out = ''
+        for unit, power in self.units.items():
+            int_power = int(round(power))
+            # Skip if no contribution from quantity
+            if power == 0:
+                continue
+            # Add unit with appropriate power
+            if np.isclose(power, 1.):
+                str_out += ' {}'.format(unit)
+            elif np.isclose(power, int_power):
+                str_out += ' {}^{}'.format(unit, int_power)
+            else:
+                str_out += ' {}^{}'.format(unit, power)
+        # Remove leading space
+        str_out = str_out.strip()
+        return str_out
     
     def __pos__(self):
         return Quantity._from_qty(units=self.units, mag=self.mag)
@@ -219,18 +239,7 @@ class Quantity:
         return float(self.mag)
 
     def __str__(self):
-        str_out = str(self.mag)
-        for unit, power in self.units.items():
-            int_power = int(round(power))
-            # Skip if no contribution from quantity
-            if power == 0:
-                continue
-            if np.isclose(power, 1.):
-                str_out += ' {}'.format(unit)
-            elif np.isclose(power, int_power):
-                str_out += ' {}^{}'.format(unit, int_power)
-            else:
-                str_out += ' {}^{}'.format(unit, power)
+        str_out = '{} {}'.format(self.mag, self.units_str)
         return str_out
     
     def __repr__(self):
@@ -549,6 +558,49 @@ class Quantity:
             out = (self/units_obj).mag
         return out
 
+    def __array__(self):
+        # if isinstance(self.mag, np.ndarray):
+        #     out = self.mag
+        # else:
+        #     out = np.array(self.mag)
+        # return out
+        if isinstance(self.mag, np.ndarray):
+            out = self.mag
+        else:
+            # If magnitude is not a numpy array already
+            try:
+                out = np.array(self.mag)
+            except TypeError:
+                # If the magnitude is not iterable
+                out = np.array([self.mag])
+        return out
+
+    # def __array_ufunc__(self, ufunc, method, *args, **kwargs):
+    #     if method == '__call__':
+    #         args_out = []
+    #         for arg in args:
+    #             try:
+    #                 args_out.append(arg.mag)
+    #             except AttributeError:
+    #                 args_out.append(arg)
+    #         return Quantity._from_qty(units=self.units,
+    #                                   mag=ufunc(*args_out, **kwargs))
+    #     else:
+    #         raise NotImplementedError()
+
+    def __array_function__(self, func, types, args, kwargs):
+        from vunits.quantity.numpy import HANDLED_FUNCTIONS
+        if func not in HANDLED_FUNCTIONS:
+            err_msg = ('Numpy function, {}, not implemented for '
+                       '{}} object.'.format(func, self.__class__))
+            raise NotImplementedError()
+
+        return HANDLED_FUNCTIONS[func](*args, **kwargs)
+
+    # def sum(self, use_np=False, *args, **kwargs):
+    #     if 
+
+
     @classmethod
     def from_units(cls, mag=1., units='', unit_db=None):
         """Method to create a :class:`~vunits.quantity.Quantity` by parsing
@@ -696,7 +748,6 @@ def _force_get_quantity(obj, units=''):
 
 def _return_quantity(quantity, return_quantity, units_out=''):
     """Helper method to return appropriate unit type
-
     Parameters
     ----------
         quantity : :class:`~vunits.quantity.Quantity` obj
